@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap Isotop</title>
+    <link rel="stylesheet" href="http://localhost/dartera/wp-content/themes/dartera/css/bootstrap.min.css">
+    <style>
+        .grid-item-content {
+            height: 100px;
+            background: #0D8;
+            border: 2px solid hsla(0, 0%, 0%, 0.7);
+        }
+
+        .grid-item-content--height2 {
+            height: 200px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Isotope - Bootstrap 3</h1>
+
+    <div class="container-fluid">
+        <!-- add extra container element for Masonry -->
+        <div class="grid row">
+            <div class="grid-sizer col-md-4"></div>
+            <div class="grid-item col-md-8">
+                <!-- add inner element for column content -->
+                <div class="grid-item-content"></div>
+            </div>
+            <div class="grid-item col-md-4">
+                <div class="grid-item-content"></div>
+            </div>
+            <div class="grid-item col-md-4">
+                <div class="grid-item-content grid-item-content--height2"></div>
+            </div>
+            <div class="grid-item col-md-8">
+                <div class="grid-item-content"></div>
+            </div>
+            <div class="grid-item col-md-4">
+                <div class="grid-item-content grid-item-content--height2"></div>
+            </div>
+            <div class="grid-item col-md-4">
+                <div class="grid-item-content"></div>
+            </div>
+            <div class="grid-item col-md-4">
+                <div class="grid-item-content"></div>
+            </div>
+        </div>
+    </div>
+    <script src="http://localhost/dartera/wp-includes/js/jquery/jquery.min.js"></script>
+    <script src="http://localhost/dartera/wp-content/themes/dartera/js/bootstrap.bundle.min.js"></script>
+    <script src="isotope.pkgd.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            $('.grid').isotope({
+                itemSelector: '.grid-item',
+                percentPosition: true,
+                masonry: {
+                    columnWidth: '.grid-sizer'
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

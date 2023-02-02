@@ -1,0 +1,504 @@
+$color_1: var(--secondary-color);
+$color_2: #4C4D54;
+html {
+	scroll-behavior: smooth;
+}
+img {
+	max-width: 100%;
+	height: auto;
+}
+.hidden-link {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+a {
+	text-decoration: none;
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+	&:hover {
+		color: $color_1;
+	}
+}
+.smooth {
+	-webkit-transition: all .3s ease-out;
+	-moz-transition: all .3s ease-out;
+	-o-transition: all .3s ease-out;
+	transition: all .3s ease-out;
+}
+&::-webkit-input-placeholder {
+	color: $color_2;
+}
+&:-ms-input-placeholder {
+	color: $color_2;
+}
+&::placeholder {
+	color: $color_2;
+}
+.se-pre-con {
+	z-index: 9999;
+}
+.scrollup {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	cursor: pointer;
+	z-index: 9;
+	display: none;
+}
+.scrollup.active {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.font-weight-100 {
+	font-weight: 100 !important;
+}
+.font-weight-200 {
+	font-weight: 200 !important;
+}
+.font-weight-300 {
+	font-weight: 300 !important;
+}
+.font-weight-400 {
+	font-weight: 400 !important;
+}
+.font-weight-500 {
+	font-weight: 500 !important;
+}
+.font-weight-600 {
+	font-weight: 600 !important;
+}
+.font-weight-700 {
+	font-weight: 700 !important;
+}
+.font-weight-800 {
+	font-weight: 800 !important;
+}
+.font-weight-900 {
+	font-weight: 900 !important;
+}
+.delay-0ms {
+	-webkit-animation-delay: 0s;
+	-moz-animation-delay: 0s;
+	animation-delay: 0s;
+}
+.delay-250ms {
+	-webkit-animation-delay: 0.25s;
+	-moz-animation-delay: 0.25s;
+	animation-delay: 0.25s;
+}
+.delay-500ms {
+	-webkit-animation-delay: 0.5s;
+	-moz-animation-delay: 0.5s;
+	animation-delay: 0.5s;
+}
+.delay-750ms {
+	-webkit-animation-delay: 0.75s;
+	-moz-animation-delay: 0.75s;
+	animation-delay: 0.75s;
+}
+.delay-1s {
+	-webkit-animation-delay: 1s;
+	-moz-animation-delay: 1s;
+	animation-delay: 1s;
+}
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+.group-container {
+	>.wp-block-group__inner-container {
+		--bs-gutter-x: 1.5rem;
+		--bs-gutter-y: 0;
+		width: 100%;
+		padding-right: calc(var(--bs-gutter-x) * 0.5);
+		padding-left: calc(var(--bs-gutter-x) * 0.5);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+.group-container-fluid {
+	>.wp-block-group__inner-container {
+		--bs-gutter-x: 1.5rem;
+		--bs-gutter-y: 0;
+		width: 100%;
+		padding-right: calc(var(--bs-gutter-x) * 0.5);
+		padding-left: calc(var(--bs-gutter-x) * 0.5);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+.group-container-xxl {
+	>.wp-block-group__inner-container {
+		--bs-gutter-x: 1.5rem;
+		--bs-gutter-y: 0;
+		width: 100%;
+		padding-right: calc(var(--bs-gutter-x) * 0.5);
+		padding-left: calc(var(--bs-gutter-x) * 0.5);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+.group-container-xl {
+	>.wp-block-group__inner-container {
+		--bs-gutter-x: 1.5rem;
+		--bs-gutter-y: 0;
+		width: 100%;
+		padding-right: calc(var(--bs-gutter-x) * 0.5);
+		padding-left: calc(var(--bs-gutter-x) * 0.5);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+.group-container-lg {
+	>.wp-block-group__inner-container {
+		--bs-gutter-x: 1.5rem;
+		--bs-gutter-y: 0;
+		width: 100%;
+		padding-right: calc(var(--bs-gutter-x) * 0.5);
+		padding-left: calc(var(--bs-gutter-x) * 0.5);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+.group-container-md {
+	>.wp-block-group__inner-container {
+		--bs-gutter-x: 1.5rem;
+		--bs-gutter-y: 0;
+		width: 100%;
+		padding-right: calc(var(--bs-gutter-x) * 0.5);
+		padding-left: calc(var(--bs-gutter-x) * 0.5);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+.group-container-sm {
+	>.wp-block-group__inner-container {
+		--bs-gutter-x: 1.5rem;
+		--bs-gutter-y: 0;
+		width: 100%;
+		padding-right: calc(var(--bs-gutter-x) * 0.5);
+		padding-left: calc(var(--bs-gutter-x) * 0.5);
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+.wp-block-columns {
+	margin-bottom: 0;
+}
+&:where(.wp-block-columns.is-layout-flex) {
+	gap: 24px !important;
+}
+&:where(.wp-block-columns.break-lg.is-layout-flex) {
+	gap: 0 !important;
+}
+&:where(.wp-block-columns.break-xl.is-layout-flex) {
+	gap: 0 !important;
+}
+@media (min-width: 576px) {
+	.group-container-sm {
+		>.wp-block-group__inner-container {
+			max-width: 540px;
+		}
+	}
+	.group-container {
+		>.wp-block-group__inner-container {
+			max-width: 540px;
+		}
+	}
+	.delay-sm-0ms {
+		-webkit-animation-delay: 0s;
+		-moz-animation-delay: 0s;
+		animation-delay: 0s;
+	}
+	.delay-sm-250ms {
+		-webkit-animation-delay: 0.25s;
+		-moz-animation-delay: 0.25s;
+		animation-delay: 0.25s;
+	}
+	.delay-sm-500ms {
+		-webkit-animation-delay: 0.5s;
+		-moz-animation-delay: 0.5s;
+		animation-delay: 0.5s;
+	}
+	.delay-sm-750ms {
+		-webkit-animation-delay: 0.75s;
+		-moz-animation-delay: 0.75s;
+		animation-delay: 0.75s;
+	}
+	.delay-sm-1s {
+		-webkit-animation-delay: 1s;
+		-moz-animation-delay: 1s;
+		animation-delay: 1s;
+	}
+}
+@media (min-width: 768px) {
+	.group-container-md {
+		>.wp-block-group__inner-container {
+			max-width: 720px;
+		}
+	}
+	.group-container-sm {
+		>.wp-block-group__inner-container {
+			max-width: 720px;
+		}
+	}
+	.group-container {
+		>.wp-block-group__inner-container {
+			max-width: 720px;
+		}
+	}
+	.delay-md-0ms {
+		-webkit-animation-delay: 0s;
+		-moz-animation-delay: 0s;
+		animation-delay: 0s;
+	}
+	.delay-md-250ms {
+		-webkit-animation-delay: 0.25s;
+		-moz-animation-delay: 0.25s;
+		animation-delay: 0.25s;
+	}
+	.delay-md-500ms {
+		-webkit-animation-delay: 0.5s;
+		-moz-animation-delay: 0.5s;
+		animation-delay: 0.5s;
+	}
+	.delay-md-750ms {
+		-webkit-animation-delay: 0.75s;
+		-moz-animation-delay: 0.75s;
+		animation-delay: 0.75s;
+	}
+	.delay-md-1s {
+		-webkit-animation-delay: 1s;
+		-moz-animation-delay: 1s;
+		animation-delay: 1s;
+	}
+}
+@media (min-width: 992px) {
+	.group-container-lg {
+		>.wp-block-group__inner-container {
+			max-width: 960px;
+		}
+	}
+	.group-container-md {
+		>.wp-block-group__inner-container {
+			max-width: 960px;
+		}
+	}
+	.group-container-sm {
+		>.wp-block-group__inner-container {
+			max-width: 960px;
+		}
+	}
+	.group-container {
+		>.wp-block-group__inner-container {
+			max-width: 960px;
+		}
+	}
+	.delay-lg-0ms {
+		-webkit-animation-delay: 0s;
+		-moz-animation-delay: 0s;
+		animation-delay: 0s;
+	}
+	.delay-lg-250ms {
+		-webkit-animation-delay: 0.25s;
+		-moz-animation-delay: 0.25s;
+		animation-delay: 0.25s;
+	}
+	.delay-lg-500ms {
+		-webkit-animation-delay: 0.5s;
+		-moz-animation-delay: 0.5s;
+		animation-delay: 0.5s;
+	}
+	.delay-lg-750ms {
+		-webkit-animation-delay: 0.75s;
+		-moz-animation-delay: 0.75s;
+		animation-delay: 0.75s;
+	}
+	.delay-lg-1s {
+		-webkit-animation-delay: 1s;
+		-moz-animation-delay: 1s;
+		animation-delay: 1s;
+	}
+	&:where(.wp-block-columns.break-lg.is-layout-flex) {
+		gap: 24px !important;
+	}
+	.wp-block-columns.break-lg {
+		&:not(.is-not-stacked-on-mobile) {
+			>.wp-block-column {
+				flex-basis: 0;
+				flex-grow: 1;
+			}
+			>.wp-block-column[style*=flex-basis] {
+				flex-grow: 0;
+			}
+		}
+	}
+}
+@media (min-width: 1200px) {
+	.group-container-xl {
+		>.wp-block-group__inner-container {
+			max-width: 1140px;
+		}
+	}
+	.group-container-lg {
+		>.wp-block-group__inner-container {
+			max-width: 1140px;
+		}
+	}
+	.group-container-md {
+		>.wp-block-group__inner-container {
+			max-width: 1140px;
+		}
+	}
+	.group-container-sm {
+		>.wp-block-group__inner-container {
+			max-width: 1140px;
+		}
+	}
+	.group-container {
+		>.wp-block-group__inner-container {
+			max-width: 1140px;
+		}
+	}
+	.delay-xl-0ms {
+		-webkit-animation-delay: 0s;
+		-moz-animation-delay: 0s;
+		animation-delay: 0s;
+	}
+	.delay-xl-250ms {
+		-webkit-animation-delay: 0.25s;
+		-moz-animation-delay: 0.25s;
+		animation-delay: 0.25s;
+	}
+	.delay-xl-500ms {
+		-webkit-animation-delay: 0.5s;
+		-moz-animation-delay: 0.5s;
+		animation-delay: 0.5s;
+	}
+	.delay-xl-750ms {
+		-webkit-animation-delay: 0.75s;
+		-moz-animation-delay: 0.75s;
+		animation-delay: 0.75s;
+	}
+	.delay-xl-1s {
+		-webkit-animation-delay: 1s;
+		-moz-animation-delay: 1s;
+		animation-delay: 1s;
+	}
+	&:where(.wp-block-columns.break-xl.is-layout-flex) {
+		gap: 24px !important;
+	}
+	.wp-block-columns.break-xl {
+		&:not(.is-not-stacked-on-mobile) {
+			>.wp-block-column {
+				flex-basis: 0;
+				flex-grow: 1;
+			}
+			>.wp-block-column[style*=flex-basis] {
+				flex-grow: 0;
+			}
+		}
+	}
+}
+@media (min-width: 1400px) {
+	.group-container-xxl {
+		>.wp-block-group__inner-container {
+			max-width: 1320px;
+		}
+	}
+	.group-container-xl {
+		>.wp-block-group__inner-container {
+			max-width: 1320px;
+		}
+	}
+	.group-container-lg {
+		>.wp-block-group__inner-container {
+			max-width: 1320px;
+		}
+	}
+	.group-container-md {
+		>.wp-block-group__inner-container {
+			max-width: 1320px;
+		}
+	}
+	.group-container-sm {
+		>.wp-block-group__inner-container {
+			max-width: 1320px;
+		}
+	}
+	.group-container {
+		>.wp-block-group__inner-container {
+			max-width: 1320px;
+		}
+	}
+	.delay-xxl-0ms {
+		-webkit-animation-delay: 0s;
+		-moz-animation-delay: 0s;
+		animation-delay: 0s;
+	}
+	.delay-xxl-250ms {
+		-webkit-animation-delay: 0.25s;
+		-moz-animation-delay: 0.25s;
+		animation-delay: 0.25s;
+	}
+	.delay-xxl-500ms {
+		-webkit-animation-delay: 0.5s;
+		-moz-animation-delay: 0.5s;
+		animation-delay: 0.5s;
+	}
+	.delay-xxl-750ms {
+		-webkit-animation-delay: 0.75s;
+		-moz-animation-delay: 0.75s;
+		animation-delay: 0.75s;
+	}
+	.delay-xxl-1s {
+		-webkit-animation-delay: 1s;
+		-moz-animation-delay: 1s;
+		animation-delay: 1s;
+	}
+}
+@media (min-width: 782px) and (max-width: 991px) {
+	.wp-block-columns.break-lg {
+		flex-wrap: wrap !important;
+	}
+}
+@media (max-width: 991px) {
+	.wp-block-columns.break-lg {
+		&:not(.is-not-stacked-on-mobile) {
+			>.wp-block-column {
+				flex-basis: 100% !important;
+			}
+		}
+	}
+}
+@media (min-width: 782px) and (max-width: 1199px) {
+	.wp-block-columns.break-xl {
+		flex-wrap: wrap !important;
+	}
+}
+@media (max-width: 1199px) {
+	.wp-block-columns.break-xl {
+		&:not(.is-not-stacked-on-mobile) {
+			>.wp-block-column {
+				flex-basis: 100% !important;
+			}
+		}
+	}
+}

@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'Biennale';
+    src: url('Biennale-Black.woff2') format('woff2'),
+        url('Biennale-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biennale';
+    src: url('Biennale-Bold.woff2') format('woff2'),
+        url('Biennale-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biennale Book';
+    src: url('Biennale-Book.woff2') format('woff2'),
+        url('Biennale-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biennale';
+    src: url('Biennale-Regular.woff2') format('woff2'),
+        url('Biennale-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biennale';
+    src: url('Biennale-Medium.woff2') format('woff2'),
+        url('Biennale-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biennale';
+    src: url('Biennale-Light.woff2') format('woff2'),
+        url('Biennale-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biennale';
+    src: url('Biennale-Heavy.woff2') format('woff2'),
+        url('Biennale-Heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biennale Ultra';
+    src: url('Biennale-UltraLight.woff2') format('woff2'),
+        url('Biennale-UltraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biennale';
+    src: url('Biennale-Thin.woff2') format('woff2'),
+        url('Biennale-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Biennale';
+    src: url('Biennale-SemiBold.woff2') format('woff2'),
+        url('Biennale-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

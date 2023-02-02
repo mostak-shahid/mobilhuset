@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Owl Carousel</title>
+    <link rel="stylesheet" href="owl.carousel.css">
+    <link rel="stylesheet" href="owl.theme.default.min.css">
+</head>
+
+<body>
+    <div class="owl-carousel" data-carousel-options='{"autoplay":false,"autoplayTimeout":"1000","items":"2", "loop":false}'>
+        <div class="item">
+            <h4>1</h4>
+        </div>
+        <div class="item">
+            <h4>2</h4>
+        </div>
+        <div class="item">
+            <h4>3</h4>
+        </div>
+        <div class="item">
+            <h4>4</h4>
+        </div>
+        <div class="item">
+            <h4>5</h4>
+        </div>
+        <div class="item">
+            <h4>6</h4>
+        </div>
+        <div class="item">
+            <h4>7</h4>
+        </div>
+        <div class="item">
+            <h4>8</h4>
+        </div>
+        <div class="item">
+            <h4>9</h4>
+        </div>
+        <div class="item">
+            <h4>10</h4>
+        </div>
+        <div class="item">
+            <h4>11</h4>
+        </div>
+        <div class="item">
+            <h4>12</h4>
+        </div>
+    </div>
+    <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/vendors/jquery.min.js"></script>
+    <script src="owl.carousel.js"></script>
+    <script>
+        jQuery(document).ready(function($) {
+            var oc = $('.owl-carousel');
+            var ocOptions = oc.data('carousel-options');
+            var defaults = {
+                loop: true,
+                nav: false,
+                autoplay: true,
+            }
+            oc.owlCarousel($.extend(defaults, ocOptions));
+            //$('.owl-carousel').owlCarousel();
+        });
+
+    </script>
+</body>
+
+</html>
