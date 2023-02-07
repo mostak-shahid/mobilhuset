@@ -182,7 +182,7 @@ function woo_searchform_func( $atts = array(), $content = null ) {
     ob_start(); ?>
     <div class="woo-searchform-wrapper position-relative <?php echo $atts['class']?>">
         <?php echo get_product_search_form( false );?>
-        <div class="search-results"></div>
+        <div class="search-suggestion-results"></div>
     </div>
     <?php $html = ob_get_clean();	
 	return $html;
@@ -197,7 +197,7 @@ function newsletter_form_func( $atts = array(), $content = null ) {
     <div class="newsletter-form-wrapper <?php echo $atts['class']?>">
     <form method="get" id="newsletter" action="">
 		<div class="input-group">
-			<input class="form-control" type="text" name="newsletetr-email" id="newsletetr-email" placeholder="<?php echo  __( 'Your Email Address:' ) ?>" />
+			<input class="form-control" type="text" name="newsletetr-email" id="newsletetr-email" placeholder="<?php echo  __( 'Your Email Address:' ) ?>"/>
 			<button type="submit" id="searchsubmit" class="btn btn-newsletetr">
             <i class="fa fa-envelope"></i>
             </button> 

@@ -33,21 +33,39 @@ function get_searched_products_ajax_callback () {
     if ($search_value) {
         $args = array(
             'post_type' => 'product',
-            'posts_per_page' => 10,
+            'posts_per_page' => 5,
             's' => $search_value
         );
+        if ($_POST['search_category']) {
+            $args['tax_query'] = array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field'    => 'slug',
+                    'terms'    => $_POST['search_category'],
+                )
+            );
+        }
         // The Query
         $the_query = new WP_Query( $args );
 
         // The Loop
         if ( $the_query->have_posts() ) {
-            $html .= '<ul>';
+            $html .= '<ul id="suggestions">';
             while ( $the_query->have_posts() ) {
                 $the_query->the_post();
-                //$html .= '<li>' . preg_replace($search_value, '<b>'.$search_value.'</b>', get_the_title()) . '</li>';
+                $product = wc_get_product( get_the_ID() );
                 $str = 'Visit Microsoft!';
                 $pattern = '/'.$search_value.'/i';
-                $html .= '<li><a href="'.get_the_permalink().'">' . preg_replace($pattern, '<b><u>'.$search_value.'</u></b>', get_the_title()) . '</a></li>';
+                $html .= '<li class="suggestion-unit"><a class="d-flex align-items-center gap-2" href="'.get_the_permalink().'">';
+                $html .= '<span class="product-image"><img src="'.aq_resize(get_the_post_thumbnail_url(get_the_ID(), 'full'), 100, 100, true).'"/></span>';
+                $html .= '<span class="product-data d-block">';
+                $html .= '<span class="product-brand d-block text-theme">'.do_shortcode("[product-brand]").'</span>';
+                $html .= '<span class="product-name d-block">';
+                $html .= preg_replace($pattern, '<b><u>'.$search_value.'</u></b>', get_the_title());
+                $html .= '</span>';
+                $html .= '<span class="product-price d-block">'.$product->get_price_html().'</span>';
+                $html .= '</span>';
+                $html .= '</a></li>';
                 //$html .= '<li>' . preg_replace($search_value, '<b>'.$search_value.'</b>', get_the_title()) . '</li>';
             }
             $html .= '</ul>';

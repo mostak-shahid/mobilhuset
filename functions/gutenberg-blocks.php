@@ -30,13 +30,14 @@ function mos_gutenberg_blocks() {
         Field::make('textarea', 'mos_block_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
     ))  
-    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {        
+        $id = 'element-'.time().rand(1000, 9999);
     ?>
-        <div class="mos-block-wrapper <?php echo @$fields['mos_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+        <div id="<?php echo $id ?>" class="mos-block-wrapper <?php echo @$fields['mos_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
         <div class="title <?php echo @$fields['mos_block_title_class']; ?>"><?php echo $fields['mos_block_title'] ?></div>
-        </div>
+        </div>        
         <?php if(@$fields['mos_block_style']) : ?>
-        <style><?php echo $fields['mos_block_style']; ?></style>
+        <style><?php echo str_replace("selector",'#'.$id,$fields['mos_block_style']); ?></style>
         <?php endif?>
         <?php if(@$fields['mos_block_script']) : ?>
         <script><?php echo $fields['mos_block_script']; ?></script>
@@ -638,4 +639,138 @@ function mos_gutenberg_blocks() {
         //wp_reset_postdata();
     }); 
     //Product Slider Block end
+    //Promobox Block start
+    Block::make(__('Promobox Block'))
+    ->set_icon('embed-photo')
+    ->add_tab(__('Content'), array(
+        Field::make('text', 'mos_promobox_block_title', __('Title')),
+        Field::make('rich_text', 'mos_promobox_block_intro', __('Intro')),
+        Field::make('text', 'mos_promobox_block_btn_title', __('Button Title')),
+        Field::make('text', 'mos_promobox_block_btn_url', __('Button URL')),
+        Field::make('image', 'mos_promobox_block_image', __('Image')),
+    ))
+    ->add_tab(__('Style'), array(
+        Field::make('text', 'mos_promobox_block_wrapper_class', __('Wrapper Class')),
+        Field::make('text', 'mos_promobox_block_title_class', __('Title Class')),
+        Field::make('text', 'mos_promobox_block_intro_class', __('Intro Class')),
+        Field::make('text', 'mos_promobox_block_btn_class', __('Button Class')),
+        Field::make('text', 'mos_promobox_block_image_class', __('Image Class')),
+        Field::make('complex', 'mos_promobox_block_background', __('Background'))
+        ->set_max(1)
+        ->set_collapsed(true)
+        ->add_fields(array(
+            Field::make('color', 'background-color', __('Background Color')),
+            Field::make('image', 'background-image', __('Background Image')),
+            Field::make('select', 'background-position', __('Background Position'))
+            ->set_options(array(
+                'top left' => 'Top Left',
+                'top center' => 'Top Center',
+                'top right' => 'Top Right',
+                'center left' => 'Center Left',
+                'center center' => 'Center Center',
+                'center right' => 'Center Right',
+                'bottom left' => 'Bottom left',
+                'bottom center' => 'Bottom Center',
+                'bottom right' => 'Bottom Right',
+            ))
+            ->set_default_value(['top left']),
+            Field::make('select', 'background-size', __('Background Size'))
+            ->set_options(array(
+                'cover' => 'cover',
+                'contain' => 'contain',
+                'auto' => 'auto',
+                'inherit' => 'inherit',
+                'initial' => 'initial',
+                'revert' => 'revert',
+                'revert-layer' => 'revert-layer',
+                'unset' => 'unset',
+            ))
+            ->set_default_value(['cover']),
+            //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
+            Field::make('select', 'background-repeat', __('Background Repeat'))
+            ->set_options(array(
+                'repeat' => 'repeat',
+                'repeat-x' => 'repeat-x',
+                'repeat-y' => 'repeat-y',
+                'no-repeat' => 'no-repeat',
+                'initial' => 'initial',
+                'inherit' => 'inherit',
+            ))
+            ->set_default_value(['no-repeat']),
+            Field::make('select', 'background-attachment', __('Background Attachment'))
+            ->set_options(array(
+                'scroll' => 'Scroll',
+                'fixed' => 'Fixed',
+            ))
+            ->set_default_value(['scroll']),
+        )),
+    )) 
+    ->add_tab(__('Advanced'), array(
+        Field::make('textarea', 'mos_promobox_block_style', __('Style'))
+        ->set_help_text('Please write your custom css without style tag'),
+        Field::make('textarea', 'mos_promobox_block_script', __('Script'))
+        ->set_help_text('Please write your custom script without script tag'),
+    ))  
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+        $id = 'element-'.time().rand(1000, 9999);
+    ?>
+        <div id="<?php echo $id ?>" class="mos-promobox-block-wrapper position-relative <?php echo @$fields['mos_promobox_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+            <div class="text-part">
+                <?php if (@$fields['mos_promobox_block_title']) :?>
+                    <h3 class="title <?php echo @$fields['mos_promobox_block_title_class']; ?>"><?php echo $fields['mos_promobox_block_title'] ?> <?php echo @$fields['mos_promobox_block_wrapper_id'] ?></h3>
+                <?php endif?>
+                <?php if (@$fields['mos_promobox_block_intro']) :?>
+                    <div class="intro <?php echo @$fields['mos_promobox_block_intro_class']; ?>"><?php echo $fields['mos_promobox_block_intro'] ?></div>
+                <?php endif?>
+                <?php if (@$fields['mos_promobox_block_btn_title'] && @$fields['mos_promobox_block_btn_url']) :?>
+                    <div class="button"></div>
+                    <div class="is-layout-flex wp-block-buttons <?php echo @$fields['mos_promobox_block_btn_class']; ?>">
+                        <div class="wp-block-button has-custom-font-size has-small-font-size">
+                            <span class="wp-block-button__link has-white-color has-text-color has-background wp-element-button"><?php echo $fields['mos_promobox_block_btn_title'] ?></span>
+                        </div>
+                    </div>
+                <?php endif?>
+            </div>
+            <?php if (@$fields['mos_promobox_block_image']) :?>
+                <div class="media-part">
+                    <div class="image <?php echo @$fields['mos_promobox_block_image_class']; ?>"><?php echo wp_get_attachment_image( $fields['mos_promobox_block_image'], "full", "", array( "class" => "img-fluid img-promobox" ) );  ?></div>
+                </div>
+            <?php endif?>
+            <?php if (@$fields['mos_promobox_block_btn_url']) :?>
+                <a class="hidden-link" href="<?php echo do_shortcode($fields['mos_promobox_block_btn_url']) ?>">Read more about <?php echo (@$fields['mos_promobox_block_title'])?$fields['mos_promobox_block_title']:'this' ?></a>
+            <?php endif?>
+        </div>
+        <?php if(@$fields['mos_promobox_block_style']) : ?>
+        <style>
+            <?php echo str_replace("selector",'#'.$id,$fields['mos_promobox_block_style']); ?>
+        </style>
+        <?php endif?>
+        <style>            
+            <?php echo '#'.$id ?> {
+                <?php if (@$fields['mos_promobox_block_background'][0]['background-color']) : ?>
+                    background-color: <?php echo $fields['mos_promobox_block_background'][0]['background-color'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_promobox_block_background'][0]['background-image']) : ?>
+                    background-image: url(<?php echo wp_get_attachment_url($fields['mos_promobox_block_background'][0]['background-image']) ?>);
+                <?php endif?>
+                <?php if (@$fields['mos_promobox_block_background'][0]['background-position']) : ?>
+                    background-position: <?php echo $fields['mos_promobox_block_background'][0]['background-position'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_promobox_block_background'][0]['background-size']) : ?>
+                    background-size: <?php echo $fields['mos_promobox_block_background'][0]['background-size'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_promobox_block_background'][0]['background-repeat']) : ?>
+                    background-repeat: <?php echo $fields['mos_promobox_block_background'][0]['background-repeat'] ?>;
+                <?php endif?>
+                <?php if (@$fields['mos_promobox_block_background'][0]['background-attachment']) : ?>
+                    background-attachment: <?php echo $fields['mos_promobox_block_background'][0]['background-attachment'] ?>;
+                <?php endif?>
+            }
+        </style>
+        <?php if(@$fields['mos_promobox_block_script']) : ?>
+        <script><?php echo $fields['mos_promobox_block_script']; ?></script>
+        <?php endif?>
+    <?php
+    }); 
+    //Promobox Block end
 }

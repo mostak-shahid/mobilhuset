@@ -330,7 +330,12 @@ function mos_theme_options() {
     Container::make('theme_options', __('Woocommerce'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
-        Field::make('checkbox', 'mos-woocommerce-hide-title', __('Hide Archive Title')),
+        //Field::make('checkbox', 'mos-woocommerce-hide-title', __('Hide Archive Title')),
+        Field::make('text', 'mos-woocommerce-archive-nop', __('Archive product count'))
+        ->set_attribute( 'type', 'number' )
+        ->set_attribute( 'min', 1 )
+        ->set_default_value(9)
+        ->set_required( true ),
         Field::make('text', 'mos-woocommerce-add-to-cart-text', __('Add to cart button text'))
         ->set_default_value("Add to cart")
         ->set_required( true ),

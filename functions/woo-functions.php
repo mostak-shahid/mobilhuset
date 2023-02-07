@@ -101,13 +101,28 @@ function mos_customize_add_tocart(){
 	}
 }
 add_action( 'wp_head', 'mos_customize_add_tocart' );
+
+/**
+ * Change number of products that are displayed per page (shop page)
+ */
+add_filter( 'loop_shop_per_page', 'mos_loop_shop_per_page', 20 );
+
+function mos_loop_shop_per_page( $cols ) {
+  // $cols contains the current number of products per page based on the value stored on Options –> Reading
+  // Return the number of products you wanna show per page.
+  $cols = carbon_get_theme_option( 'mos-woocommerce-archive-nop');
+  return $cols;
+}
+
+
 add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_title_meta_set_2_end', 14, 0);
 
 
 function mos_woocommerce_shop_loop_item_title_meta_set_2_content( ) {
 	?>
-	<span class="text">Lonin to see price</span>
-	<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Login',''); ?>"><?php _e('Login',''); ?></a>
+	<span class="text"><?php _e(carbon_get_theme_option( 'mos-woocommerce-login-advice-text'),'woocommerce'); ?></span>
+	<!--  -->
+	<a class="button" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e(carbon_get_theme_option( 'mos-woocommerce-login-button-text'),'woocommerce'); ?>"><?php _e(carbon_get_theme_option( 'mos-woocommerce-login-button-text'),'woocommerce'); ?></a>
 	<?php
 }
 function mos_woocommerce_shop_loop_item_title_meta_set_2_end( ) {
@@ -167,12 +182,22 @@ add_filter( 'get_product_search_form' , 'mos_woo_custom_product_searchform' );
  * @return      void
 */
 function mos_woo_custom_product_searchform( $form ) {
-	
+	$product_cat = mos_get_terms('product_cat');
+	//var_dump($product_cat);
+	$options = '';
+	foreach($product_cat as $cat) {
+		$selected = (@$_GET['category'] && $_GET['category'] == $cat["slug"])?'selected':'';
+		$options .= '<option '.$selected.' value="'.$cat["slug"].'">'.$cat["name"].'</option>';
+	}
 	$form = '<form role="search" method="get" id="searchform" action="' . esc_url( home_url( '/'  ) ) . '">
 		<div class="input-group">
 			<label class="screen-reader-text" for="s">' . __( 'Search for:', 'woocommerce' ) . '</label>
-			<input class="form-control mos-product-search" type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="' . __( 'Search for Products', 'woocommerce' ) . '" />
-			<button type="submit" id="searchsubmit" class="btn btn-outline-secondary">
+			
+			<select name="category" class="form-select mos-product-categories" id="inputGroupSelect01">
+				<option value="">All Categories</option>'.$options.'
+			</select>
+			<input class="form-control mos-product-search" type="text" name="s" id="s" placeholder="' . __( 'Search for Products', 'woocommerce' ) . '" autocomplete="off" value="'.get_search_query().'"  />
+			<button type="submit" id="searchsubmit" class="btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="18.382" height="18.34" viewBox="0 0 18.382 18.34">
 <g id="searc-icon" transform="translate(-1250 -76)">
 <path id="Search" d="M1658.563,1091.246l-2.828-2.828c-.025-.024-.058-.034-.084-.056a8.487,8.487,0,1,0-1.381,1.394.758.758,0,0,0,.051.076l2.828,2.83a1,1,0,0,0,1.414-1.416Zm-9.589-1.633a6.5,6.5,0,1,1,6.5-6.5A6.508,6.508,0,0,1,1648.974,1089.613Z" transform="translate(-390.474 -998.613)"></path>
@@ -182,7 +207,7 @@ function mos_woo_custom_product_searchform( $form ) {
 			<input type="hidden" name="post_type" value="product" />
 		</div>
 	</form>';
-	
+	//onkeyup="showHint(this.value)"
 	return $form;
 	
 }
@@ -253,3 +278,23 @@ function mos_woo_move_description_tab($tabs) {
     $tabs['reviews']['priority'] = 110;
     return $tabs;
 }
+
+function theme_pgp( $query ) {
+
+    if( is_admin() ) {
+        return;                 // If we're in the admin panel - drop out
+    }
+
+    if( $query->is_main_query() && $query->is_search() ) {      // Apply to all search queries
+
+        // IF our category is set and not empty - include it in the query
+        if( isset( $_GET['category'] ) && ! empty( $_GET['category'] ) ) {
+            $query->set( 'tax_query', array( array(
+                'taxonomy'  => 'product_cat',
+                'field'     => 'slug',
+                'terms'     => array( sanitize_text_field( $_GET['category'] ) ),
+            ) ) );
+        }
+    }
+}
+add_action( 'pre_get_posts', 'theme_pgp' );
