@@ -1,9 +1,10 @@
 jQuery(document).ready(function ($) {
+    $('.header-category-menu .wp-block-navigation__responsive-container-open').append("<b>Shop By Categories</b>");
     $('.header-category-menu .wp-block-navigation__responsive-container-open').on('click', function(){
-        $(this).css('opacity', 0);
+        $(this).find('svg').css('opacity', 0);
     });
     $('.header-category-menu .wp-block-navigation__responsive-container-close').on('click', function(){
-        $('.header-category-menu .wp-block-navigation__responsive-container-open').css('opacity', 1);
+        $('.header-category-menu .wp-block-navigation__responsive-container-open').find('svg').css('opacity', 1);
     });
     // $('.single-product .flex-control-thumbs .img-product-thumbnail').on('click', function(e){
     //     var source = $(this).data('main-source');
