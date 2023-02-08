@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-    $('.header-category-menu .wp-block-navigation__responsive-container-open').append("<b>Shop By Categories</b>");
+    $('.header-category-menu .wp-block-navigation__responsive-container-open').append("<b>Alla Produkter</b>");
     $('.header-category-menu .wp-block-navigation__responsive-container-open').on('click', function(){
         $(this).find('svg').css('opacity', 0);
     });

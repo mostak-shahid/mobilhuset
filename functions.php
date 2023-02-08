@@ -36,6 +36,7 @@ require_once ('carbon-fields.php');
 require_once('functions/theme-options.php');
 require_once('functions/gutenberg-blocks.php');
 require_once('functions/post-metas.php');
+require_once('functions/term-metas.php');
 require_once('functions/woo-functions.php');
 
 /*if (version_compare($GLOBALS['wp_version'], '5.0-beta', '>')) {    

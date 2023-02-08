@@ -761,6 +761,9 @@ body.woocommerce #shop-main {
   margin-top: 70px;
   margin-bottom: 70px;
 }
+body.woocommerce.single-product #shop-main {
+  margin-top: 20px;
+}
 .woocommerce ul.products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -941,10 +944,11 @@ body.woocommerce #shop-main {
 .woocommerce.single-product div.product .summary p.price,
 .woocommerce.single-product div.product .summary span.price {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column;  */
   color: #bdbdbd;
   font-weight: 400;
   font-size: 30px;
+  gap: 10px;
 }
 .woocommerce.single-product div.product p.price ins,
 .woocommerce.single-product div.product span.price ins {
@@ -987,7 +991,7 @@ body.woocommerce #shop-main {
 .woocommerce.single-product div.product form.cart {
   display: flex;
   align-items: center;
-  gap: 30px;
+  margin-bottom: 10px;
 }
 .woocommerce.single-product div.product form.cart::before,
 .woocommerce.single-product div.product form.cart::after {
@@ -1016,6 +1020,10 @@ body.woocommerce #shop-main {
   border-radius: 0;
   background-color: var(--mos-primary-color);
   color: #ffffff;
+  margin-left: 30px;
+}
+.woocommerce.single-product div.product form.cart .quantity.hidden + .button {
+  margin-left: 0;
 }
 .woocommerce.single-product div.product .woocommerce-tabs ul.tabs {
   padding: 0;
@@ -1028,6 +1036,9 @@ body.woocommerce #shop-main {
   border-radius: 0;
   background-color: transparent;
   border-style: none;
+  margin: 0;
+  border: 1px solid #d3ced2;
+  border-bottom-style: none;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li a {
   text-transform: uppercase;
@@ -1167,6 +1178,21 @@ h2.wc-block-mini-cart__title {
 }
 .woocommerce-info::before {
   color: var(--mos-primary-color);
+}
+body.more-then-one-product-available .usp-group {
+  margin-left: 90px;
+}
+/* .usp-group li::before {
+  content: "\f046";
+  font-family: "FontAwesome";
+  margin-right: 5px;
+} */
+.usp-group li > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.usp-group li img {
+  margin-right: 5px;
 }
 #block-8 p {
   display: none;

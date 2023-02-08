@@ -12,7 +12,11 @@ function add_slug_body_class( $classes ) {
     } else {
         $classes[] = 'guest-user';
     }
-
+    if ( is_product() ) {
+        global $product;
+        $prefix = ($product->get_stock_quantity()>1)?'more-then-one':'less-then-one';
+        $classes[] = $prefix .'-product-available';
+    }
     return $classes;
 }
 add_filter( 'body_class', 'add_slug_body_class' );

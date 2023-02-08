@@ -20,7 +20,7 @@ function mos_customize_woo_action() {
 	remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
 	remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
 	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
-	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+	//remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 	remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10);
 	remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10);
 	remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
@@ -171,6 +171,24 @@ function mos_bootstrap_wrapper_end() {
 
 add_action('woocommerce_before_shop_loop', function() {mos_flex_wrapper_start('before-product-list');}, 19);
 add_action('woocommerce_before_shop_loop', 'mos_div_wrapper_end', 31);
+add_action('woocommerce_single_product_summary', 'mos_usp_text', 31);
+function mos_usp_text () {
+	?>
+	<ul class="list-inline usp-group">
+		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-purchase-fbg.svg" alt="Snabb Leverans"><span class="usp-text">Snabb Leverans</span></li>
+		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-payments-vCm.svg" alt="Säkra betalningar"><span class="usp-text">Snabb Leverans</span></li>
+		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-delivery-ua6.svg" alt="14 dagars öppet köp"><span class="usp-text">14 dagars öppet köp</span></li>
+	</ul>
+	<?php
+}
+add_action('woocommerce_archive_description', 'mos_archive_banner', 1);
+function mos_archive_banner() {
+	$term_id = get_queried_object_id();
+	$banner_image = carbon_get_term_meta( $term_id, 'mos_product_cat_banner_image' );
+	if($banner_image){
+		echo wp_get_attachment_image( $banner_image, "full", "", array( "class" => "w-100 img-fluid mb-4" ) );
+	}
+}
 
 add_filter( 'get_product_search_form' , 'mos_woo_custom_product_searchform' );
 
