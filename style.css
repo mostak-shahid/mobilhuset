@@ -748,10 +748,7 @@ li.product .yith-wcwl-add-to-wishlist .feedback + a {
   top: 18px;
   z-index: 9;
 }
-.woocommerce div.product form.cart {
-  display: flex;
-  align-items: center;
-}
+
 .suggestion-unit {
 }
 .suggestion-unit .product-image {
@@ -986,6 +983,33 @@ body.woocommerce #shop-main {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+.woocommerce.single-product div.product form.cart {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.woocommerce.single-product div.product form.cart::before,
+.woocommerce.single-product div.product form.cart::after {
+  display: none;
+}
+.woocommerce.single-product .quantity .qty {
+  border: 1px solid var(--mos-primary-color);
+}
+/* Chrome, Safari, Edge, Opera */
+.woocommerce.single-product .quantity .qty::-webkit-outer-spin-button,
+.woocommerce.single-product .quantity .qty::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.woocommerce.single-product .quantity .qty[type="number"] {
+  -moz-appearance: textfield;
+}
+.woocommerce.single-product .quantity .qty,
+.woocommerce.single-product div.product form.cart .button {
+  height: 50px;
 }
 .woocommerce.single-product div.product form.cart .button {
   width: 100%;
