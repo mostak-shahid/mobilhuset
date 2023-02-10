@@ -1,0 +1,239 @@
+$background: #243949;
+$white: #fffce1;
+$yellow: #dab977;
+
+@import "../src/scss/mixins";
+@import "../src/scss/core";
+
+body.theme-default {
+  @import "../src/scss/theme-default";
+}
+
+body.theme-carbon {
+  @import "../src/scss/theme-carbon";
+}
+
+@mixin mi {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  text-indent: 0;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "liga";
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin-right: 15px;
+  font-size: 23px;
+  vertical-align: top;
+  speak: never;
+}
+
+.cf {
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    height: 0;
+    overflow: hidden;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+.hc-offcanvas-nav {
+  .nav-wrapper-0 > .nav-content {
+    padding-bottom: 41px;
+  }
+
+  h2 {
+    & ~ ul > li.search {
+      .nav-custom-content {
+        padding-top: 0;
+      }
+    }
+  }
+
+  &.rtl {
+    .nav-item-link {
+      &::before {
+        margin-left: 15px;
+        margin-right: 0 !important;
+      }
+    }
+
+    .nav-item.collections > .nav-item-wrapper .nav-item-link span {
+      float: left;
+    }
+  }
+
+  li {
+    .custom-message {
+      font-size: 12px;
+
+      a {
+        color: #fff;
+        font-size: 13px;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &.add > .nav-item-wrapper a::before {
+      @include mi;
+      content: "add";
+    }
+
+    &.new > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "fiber_new";
+    }
+
+    &.cryptocurrency > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "local_atm";
+    }
+
+    &.devices > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "devices";
+    }
+
+    &.mobile > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "phone_android";
+    }
+
+    &.television > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "desktop_windows";
+    }
+
+    &.camera > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "camera_alt";
+    }
+
+    &.magazines > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "import_contacts";
+    }
+
+    &.store > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "store";
+    }
+
+    &.collections > .nav-item-wrapper .nav-item-link {
+      span {
+        font-size: 70%;
+        line-height: 15px;
+        height: 15px;
+        padding: 0 4px;
+        float: right;
+        background: #ff635a;
+        border-radius: 2px;
+        margin-top: 2px;
+      }
+
+      &::before {
+        @include mi;
+        content: "collections";
+      }
+    }
+
+    &.nolink > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "format_clear";
+    }
+
+    &.disabled > .nav-item-wrapper .nav-item-link::before {
+      @include mi;
+      content: "block";
+    }
+  }
+
+  &.nav-position-top,
+  &.nav-position-bottom {
+    ul.bottom-nav {
+      position: relative;
+      border-top: none;
+    }
+
+    .nav-wrapper-0 > .nav-content {
+      padding-bottom: 0;
+    }
+  }
+
+  ul.bottom-nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    border-top: 1px solid rgba(#000, 0.15);
+
+    li {
+      flex: auto;
+
+      a {
+        padding: 10px;
+        text-align: center;
+        height: 100%;
+        border-bottom: none;
+      }
+
+      svg {
+        fill: #fff;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      &.github {
+        svg {
+          width: 17px;
+          height: 17px;
+        }
+      }
+
+      &.ko-fi {
+        svg {
+          width: 21px;
+          height: 21px;
+        }
+      }
+
+      &.email {
+        svg {
+          width: 19px;
+          height: 19px;
+        }
+      }
+    }
+  }
+}
+.hc-nav-trigger {
+  &.hc-nav-1 {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #000000;
+  }
+}

@@ -96,7 +96,14 @@ function mosgutenberg_enqueue_scripts() {
             $n++;
         }
     }
-    
+    // <link rel="stylesheet" href="../dist/hc-offcanvas-nav.css" />
+    // <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    // <script src="../dist/hc-offcanvas-nav.js"></script>
+
+    wp_register_style( 'hc-offcanvas-nav', get_template_directory_uri() . '/plugins/hc-mobilenav/dist/hc-offcanvas-nav.css' );		
+    wp_enqueue_style( 'hc-offcanvas-nav' );
+    wp_register_script( 'hc-offcanvas-nav', get_template_directory_uri() . '/plugins/hc-mobilenav/dist/hc-offcanvas-nav.js' );
+    wp_enqueue_script( 'hc-offcanvas-nav' );	
 
 	wp_register_style( 'style', get_template_directory_uri() .  '/style.css');
 	wp_enqueue_style( 'style' );

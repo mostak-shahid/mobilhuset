@@ -6,6 +6,16 @@ jQuery(document).ready(function ($) {
     $('.header-category-menu .wp-block-navigation__responsive-container-close').on('click', function(){
         $('.header-category-menu .wp-block-navigation__responsive-container-open').find('svg').css('opacity', 1);
     });
+    var Nav = new hcOffcanvasNav("#main-nav", {
+        disableAt: false,
+        customToggle: ".toggle",
+        levelSpacing: 0,
+        navTitle: "Alla Produkter",
+        levelTitles: true,
+        levelTitleAsBack: true,
+        pushContent: "#container",
+        labelClose: false,
+    });
     // $('.single-product .flex-control-thumbs .img-product-thumbnail').on('click', function(e){
     //     var source = $(this).data('main-source');
     //     $(this).closest('.woocommerce-product-gallery__wrapper').find('a').attr('href', source);

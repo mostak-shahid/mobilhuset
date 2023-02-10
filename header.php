@@ -51,7 +51,140 @@ else $page_id = get_the_ID();
         <?php endif?>
     </div>
     <?php endif; ?>
-
+    <div>
+        <div class="wrapper cf">
+            <nav id="main-nav">
+                <?php
+                    wp_nav_menu(array(
+                        'theme_location' => 'mobilemenu',
+                        'container' => 'ul',
+                        'container_class' => '',
+                        'menu_class' => 'mos-menu-list', 
+                        'add_a_class'=> 'menu-item-link',                          
+                    ));        
+                ?>
+                <!-- <ul>
+                    <li>
+                        <a href="https://www.google.com/search?q=Crypto" rel="noreferrer" target="_blank">Cryptocurrency</a>
+                        <ul>
+                            <li><a href="#">Bitcoin</a></li>
+                            <li><a href="#">Ethereum</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Devices</span>
+                        <ul>
+                            <li>
+                                <a href="#">Mobile Phones</a>
+                                <ul>
+                                    <li><a href="#">Super Smart Phone</a></li>
+                                    <li><a href="#">Thin Magic Mobile</a></li>
+                                    <li><a href="#">Performance Crusher</a></li>
+                                    <li><a href="#">Futuristic Experience</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Televisions</a>
+                                <div class="subnav-container">
+                                    <ul>
+                                        <li><a href="#">Flat Superscreen</a></li>
+                                        <li><a href="#">Gigantic LED</a></li>
+                                        <li><a href="#">Power Eater</a></li>
+                                        <li><a href="#">3D Experience</a></li>
+                                        <li><a href="#">Classic Comfort</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">Cameras</a>
+                                <ul>
+                                    <li><a href="#">Smart Shot</a></li>
+                                    <li><a href="#">Power Shooter</a></li>
+                                    <li><a href="#">Easy Photo Maker</a></li>
+                                    <li><a href="#">Super Pixel</a></li>
+                                </ul>
+                            </li>
+                            <li data-nav-custom-content>
+                                <div class="custom-message">
+                                    You can add any custom content to your navigation items.
+                                    This text is just an example.
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#magazines">Magazines</a>
+                        <ul>
+                            <li><a href="#">National Geographic</a></li>
+                            <li><a href="#">Scientific American</a></li>
+                            <li><a href="#">The Spectator</a></li>
+                            <li><a href="#">The Rambler</a></li>
+                            <li><a href="#">Physics World</a></li>
+                            <li><a href="#">Popular Science</a></li>
+                            <li><a href="#">Popular Mechanics</a></li>
+                            <li><a href="#">Sky & Telescope</a></li>
+                            <li><a href="#">Discover</a></li>
+                            <li><a href="#">New Scientist</a></li>
+                            <li><a href="#">Psychology Today</a></li>
+                            <li><a href="#">Man's Health</a></li>
+                            <li><a href="#">Wired</a></li>
+                            <li><a href="#">Vogue</a></li>
+                            <li><a href="#">Elle</a></li>
+                            <li><a href="#">Cosmopolitan</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Store</a>
+                        <ul>
+                            <li>
+                                <a href="#">Clothes</a>
+                                <ul>
+                                    <li>
+                                        <a href="#">Women's Clothing</a>
+                                        <ul>
+                                            <li><a href="#">Tops</a></li>
+                                            <li><a href="#">Dresses</a></li>
+                                            <li><a href="#">Trousers</a></li>
+                                            <li><a href="#">Shoes</a></li>
+                                            <li><a href="#">Sale</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">Men's Clothing</a>
+                                        <ul>
+                                            <li><a href="#">Shirts</a></li>
+                                            <li><a href="#">Trousers</a></li>
+                                            <li><a href="#">Shoes</a></li>
+                                            <li><a href="#">Sale</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Jewelry</a></li>
+                            <li><a href="#">Music</a></li>
+                            <li>
+                                <a href="#">Grocery</a>
+                                <h3>Fruits</h3>
+                                <ul>
+                                    <li><a href="#">Citruses and southern fruits</a></li>
+                                    <li><a href="#">Exotic fruits</a></li>
+                                    <li><a href="#">Apples and pears</a></li>
+                                    <li><a href="#">Nuts</a></li>
+                                </ul>
+                                <h3>Vegetables</h3>
+                                <ul>
+                                    <li><a href="#">Root vegetables</a></li>
+                                    <li><a href="#">Exotic vegetables</a></li>
+                                    <li><a href="#">Herbs</a></li>
+                                    <li><a href="#">Salads</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul> -->
+            </nav>
+        </div>
+    </div>
     <header id="header" class="main-header smooth <?php echo carbon_get_theme_option( 'mos-header-class' ) ?>">
         <div class="wrapper">
             <?php 
@@ -69,3 +202,4 @@ else $page_id = get_the_ID();
             <?php endif?>
         </div>
     </header>
+
