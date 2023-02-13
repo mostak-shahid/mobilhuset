@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.4
+Version: 1.0.5
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -1277,15 +1277,18 @@ body.more-then-one-product-available .usp-group {
   color: #ffffff;
 }
 .footer .footer-row-1 {
-  padding: 70px 0;
+  padding-top: 70px;
+  padding-bottom: 70px;
   border-bottom: 1px solid #333;
 }
 .footer .footer-row-2 {
-  padding: 60px 0;
+  padding-top: 60px;
+  padding-bottom: 60px;
   border-bottom: 1px solid #333;
 }
 .footer .footer-row-3 {
-  padding: 30px 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
   color: #606060;
 }
 .footer .footer-row-3 a {
@@ -1463,6 +1466,12 @@ body.more-then-one-product-available .usp-group {
 }
 
 @media (max-width: 767.98px) {
+  .home-main-banner-carousel .owl-carousel .owl-nav .owl-prev {
+    left: 0;
+  }
+  .home-main-banner-carousel .owl-carousel .owl-nav .owl-next {
+    right: 0;
+  }
   .woocommerce.single-product ul.products[class*="columns-"] li.product,
   .woocommerce-page.single-product ul.products[class*="columns-"] li.product {
     width: 100%;

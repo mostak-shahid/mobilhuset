@@ -740,11 +740,6 @@ function mos_gutenberg_blocks() {
                 <a class="hidden-link" href="<?php echo do_shortcode($fields['mos_promobox_block_btn_url']) ?>">Read more about <?php echo (@$fields['mos_promobox_block_title'])?$fields['mos_promobox_block_title']:'this' ?></a>
             <?php endif?>
         </div>
-        <?php if(@$fields['mos_promobox_block_style']) : ?>
-        <style>
-            <?php echo str_replace("selector",'#'.$id,$fields['mos_promobox_block_style']); ?>
-        </style>
-        <?php endif?>
         <style>            
             <?php echo '#'.$id ?> {
                 <?php if (@$fields['mos_promobox_block_background'][0]['background-color']) : ?>
@@ -767,6 +762,11 @@ function mos_gutenberg_blocks() {
                 <?php endif?>
             }
         </style>
+        <?php if(@$fields['mos_promobox_block_style']) : ?>
+        <style>
+            <?php echo str_replace("selector",'#'.$id,$fields['mos_promobox_block_style']); ?>
+        </style>
+        <?php endif?>
         <?php if(@$fields['mos_promobox_block_script']) : ?>
         <script><?php echo $fields['mos_promobox_block_script']; ?></script>
         <?php endif?>
