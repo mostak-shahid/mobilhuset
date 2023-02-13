@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.1
+Version: 1.0.4
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -836,6 +836,7 @@ body.woocommerce.single-product #shop-main {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   margin: 0;
+  margin-bottom: 10px;
 }
 .products .product .woocommerce-loop-product__title:hover {
   color: rgba(51, 51, 51, 0.65);
@@ -1456,12 +1457,25 @@ body.more-then-one-product-available .usp-group {
 }
 
 @media (max-width: 991.98px) {
+  .woocommerce.single-product .related ul.products {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 767.98px) {
+  .woocommerce.single-product ul.products[class*="columns-"] li.product,
+  .woocommerce-page.single-product ul.products[class*="columns-"] li.product {
+    width: 100%;
+  }
+  .woocommerce.single-product .related ul.products {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 575.98px) {
+  .woocommerce.single-product .related ul.products {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 @media screen and (orientation: portrait) {
