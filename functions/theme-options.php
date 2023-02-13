@@ -88,7 +88,7 @@ function mos_theme_options() {
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),
+        ->set_default_value('off'),
 
         Field::make('radio', 'mos_plugin_isotop', __('Isotop'))
         ->set_options(array(
@@ -102,55 +102,55 @@ function mos_theme_options() {
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),
+        ->set_default_value('off'),
         Field::make('radio', 'mos_plugin_jpages', __('jPages'))
         ->set_options(array(
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),
+        ->set_default_value('off'),
         Field::make('radio', 'mos_plugin_lazyload', __('Lazy Load'))
         ->set_options(array(
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),
+        ->set_default_value('off'),
         Field::make('radio', 'mos_plugin_table_shrinker', __('Table Shrinker'))
         ->set_options(array(
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),
+        ->set_default_value('off'),
         Field::make('radio', 'mos_plugin_owlcarousel', __('Owl Carousel'))
         ->set_options(array(
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),
+        ->set_default_value('off'),
         Field::make('radio', 'mos_plugin_slick', __('Slick Slider'))
         ->set_options(array(
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),
+        ->set_default_value('off'),
         Field::make('radio', 'mos_plugin_wow', __('Wow'))
         ->set_options(array(
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),
+        ->set_default_value('off'),
         Field::make('radio', 'mos_plugin_animate', __('Animate CSS'))
         ->set_options(array(
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),
+        ->set_default_value('off'),
         Field::make('radio', 'mos_plugin_jflip', __('Jquery Flip'))
         ->set_options(array(
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['off']),  
+        ->set_default_value('off'),  
         Field::make('complex', 'mos_plugin_additional', __('Additional Assets'))
         ->add_fields(array(
             Field::make('select', 'type', __('Asset Type'))
@@ -240,7 +240,7 @@ function mos_theme_options() {
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['on']),
+        ->set_default_value('on'),
         Field::make('image', 'mos-back-to-top-image', __('Back to top image')),
         Field::make('text', 'mos-back-to-top-class', __('Back to top class')),
     ));
@@ -252,7 +252,7 @@ function mos_theme_options() {
             'on' => 'Enabled',
             'off' => 'Disabled',
         ))
-        ->set_default_value(['on']),
+        ->set_default_value('on'),
         Field::make('image', 'mos-page-loader-image', __('Page loader image')),
         Field::make('color', 'mos-page-loader-background', 'Page loader background')
         ->set_alpha_enabled(true),
@@ -295,7 +295,7 @@ function mos_theme_options() {
                 'bottom center' => 'Bottom Center',
                 'bottom right' => 'Bottom Right',
             ))
-            ->set_default_value(['top left']),
+            ->set_default_value('top left'),
             Field::make('select', 'background-size', __('Background Size'))
             ->set_options(array(
                 'cover' => 'cover',
@@ -307,7 +307,7 @@ function mos_theme_options() {
                 'revert-layer' => 'revert-layer',
                 'unset' => 'unset',
             ))
-            ->set_default_value(['cover']),
+            ->set_default_value('cover'),
             //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
             Field::make('select', 'background-repeat', __('Background Repeat'))
             ->set_options(array(
@@ -318,13 +318,13 @@ function mos_theme_options() {
                 'initial' => 'initial',
                 'inherit' => 'inherit',
             ))
-            ->set_default_value(['scroll']),
+            ->set_default_value('no-repeat'),
             Field::make('select', 'background-attachment', __('Background Attachment'))
             ->set_options(array(
                 'scroll' => 'Scroll',
                 'fixed' => 'Fixed',
             ))
-            ->set_default_value(['scroll']),
+            ->set_default_value('scroll'),
         )),
     ));
     Container::make('theme_options', __('Woocommerce'))
@@ -405,7 +405,7 @@ function mos_theme_options() {
                 'bottom center' => 'Bottom Center',
                 'bottom right' => 'Bottom Right',
             ))
-            ->set_default_value(['top left']),
+            ->set_default_value('top left'),
             Field::make('select', 'background-size', __('Background Size'))
             ->set_options(array(
                 'cover' => 'cover',
@@ -417,7 +417,7 @@ function mos_theme_options() {
                 'revert-layer' => 'revert-layer',
                 'unset' => 'unset',
             ))
-            ->set_default_value(['cover']),
+            ->set_default_value('cover'),
             //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
             Field::make('select', 'background-repeat', __('Background Repeat'))
             ->set_options(array(
@@ -428,13 +428,13 @@ function mos_theme_options() {
                 'initial' => 'initial',
                 'inherit' => 'inherit',
             ))
-            ->set_default_value(['scroll']),
+            ->set_default_value('no-repeat'),
             Field::make('select', 'background-attachment', __('Background Attachment'))
             ->set_options(array(
                 'scroll' => 'Scroll',
                 'fixed' => 'Fixed',
             ))
-            ->set_default_value(['scroll']),
+            ->set_default_value('scroll'),
         )),
     ));
 }

@@ -673,7 +673,7 @@ function mos_gutenberg_blocks() {
                 'bottom center' => 'Bottom Center',
                 'bottom right' => 'Bottom Right',
             ))
-            ->set_default_value(['top left']),
+            ->set_default_value('top left'),
             Field::make('select', 'background-size', __('Background Size'))
             ->set_options(array(
                 'cover' => 'cover',
@@ -685,7 +685,7 @@ function mos_gutenberg_blocks() {
                 'revert-layer' => 'revert-layer',
                 'unset' => 'unset',
             ))
-            ->set_default_value(['cover']),
+            ->set_default_value('cover'),
             //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
             Field::make('select', 'background-repeat', __('Background Repeat'))
             ->set_options(array(
@@ -696,13 +696,13 @@ function mos_gutenberg_blocks() {
                 'initial' => 'initial',
                 'inherit' => 'inherit',
             ))
-            ->set_default_value(['no-repeat']),
+            ->set_default_value('no-repeat'),
             Field::make('select', 'background-attachment', __('Background Attachment'))
             ->set_options(array(
                 'scroll' => 'Scroll',
                 'fixed' => 'Fixed',
             ))
-            ->set_default_value(['scroll']),
+            ->set_default_value('scroll'),
         )),
     )) 
     ->add_tab(__('Advanced'), array(
