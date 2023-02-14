@@ -181,17 +181,18 @@ function mos_gutenberg_blocks() {
     ->add_tab(__('Style'), array(
         Field::make('text', 'mos_icon_list_block_wrapper_class', __('Wrapper Class')),
         Field::make( 'checkbox', 'mos_icon_list_block_hide_title', 'Hide Title' )
-    )) 
+    ))      
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_icon_list_block_style', __('Style'))
         ->set_help_text('Please write your custom css without style tag'),
         Field::make('textarea', 'mos_icon_list_block_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
-    ))  
+    )) 
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
         if (@$fields['mos_icon_list_items'] && sizeof($fields['mos_icon_list_items'])) {
+            $id = 'element-'.time().rand(1000, 9999);
         ?>
-            <div class="mos-icon-list-wrapper <?php echo @$fields['mos_icon_list_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+            <div id="<?php echo $id ?>" class="mos-icon-list-wrapper <?php echo @$fields['mos_icon_list_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
                 <?php foreach($fields['mos_icon_list_items'] as $item) : ?>
                     <div class="unit position-relative">
                     <?php if (@$item['title'] && !@$fields['mos_icon_list_block_hide_title']) : ?>

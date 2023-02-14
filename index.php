@@ -12,13 +12,13 @@ $term = get_queried_object();
 ?>
 
 <?php //echo $blog_page_content?>
-<section class="blogWrapper">
-    <div class="filterArea pb-5 isBgBorder mb-5">
+<section class="blog-wrapper">
+    <div class="filter-area">
         <div class="container-lg">
             <div class="row">
                 <div class="col-xl-6">
-                    <div class="filterLeft d-flex gap-3">
-                        <div class="singleFilter custom-mos-select">
+                    <div class="filter-left d-flex gap-3">
+                        <div class="single-filter custom-mos-select">
                             <?php $categories = mos_get_terms('category'); ?>
                             <select class="bg-transparent rounded-pill px-4 form-select postFilter"onchange="window.location.replace(this.value)">
                                 <option value="0" selected="">All Categories</option>
@@ -27,7 +27,7 @@ $term = get_queried_object();
                                 <?php endforeach;?>
                             </select>
                         </div>
-                        <div class="singleFilter custom-mos-select">
+                        <div class="single-filter custom-mos-select">
                             <select class="bg-transparent rounded-pill px-4 form-select postFilter"onchange="window.location.replace(this.value)">
                                 <option value="<?php echo home_url().'/?s=&time=' ?>0" selected="">Select One</option>
                                 <option value="<?php echo home_url().'/?s=&time=' ?>week">Last 7 day's</option>
