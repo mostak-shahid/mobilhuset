@@ -130,6 +130,10 @@ $audio = carbon_get_the_post_meta( 'mos_blog_details_audio' );
                             </div>
                         </div>
                     </article>
+                    <div class="post-navigation d-flex justify-content-between align-items-center">
+                        <?php previous_post_link('%link', '%title'); ?>
+                        <?php next_post_link('%link', '%title'); ?>
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <?php get_sidebar();?>
