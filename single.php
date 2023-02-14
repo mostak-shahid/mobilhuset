@@ -155,14 +155,14 @@ $audio = carbon_get_the_post_meta( 'mos_blog_details_audio' );
                                 </ul>
                             </div>
                         </div>
-                        <div class="widget">
+                        <!-- <div class="widget">
                             <div class="socialLink d-flex align-items-center">
                                 <div class="socialLinkTitle">Share</div>
                                 <div class="socialLinkShare d-flex align-items-center">
-                                    <?php echo do_shortcode("[addtoany]") ?>
+                                    <?php //echo do_shortcode("[addtoany]") ?>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>        

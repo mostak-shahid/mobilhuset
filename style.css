@@ -1304,6 +1304,8 @@ body.more-then-one-product-available .usp-group {
 .widget ul {
   margin: 0;
   list-style: none;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .widget ul li a {
   color: #727272;
@@ -1313,34 +1315,35 @@ body.more-then-one-product-available .usp-group {
 .widget ul li a:hover {
   color: #333;
 }
-.widget .widget-title + * {
-  padding-left: 10px !important;
-  padding-right: 10px !important;
-}
+.widget .widget-content > ul,
 .widget .product-category-filter-wrapper > ul,
 .widget > ul {
   max-height: 180px;
   overflow-y: auto;
 }
 /* width */
+.widget .widget-content > ul::-webkit-scrollbar,
 .widget .product-category-filter-wrapper > ul::-webkit-scrollbar,
 .widget > ul::-webkit-scrollbar {
   width: 2px;
 }
 
 /* Track */
+.widget .widget-content > ul::-webkit-scrollbar-track,
 .widget .product-category-filter-wrapper > ul::-webkit-scrollbar-track,
 .widget > ul::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
 /* Handle */
+.widget .widget-content > ul::-webkit-scrollbar-thumb,
 .widget .product-category-filter-wrapper > ul::-webkit-scrollbar-thumb,
 .widget > ul::-webkit-scrollbar-thumb {
   background: #888;
 }
 
 /* Handle on hover */
+.widget .widget-content > ul::-webkit-scrollbar-thumb:hover,
 .widget .product-category-filter-wrapper > ul::-webkit-scrollbar-thumb:hover,
 .widget > ul::-webkit-scrollbar-thumb:hover {
   background: #555;
