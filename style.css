@@ -338,7 +338,8 @@ a:hover {
   top: -57px;
   z-index: 9;
 }
-.blog-wrapper {
+.blog-wrapper,
+.blog-single-wrapper {
   padding-top: 70px;
   padding-bottom: 70px;
 }
