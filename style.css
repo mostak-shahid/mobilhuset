@@ -416,6 +416,9 @@ a:hover {
 .single .comment-form-cookies-consent {
   margin-top: 1rem;
 }
+.single .entry-meta span:not(:last-child):after {
+  content: "/";
+}
 #newsletter {
 }
 #newsletter .form-control {
