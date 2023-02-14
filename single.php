@@ -61,49 +61,12 @@ $audio = carbon_get_the_post_meta( 'mos_blog_details_audio' );
                             <?php endif?>                            
                         </div>
                         <div class="blog-info">
-                            <?php if ($audio_option == 'ga') : ?>
-                                <div id="audio-player-blog" class="audio-player audio-player-template-2 audio-player-blog mb-40">
-                                    <div class="controls">
-                                        <source src="<?php echo wp_get_attachment_url($audio) ?>">
-                                        <div class="part-one">
-                                            <div class="left-part">
-                                                <div class="play-container">
-                                                    <div class="toggle-play play"></div>
-                                                </div>
-                                                <p>Click play to listen to the blog</p>
-                                            </div>
-                                            <div class="right-part">                    
-                                                <div class="volume-container">
-                                                    <div class="volume-button">
-                                                        <div class="volume icono-volumeMedium"></div>
-                                                    </div>
-                                                    <div class="volume-slider">
-                                                        <div class="volume-percentage"></div>
-                                                    </div>
-                                                </div>
-                                                <select class="playback-rate">
-                                                    <option value=".25">0.25x</option>
-                                                    <option value=".5">0.50x</option>
-                                                    <option value=".75">0.75x</option>
-                                                    <option value="1" selected>1x</option>
-                                                    <option value="1.25">1.25x</option>
-                                                    <option value="1.5">1.5x</option>
-                                                    <option value="1.75">1.75x</option>
-                                                    <option value="2">2x</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="part-two time">
-                                            <div class="current">0:00</div>
-                                            <div class="timeline">
-                                                <div class="progress"></div>
-                                            </div>
-                                            <div class="length">0:00</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endif?>
                             <div class="blog-intro"><?php the_content()?></div>
+                            
+                            <div class="post-navigation d-flex justify-content-between align-items-center">
+                                <?php previous_post_link('%link', '%title'); ?>
+                                <?php next_post_link('%link', '%title'); ?>
+                            </div>
                             <hr>
                             <div class="author-intro">
                                 <?php if ($author_image) :?>
@@ -130,10 +93,6 @@ $audio = carbon_get_the_post_meta( 'mos_blog_details_audio' );
                             </div>
                         </div>
                     </article>
-                    <div class="post-navigation d-flex justify-content-between align-items-center">
-                        <?php previous_post_link('%link', '%title'); ?>
-                        <?php next_post_link('%link', '%title'); ?>
-                    </div>
                 </div>
                 <div class="col-lg-4">
                     <?php get_sidebar();?>

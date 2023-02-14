@@ -406,6 +406,16 @@ a:hover {
 .blog-wrapper .pagination .page-numbers.dots {
   border-style: none;
 }
+.single .form-submit {
+  margin-top: 1.5em;
+}
+.single .form-control,
+.single .form-submit .btn {
+  border-radius: 0;
+}
+.single .comment-form-cookies-consent {
+  margin-top: 1rem;
+}
 #newsletter {
 }
 #newsletter .form-control {
