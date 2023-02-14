@@ -210,7 +210,7 @@ function mos_gutenberg_blocks() {
                 <?php endforeach?>
             </div>
             <?php if(@$fields['mos_icon_list_block_style']) : ?>
-            <style><?php echo $fields['mos_icon_list_block_style']; ?></style>
+            <style><?php echo str_replace("selector",'#'.$id,$fields['mos_icon_list_block_style']); ?></style>
             <?php endif?>
             <?php if(@$fields['mos_icon_list_block_script']) : ?>
             <script><?php echo $fields['mos_icon_list_block_script']; ?></script>
