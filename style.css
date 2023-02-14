@@ -345,6 +345,55 @@ a:hover {
 .blog-wrapper .filter-area {
   margin-bottom: 70px;
 }
+.blog-wrapper article {
+  border: 1px solid #eaeaea;
+  padding-bottom: 15px;
+}
+.blog-wrapper article .content-part .entry-meta,
+.blog-wrapper article .content-part .blog-info,
+.blog-wrapper article .link-part {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.blog-wrapper article .content-part .entry-meta {
+  padding-top: 15px;
+}
+.blog-wrapper article .content-part .blog-title {
+  overflow-wrap: break-word;
+}
+.blog-wrapper article .content-part .blog-image {
+  overflow: hidden;
+  max-height: 200px;
+}
+.blog-wrapper article .content-part .blog-image img {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.blog-wrapper article:hover .content-part .blog-image img {
+  transform: rotate(15deg) scale(1.2);
+  -webkit-transform: rotate(5deg) scale(1.2);
+}
+.blog-wrapper .pagination {
+  justify-content: center;
+}
+.blog-wrapper .pagination .page-numbers {
+  display: inline-block;
+  border: 1px solid var(--mos-primary-color);
+  color: var(--mos-primary-color);
+  min-width: 34px;
+  text-align: center;
+  line-height: 28px;
+  padding: 2px;
+}
+.blog-wrapper .pagination .page-numbers.current {
+  background-color: var(--mos-primary-color);
+  color: #ffffff;
+}
+.blog-wrapper .pagination .page-numbers.dots {
+  border-style: none;
+}
 #newsletter {
 }
 #newsletter .form-control {
