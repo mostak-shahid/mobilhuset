@@ -348,6 +348,10 @@ a:hover {
 .blog-wrapper article {
   border: 1px solid #eaeaea;
   padding-bottom: 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .blog-wrapper article .content-part .entry-meta,
 .blog-wrapper article .content-part .blog-info,
@@ -357,6 +361,12 @@ a:hover {
 }
 .blog-wrapper article .content-part .entry-meta {
   padding-top: 15px;
+}
+.blog-wrapper article .link-part {
+  margin-top: 15px;
+}
+.blog-wrapper article .link-part .wp-block-button__link {
+  padding: 5px 10px;
 }
 .blog-wrapper article .content-part .blog-title {
   overflow-wrap: break-word;
@@ -386,6 +396,7 @@ a:hover {
   text-align: center;
   line-height: 28px;
   padding: 2px;
+  text-transform: uppercase;
 }
 .blog-wrapper .pagination .page-numbers.current {
   background-color: var(--mos-primary-color);

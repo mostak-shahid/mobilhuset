@@ -111,10 +111,14 @@ $term = get_queried_object();
                             </div>
                         </div>
                         <div class="link-part">
-                            <a class="btn-read-more" href="<?php echo get_the_permalink() ?>">
-                                <span class="screen-reader-text d-none"><?php echo get_the_title() ?></span>
-                                <span>Read More</span>
-                            </a>
+							<div class="is-layout-flex wp-block-buttons">
+                            	<div class="wp-block-button">
+									<a href="<?php echo get_the_permalink() ?>" class="wp-block-button__link wp-element-button">
+										<span class="screen-reader-text d-none"><?php echo get_the_title() ?></span>
+										<span>Read More</span>
+									</a>
+								</div>
+							</div>
                         </div>
                     </article>
                 </div>
