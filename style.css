@@ -419,6 +419,36 @@ a:hover {
 .single .entry-meta span:not(:last-child):after {
   content: "/";
 }
+.single
+  .blog-intro
+  .wp-block-cover:not([class*="background-color"])
+  .wp-block-cover__inner-container,
+.single
+  .blog-intro
+  .wp-block-cover:not([class*="background-color"])
+  .wp-block-cover-image-text,
+.single
+  .blog-intro
+  .wp-block-cover:not([class*="background-color"])
+  .wp-block-cover-text,
+.single
+  .blog-intro
+  .wp-block-cover-image:not([class*="background-color"])
+  .wp-block-cover__inner-container,
+.single
+  .blog-intro
+  .wp-block-cover-image:not([class*="background-color"])
+  .wp-block-cover-image-text,
+.single
+  .blog-intro
+  .wp-block-cover-image:not([class*="background-color"])
+  .wp-block-cover-text {
+  color: #ffffff;
+}
+.wp-block-quote:not(.has-text-align-right):not(.has-text-align-center) {
+  border-left: 5px solid rgba(0, 0, 0, 0.05);
+  padding: 20px;
+}
 #newsletter {
 }
 #newsletter .form-control {
