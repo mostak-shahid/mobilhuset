@@ -217,7 +217,7 @@ pre {
   position: absolute;
   z-index: 9999;
 }
-.collapsible-menu:hover .mos-menu-block .menu > ul {
+.collapsible-menu:hover .mos-menu-block > ul.menu {
   display: block;
 }
 .font-weight-100 {
