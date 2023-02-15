@@ -774,4 +774,66 @@ function mos_gutenberg_blocks() {
     <?php
     }); 
     //Promobox Block end
+    
+    //Menu Block start
+    Block::make(__('Menu Block'))
+    ->add_tab(__('Content'), array(
+        Field::make('text', 'mos_menu_block_title', __('Title'))
+        ->set_required( true ),
+        Field::make( 'association', 'mos_menu_block_menu_obj', __( 'Association' ) )
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'wp_navigation',
+            )
+        ))
+        ->set_max( 1 )
+        ->set_required( true ),
+        Field::make( 'select', 'mos_menu_block_menu_type', __( 'Choose Options' ) )
+        ->set_options( array(
+            'horizontal-menu' => 'Horizontal Menu',
+            'vertical-menu' => 'Vertical Menu',
+            'collapsible-menu' => 'Collapsible Menu',
+        ))
+        ->set_default_value( 'horizontal-menu' )
+    ))
+    ->add_tab(__('Style'), array(
+        Field::make('text', 'mos_menu_block_wrapper_class', __('Wrapper Class')),
+        Field::make('text', 'mos_menu_block_title_class', __('Title Class')),
+    )) 
+    ->add_tab(__('Advanced'), array(
+        Field::make('textarea', 'mos_menu_block_style', __('Style'))
+        ->set_help_text('Please write your custom css without style tag'),
+        Field::make('textarea', 'mos_menu_block_script', __('Script'))
+        ->set_help_text('Please write your custom script without script tag'),
+    ))  
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {        
+        $id = 'element-'.time().rand(1000, 9999);
+    ?>
+        <div id="<?php echo $id ?>" class="mos-menu-block-wrapper <?php echo @$fields['mos_menu_block_menu_type']; ?> <?php echo @$fields['mos_menu_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+        
+        <div class="mos-menu-block">
+            <?php if (@$fields['mos_menu_block_title']) : ?>
+            <div class="title <?php echo @$fields['mos_menu_block_title_class']; ?>"><?php echo $fields['mos_menu_block_title'] ?></div>
+            <?php endif?>
+            <?php
+            if (@$fields['mos_menu_block_menu_obj']) {
+                wp_nav_menu(array(
+                    //'theme_location' => 'mainmenu',
+                    'menu'=> get_the_title($fields['mos_menu_block_menu_obj'][0]['id']),
+                    'container' => false,                          
+                )); 
+            }
+            ?>
+        </div>
+        </div>        
+        <?php if(@$fields['mos_menu_block_style']) : ?>
+        <style><?php echo str_replace("selector",'#'.$id,$fields['mos_menu_block_style']); ?></style>
+        <?php endif?>
+        <?php if(@$fields['mos_menu_block_script']) : ?>
+        <script><?php echo $fields['mos_menu_block_script']; ?></script>
+        <?php endif?>
+    <?php
+    }); 
+    //Menu Block end
 }
