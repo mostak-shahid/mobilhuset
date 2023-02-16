@@ -1963,14 +1963,26 @@ body.more-then-one-product-available .usp-group {
   }
 }
 @media (min-width: 1399.98px) {
+  .vertical-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu,
+  .collapsible-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu {
+    width: calc(1140px - 250px);
+  }
 }
 
 @media (max-width: 1199.98px) {
+  .vertical-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu,
+  .collapsible-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu {
+    width: calc(960px - 250px);
+  }
 }
 
 @media (max-width: 991.98px) {
   .woocommerce.single-product .related ul.products {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .vertical-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu,
+  .collapsible-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu {
+    width: calc(720px - 250px);
   }
 }
 
