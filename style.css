@@ -186,6 +186,10 @@ pre {
 .mos-menu-block ul li.show-all > a {
   color: var(--mos-secondary-color) !important;
   text-decoration: underline;
+  font-size: 12px !important;
+  line-height: 15px !important;
+  font-weight: 500 !important;
+  padding-bottom: 0 !important;
 }
 .mos-menu-block ul li {
   position: relative;
