@@ -82,6 +82,7 @@ jQuery(document).ready(function ($) {
         $(this).parent().toggleClass('open-below');
         $(this).siblings("ul").slideToggle();
     });
+    $(".megamenu > .sub-menu").wrapInner('<div class="mega-menu-wrapper"></div>');
     $(".megamenu > .sub-menu > li").wrapInner('<div class="mega-menu-unit"></div>');
 //    new WOW().init();
 //    $('.slick-slider').slick();
