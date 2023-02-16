@@ -814,7 +814,7 @@ function mos_gutenberg_blocks() {
         
         <div class="mos-menu-block">
             <?php if (@$fields['mos_menu_block_title']) : ?>
-            <div class="title <?php echo @$fields['mos_menu_block_title_class']; ?>"><?php echo $fields['mos_menu_block_title'] ?></div>
+            <div class="title <?php echo @$fields['mos_menu_block_title_class']; ?>"><span><?php echo $fields['mos_menu_block_title'] ?></span></div>
             <?php endif?>
                 <?php
                 if (@$fields['mos_menu_block_menu_obj']) {

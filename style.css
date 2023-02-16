@@ -2015,6 +2015,9 @@ body.more-then-one-product-available .usp-group {
     flex-direction: column-reverse;
     padding: 15px;
   }
+  .home-main-banner-carousel .mos-owl-carousel .item .wrapper > * {
+    width: 100%;
+  }
   .woocommerce.single-product .related ul.products {
     grid-template-columns: repeat(1, 1fr);
   }
