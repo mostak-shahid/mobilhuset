@@ -816,15 +816,16 @@ function mos_gutenberg_blocks() {
             <?php if (@$fields['mos_menu_block_title']) : ?>
             <div class="title <?php echo @$fields['mos_menu_block_title_class']; ?>"><?php echo $fields['mos_menu_block_title'] ?></div>
             <?php endif?>
-            <?php
-            if (@$fields['mos_menu_block_menu_obj']) {
-                wp_nav_menu(array(
-                    //'theme_location' => 'mainmenu',
-                    'menu'=> get_the_title($fields['mos_menu_block_menu_obj'][0]['id']),
-                    'container' => false,                          
-                )); 
-            }
-            ?>
+                <?php
+                if (@$fields['mos_menu_block_menu_obj']) {
+                    wp_nav_menu(array(
+                        //'theme_location' => 'mainmenu',
+                        'menu'=> get_the_title($fields['mos_menu_block_menu_obj'][0]['id']),
+                        'container' => 'div',                          
+                        'container_class' => 'mos-menu',                          
+                    )); 
+                }
+                ?>
         </div>
         </div>        
         <?php if(@$fields['mos_menu_block_style']) : ?>

@@ -17,7 +17,7 @@ if ( ! function_exists( 'mosgutenberg_setup' ) ) :
 
 		load_theme_textdomain( 'theme', get_template_directory() . '/languages' );
 		register_nav_menus( array(
-			'mainmenu' => esc_html__('Main Menu', 'mosgutenberg'),
+			//'mainmenu' => esc_html__('Main Menu', 'mosgutenberg'),
 			'mobilemenu' => esc_html__('Mobile Menu', 'mosgutenberg'),
 		));
 		add_theme_support( 'html5', array(
