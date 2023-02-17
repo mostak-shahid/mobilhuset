@@ -12,7 +12,20 @@ function hide_shop_page_title( $title ) {
 // remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
 
+add_action('woocommerce_before_main_content', 'mos_custom_page_title', 1);
+function mos_custom_page_title () {
+	?>
 
+	<section class="page-title">
+        <div class="wrapper">
+            <div class="container">
+                <h1><?php woocommerce_page_title(); ?></h1>
+                <?php echo woocommerce_breadcrumb() ?>
+            </div>
+        </div>
+    </section>
+	<?php
+}
 add_action( 'wp_head', 'mos_customize_woo_action' );
 function mos_customize_woo_action() {
 	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
@@ -20,7 +33,7 @@ function mos_customize_woo_action() {
 	remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 );
 	remove_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10 );
 	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5 );
-	//remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
+	remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0);
 	remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10);
 	remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10);
 	remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
