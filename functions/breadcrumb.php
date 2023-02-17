@@ -22,12 +22,12 @@ function mos_breadcrumbs(){
 	$delimiter   = ''; // delimiter between crumbs
 	//$before      = '<span class="current">'; // tag before the current crumb
 	//$after       = '</span>'; // tag after the current crumb	
-	$before      = '<li class="active">'; // tag before the current crumb
+	$before      = '<li class="breadcrumb-item active">'; // tag before the current crumb
 	$after       = '</li>'; // tag after the current crumb
 	/* === END OF OPTIONS === */
 	global $post;
 	$homeLink = get_bloginfo('url') . '/';
-	$linkBefore = '<li>';
+	$linkBefore = '<li class="breadcrumb-item">';
 	$linkAfter = '</li>';
 	$linkAttr = ' rel="v:url" property="v:title"';
 	$link = $linkBefore . '<a' . $linkAttr . ' href="%1$s">%2$s</a>' . $linkAfter;
