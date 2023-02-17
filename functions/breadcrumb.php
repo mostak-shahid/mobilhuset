@@ -8,7 +8,7 @@
  */
 function mos_breadcrumbs(){
   /* === OPTIONS === */
-	$text['home']     = '<i class="fa fa-home"></i> Home'; // text for the 'Home' link
+	$text['home']     = 'Home'; // text for the 'Home' link
 	$text['blog']	  = 'Blog';
 	$text['category'] = 'Archive by Category "%s"'; // text for a category page
 	$text['tax'] 	  = 'Archive for "%s"'; // text for a taxonomy page
