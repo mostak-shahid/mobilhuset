@@ -632,6 +632,7 @@ pre {
 }
 .blog-wrapper article .content-part .entry-meta {
   padding-top: 15px;
+  padding-bottom: 15px;
 }
 .blog-wrapper article .link-part {
   margin-top: 15px;
@@ -641,6 +642,7 @@ pre {
 }
 .blog-wrapper article .content-part .blog-title {
   overflow-wrap: break-word;
+  font-size: 20px;
 }
 .blog-wrapper article .content-part .blog-image {
   overflow: hidden;
