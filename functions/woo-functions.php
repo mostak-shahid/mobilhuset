@@ -116,7 +116,7 @@ function mos_woocommerce_shop_loop_item_title_meta_set_1( ) {
 
 
 
-add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_short_description', 11, 0);
+//add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_short_description', 11, 0);
 function mos_woocommerce_shop_loop_item_short_description() {
 	global $product;
 	?>
