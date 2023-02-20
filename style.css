@@ -2089,6 +2089,9 @@ body.more-then-one-product-available .usp-group {
   .woocommerce.single-product .related ul.products {
     grid-template-columns: repeat(1, 1fr);
   }
+  .woocommerce ul.products.products-list-view li.product {
+    flex-direction: column;
+  }
 }
 
 @media screen and (orientation: portrait) {

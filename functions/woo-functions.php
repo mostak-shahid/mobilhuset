@@ -216,7 +216,7 @@ function mos_view_change(){
 	?>
 	<div class="d-flex align-items-center">
 		<a href="#" class="view-changer list-view <?php echo (@$_COOKIE['product_view_type'] && $_COOKIE['product_view_type']=='list')?'active':'' ?>" data-type="list">List View</a>
-		<a href="#" class="view-changer grid-view <?php echo (@$_COOKIE['product_view_type'] && $_COOKIE['product_view_type']=='grid')?'active':'' ?>" data-type="grid">Grid View</a>
+		<a href="#" class="view-changer grid-view <?php echo (!$_COOKIE['product_view_type'] || $_COOKIE['product_view_type']=='grid')?'active':'' ?>" data-type="grid">Grid View</a>
 	</div>
 	<?php
 }
