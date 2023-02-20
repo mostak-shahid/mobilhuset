@@ -34,6 +34,19 @@ jQuery(document).ready(function ($) {
         nav: true,
         dots: false,
     });
+    $('.view-changer').on('click', function(e){
+        e.preventDefault();
+        var type = $(this).data('type');
+        $(this).removeClass('active').addClass('active');
+        $(this).siblings().removeClass('active');
+        if (type == 'list') {
+            $('.products').removeClass('products-grid-view').addClass('products-list-view');
+        } else {
+            $('.products').removeClass('products-list-view').addClass('products-grid-view');
+        }
+        //console.log(type);
+        setCookie('product_view_type',type,1);
+    });
 //    $(window).scroll(function () {
 //        if ($(this).scrollTop() > 100) {
 //            $('.main-header').addClass('tiny');
@@ -152,3 +165,24 @@ function backToTop() {
         });
     }, false);
 })();
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}

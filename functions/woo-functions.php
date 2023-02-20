@@ -37,6 +37,10 @@ function mos_customize_woo_action() {
 	remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10);
 	remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description', 10);
 	remove_action( 'woocommerce_product_thumbnails', 'woocommerce_show_product_thumbnails', 20 );
+	remove_action( 'woocommerce_before_shop_loop' , 'woocommerce_result_count', 20 );
+
+	remove_action( 'woocommerce_before_shop_loop_item' , 'woocommerce_template_loop_product_link_open', 10 );
+	remove_action( 'woocommerce_after_shop_loop_item' , 'woocommerce_template_loop_product_link_close', 5 );
 	if (is_single()) {
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 	} else {
@@ -48,6 +52,19 @@ function mos_customize_woo_action() {
 		add_action('woocommerce_sidebar', 'mos_div_wrapper_end',12);//Row 3 End
 	}
 }
+add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_link_open', 9);
+add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_product_link_close', 11);
+add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_open', 9);
+add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_close', 11);
+add_action( 'woocommerce_shop_loop_item_title', 'mos_woocommerce_loop_text_wrapper', 1 );
+
+add_action( 'woocommerce_after_shop_loop_item', 'mos_div_wrapper_end', 20 );
+function mos_woocommerce_loop_text_wrapper () {
+	?>
+	<div class="text-wrapper">
+	<?php
+}
+
 add_action( 'woocommerce_product_thumbnails', 'mos_woocommerce_show_product_thumbnails', 20 );
 function mos_woocommerce_show_product_thumbnails () {
 	global $product;
@@ -99,7 +116,18 @@ function mos_woocommerce_shop_loop_item_title_meta_set_1( ) {
 
 
 
-add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_title_meta_set_2_start', 11, 0);
+add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_short_description', 11, 0);
+function mos_woocommerce_shop_loop_item_short_description() {
+	global $product;
+	?>
+	<div class="mos-product-meta-3 mb-2">
+		<div class="short-description mb-1"><?php echo $product->get_short_description(); ?></div>
+		<div class="sku"><?php echo $product->get_sku(); ?></div>
+	</div>
+	<?php
+}
+
+add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_title_meta_set_2_start', 12, 0);
 function mos_woocommerce_shop_loop_item_title_meta_set_2_start( ) {
 	?>
 	<div class="mos-product-meta mos-product-meta-2 d-flex justify-content-between align-items-center w-100">	    
@@ -183,7 +211,16 @@ function mos_bootstrap_wrapper_end() {
 }
 
 add_action('woocommerce_before_shop_loop', function() {mos_flex_wrapper_start('before-product-list');}, 19);
-add_action('woocommerce_before_shop_loop', 'mos_div_wrapper_end', 31);
+add_action('woocommerce_before_shop_loop', 'mos_view_change', 31);
+function mos_view_change(){
+	?>
+	<div class="d-flex align-items-center">
+		<a href="#" class="view-changer list-view <?php echo (@$_COOKIE['product_view_type'] && $_COOKIE['product_view_type']=='list')?'active':'' ?>" data-type="list">List View</a>
+		<a href="#" class="view-changer grid-view <?php echo (@$_COOKIE['product_view_type'] && $_COOKIE['product_view_type']=='grid')?'active':'' ?>" data-type="grid">Grid View</a>
+	</div>
+	<?php
+}
+add_action('woocommerce_before_shop_loop', 'mos_div_wrapper_end', 40);
 add_action('woocommerce_single_product_summary', 'mos_usp_text', 31);
 function mos_usp_text () {
 	?>
