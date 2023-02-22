@@ -17,6 +17,16 @@ function add_slug_body_class( $classes ) {
         $prefix = ($product->get_stock_quantity()>1)?'more-then-one':'less-then-one';
         $classes[] = $prefix .'-product-available';
     }
+    if (taxonomy_exists( 'product_cat' ) && !is_shop()) {
+        $term_id = get_queried_object()->term_id;
+        $termchildren = get_term_children( $term_id, 'product_cat' );
+        if (sizeof($termchildren)) {
+            $classes[] = 'mos-product-cat-parent';
+        } else {
+            $classes[] = 'mos-product-cat-landing';
+        }
+        
+    }
     $classes[] = "theme-default";
     return $classes;
 }

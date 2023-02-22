@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.13
+Version: 1.0.14
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -610,6 +610,15 @@ section.page-title .woocommerce-breadcrumb,
 section.page-title .breadcrumb-item.active {
   color: #000;
 }
+section.page-title.woocommerce-page-title .wrapper {
+  height: unset;
+  min-height: unset;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
+  margin-bottom: 0;
+}
 .blog-wrapper,
 .blog-single-wrapper {
   padding-top: 70px;
@@ -1106,6 +1115,7 @@ section.page-title .breadcrumb-item.active {
   list-style: none;
 }
 /*Product*/
+.mos-product-cat-parent .before-product-list,
 .before-product-list:empty {
   display: none !important;
 }
@@ -1322,14 +1332,17 @@ body.woocommerce.single-product #shop-main {
   display: flex;
   flex-direction: column;
 }
-.woocommerce ul.products.products-list-view {
+.woocommerce:not(.mos-product-cat-parent) ul.products.products-list-view {
   grid-template-columns: repeat(1, 1fr) !important;
 }
 .woocommerce ul.products.products-list-view li.product {
   flex-direction: row;
   align-items: center;
 }
-.woocommerce ul.products.products-list-view li.product > a {
+.woocommerce:not(.mos-product-cat-parent)
+  ul.products.products-list-view
+  li.product
+  > a {
   flex: 0 0 150px;
 }
 .woocommerce ul.products.products-list-view li.product .text-wrapper {
@@ -1400,7 +1413,7 @@ body.woocommerce.single-product #shop-main {
   line-clamp: 2;
   -webkit-box-orient: vertical;
   height: 48px;
-  color: var(--mos-primary-color);
+  color: #333333;
   padding: 0 !important;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -1776,6 +1789,10 @@ body.more-then-one-product-available .usp-group {
 }
 .usp-group li img {
   margin-right: 5px;
+}
+.single-product .yith-wcwl-add-to-wishlist,
+.single-product .product_meta {
+  display: none !important;
 }
 #block-8 p {
   display: none;

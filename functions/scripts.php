@@ -121,8 +121,6 @@ function mosgutenberg_admin_enqueue_scripts(){
 	wp_enqueue_media();
 	wp_register_script('custom-admin', get_template_directory_uri() . '/js/custom-admin.js', 'jquery');
 	wp_enqueue_script('custom-admin');
-
-
 }
 add_action( 'admin_enqueue_scripts', 'mosgutenberg_admin_enqueue_scripts' );
 function mosgutenberg_common_enqueue_scripts(){

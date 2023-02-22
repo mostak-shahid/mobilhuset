@@ -16,10 +16,10 @@ add_action('woocommerce_before_main_content', 'mos_custom_page_title', 1);
 function mos_custom_page_title () {
 	?>
 
-	<section class="page-title">
+	<section class="page-title woocommerce-page-title">
         <div class="wrapper">
             <div class="container">
-                <h1><?php woocommerce_page_title(); ?></h1>
+                <!-- <h1><?php //woocommerce_page_title(); ?></h1> -->
                 <?php echo woocommerce_breadcrumb() ?>
             </div>
         </div>
@@ -216,7 +216,7 @@ function mos_view_change(){
 	?>
 	<div class="d-flex align-items-center">
 		<a href="#" class="view-changer list-view <?php echo (@$_COOKIE['product_view_type'] && $_COOKIE['product_view_type']=='list')?'active':'' ?>" data-type="list">List View</a>
-		<a href="#" class="view-changer grid-view <?php echo (!$_COOKIE['product_view_type'] || $_COOKIE['product_view_type']=='grid')?'active':'' ?>" data-type="grid">Grid View</a>
+		<a href="#" class="view-changer grid-view <?php echo (!@$_COOKIE['product_view_type'] || $_COOKIE['product_view_type']=='grid')?'active':'' ?>" data-type="grid">Grid View</a>
 	</div>
 	<?php
 }
@@ -261,7 +261,7 @@ function mos_woo_custom_product_searchform( $form ) {
 		<div class="input-group">
 			<label class="screen-reader-text" for="s">' . __( 'Search for:', 'woocommerce' ) . '</label>
 			
-			<select name="category" class="form-select mos-product-categories" id="inputGroupSelect01">
+			<select name="category" class="form-select mos-product-categories d-none" id="inputGroupSelect01">
 				<option value="">All Categories</option>'.$options.'
 			</select>
 			<input class="form-control mos-product-search" type="text" name="s" id="s" placeholder="' . __( 'Search for Products', 'woocommerce' ) . '" autocomplete="off" value="'.get_search_query().'"  />
@@ -366,3 +366,12 @@ function theme_pgp( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'theme_pgp' );
+/**
+ * Change the breadcrumb separator
+ */
+add_filter( 'woocommerce_breadcrumb_defaults', 'wcc_change_breadcrumb_delimiter' );
+function wcc_change_breadcrumb_delimiter( $defaults ) {
+	// Change the breadcrumb delimeter from '/' to '>'
+	$defaults['delimiter'] = ' &gt; ';
+	return $defaults;
+}
