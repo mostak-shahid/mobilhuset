@@ -1632,6 +1632,9 @@ body.woocommerce.single-product #shop-main {
 .woocommerce.single-product div.product form.cart::after {
   display: none;
 }
+.woocommerce.single-product div.product .woobt-products form.cart {
+  display: block;
+}
 .woocommerce.single-product .quantity .qty {
   border: 1px solid var(--mos-primary-color);
 }
