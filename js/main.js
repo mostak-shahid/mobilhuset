@@ -27,13 +27,15 @@ jQuery(document).ready(function ($) {
           autoStart: false,
         },
     });
-    $('.single-product .flex-control-thumbs').owlCarousel({
-        loop:false,
-        items:4,
-        margin:10,
-        nav: true,
-        dots: false,
-    });
+    // $('.single-product .flex-control-thumbs').owlCarousel({
+    //     loop:false,
+    //     items:4,
+    //     margin:10,
+    //     nav: true,
+    //     dots: false,
+    // });
+    
+
     $('.view-changer').on('click', function(e){
         e.preventDefault();
         var type = $(this).data('type');
@@ -128,8 +130,21 @@ jQuery(document).ready(function ($) {
 //            fit: "contain-w",
 //        },
 //    });
+    $('.flex-control-thumbs').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1
+    });
 
 });
+// var swiper = new Swiper(".flex-control-thumbs", {
+//     slidesPerView: 3,
+//     spaceBetween: 30,
+//     pagination: {
+//         //el: ".swiper-pagination",
+//         clickable: true,
+//     },
+// });
 document.addEventListener('scroll', (e) => {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 //    if (scrollTop > 100) document.querySelector('#btt-btn').style.display = "block";

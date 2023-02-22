@@ -5,9 +5,9 @@ if ( ! function_exists( 'mosgutenberg_setup' ) ) :
 		add_theme_support('title-tag'); 	
 		add_theme_support('post-thumbnails');
 		add_theme_support( 'woocommerce' );
-	    // add_theme_support( 'wc-product-gallery-zoom' );
-	    // add_theme_support( 'wc-product-gallery-lightbox' );
-	    // add_theme_support( 'wc-product-gallery-slider' );
+	    add_theme_support( 'wc-product-gallery-zoom' );
+	    add_theme_support( 'wc-product-gallery-lightbox' );
+	    add_theme_support( 'wc-product-gallery-slider' );
 		//add_image_size( string $name, int $width, int $height, bool|array $crop = false );
 		add_image_size( 'max-size', '1920', '1920', false );
 		add_image_size( 'container-full', '1140', '1140', false );
