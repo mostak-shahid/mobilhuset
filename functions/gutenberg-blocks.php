@@ -121,8 +121,9 @@ function mos_gutenberg_blocks() {
         Field::make('text', 'mos_sec_desc', __('Section Intro')),
     ))*/
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+        $id = 'element-'.time().rand(1000, 9999);
         ?>
-<div class="section-heading <?php echo @$fields['mos_sec_text_align']; ?> <?php echo @$fields['mos_sec_class']; ?> <?php echo @$attributes['className']; ?>">
+<div id="<?php echo $id ?>" class="section-heading <?php echo @$fields['mos_sec_text_align']; ?> <?php echo @$fields['mos_sec_class']; ?> <?php echo @$attributes['className']; ?>">
     <div class="text-part">
     <?php if(@$fields['mos_sec_subtitle']) : ?><h6 class="sub-title <?php echo @$fields['mos_sec_subtitle_class']; ?> wow <?php echo @$fields['mos_sec_subtitle_animation_option'] ?>" data-wow-delay="<?php echo @$fields['mos_sec_subtitle_animation_delay'] ?>ms"><?php echo do_shortcode($fields['mos_sec_subtitle']); ?></h6><?php endif?>
     
@@ -150,7 +151,7 @@ function mos_gutenberg_blocks() {
     <?php endif?>   
 </div>
 <?php if(@$fields['mos_sec_style']) : ?>
-<style><?php echo $fields['mos_sec_style']; ?></style>
+<style><?php echo str_replace("selector",'#'.$id,$fields['mos_sec_style']); ?></style>
 <?php endif?>
 <?php if(@$fields['mos_sec_script']) : ?>
 <script><?php echo $fields['mos_sec_script']; ?></script>
@@ -302,8 +303,9 @@ function mos_gutenberg_blocks() {
     ))  
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
         if (@$fields['mos_slider_items'] && sizeof($fields['mos_slider_items'])) :
+            $id = 'element-'.time().rand(1000, 9999);
         ?>
-            <div class="mos-slider-wrapper <?php echo @$fields['mos_slider_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+            <div id="<?php echo $id ?>" class="mos-slider-wrapper <?php echo @$fields['mos_slider_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
                 <div class="mos-slider mos-owl-carousel owl-carousel owl-theme" data-carousel-options='{
                     "nav":<?php echo (@$fields['mos_slider_show_nav'])?"true":"false" ?>,
                     "dots":<?php echo (@$fields['mos_slider_show_dots'])?"true":"false" ?>,
@@ -356,7 +358,7 @@ function mos_gutenberg_blocks() {
                 </div>
             </div>
             <?php if(@$fields['mos_slider_style']) : ?>
-            <style><?php echo $fields['mos_slider_style']; ?></style>
+            <style><?php echo str_replace("selector",'#'.$id,$fields['mos_slider_style']); ?></style>
             <?php endif?>
             <?php if(@$fields['mos_slider_script']) : ?>
             <script><?php echo $fields['mos_slider_script']; ?></script>
@@ -398,7 +400,7 @@ function mos_gutenberg_blocks() {
     ))  
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
     if(@$fields['mos_product_categories_items'] && sizeof($fields['mos_product_categories_items'])) {
-        $id = "category-list-" .time() . rand(1000, 9999);
+        $id = 'element-'.time().rand(1000, 9999);
         ?>
         <div id="<?php echo $id ?>" class="mos-product-categories-block-wrapper <?php echo @$fields['mos_product_categories_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
         <?php foreach($fields['mos_product_categories_items'] as $index=>$item) :?>
@@ -432,7 +434,7 @@ function mos_gutenberg_blocks() {
             }
         </style>
         <?php if(@$fields['mos_product_categories_block_style']) : ?>
-        <style><?php echo $fields['mos_product_categories_block_style']; ?></style>
+            <style><?php echo str_replace("selector",'#'.$id,$fields['mos_product_categories_block_style']); ?></style>
         <?php endif?>
         <?php if(@$fields['mos_product_categories_block_script']) : ?>
         <script><?php echo $fields['mos_product_categories_block_script']; ?></script>
@@ -597,8 +599,9 @@ function mos_gutenberg_blocks() {
 		$query = new WP_Query( $args );
         if ( $query->have_posts() ) {
             //var_dump($query);
+            $id = 'element-'.time().rand(1000, 9999);
         ?>
-            <div class="mos-product-slider-block-wrapper <?php echo @$fields['mos_product_slider_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+            <div id="<?php echo $id ?>" class="mos-product-slider-block-wrapper <?php echo @$fields['mos_product_slider_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
                 <div class="products mos-slider mos-owl-carousel owl-carousel owl-theme" data-carousel-options='{
                     "nav":<?php echo (@$fields['mos_product_slider_block_show_nav'])?"true":"false" ?>,
                     "dots":<?php echo (@$fields['mos_product_slider_block_show_dots'])?"true":"false" ?>,
@@ -625,7 +628,7 @@ function mos_gutenberg_blocks() {
                 </div>
             </div>
             <?php if(@$fields['mos_product_slider_block_style']) : ?>
-            <style><?php echo $fields['mos_product_slider_block_style']; ?></style>
+            <style><?php echo str_replace("selector",'#'.$id,$fields['mos_product_slider_block_style']); ?></style>
             <?php endif?>
             <?php if(@$fields['mos_product_slider_block_script']) : ?>
             <script><?php echo $fields['mos_product_slider_block_script']; ?></script>
