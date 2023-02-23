@@ -902,24 +902,6 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
 .home-category-section .mos-product-categories-block-wrapper .unit {
   padding: 10px;
 }
-.home-category-section .mos-product-categories-block-wrapper .unit .part-img {
-}
-.home-category-section
-  .mos-product-categories-block-wrapper
-  .unit
-  .part-img
-  img {
-  width: 40px;
-  height: 40px;
-}
-.home-category-section .mos-product-categories-block-wrapper .unit .part-text {
-  margin-top: 24px;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgb(113, 120, 139);
-  text-align: center;
-}
-
 .home-main-banner-carousel .mos-owl-carousel .item {
   width: 100%;
 }
