@@ -168,6 +168,7 @@ function mos_gutenberg_blocks() {
             ->set_required( true ),
             Field::make('rich_text', 'intro', __('Intro')),
             Field::make('text', 'icon', __('Icon Class')),
+            Field::make('textarea', 'svg', __('SVG')),
             Field::make('text', 'link', __('Link'))
             ->set_attribute( 'type', 'url' ),
         ))
@@ -197,6 +198,9 @@ function mos_gutenberg_blocks() {
                     <div class="unit position-relative">
                     <?php if (@$item['title'] && !@$fields['mos_icon_list_block_hide_title']) : ?>
                         <span class="title"><?php echo $item['title'] ?></span>
+                    <?php endif?>
+                    <?php if (@$item['svg']) : ?>
+                        <span class="svg"><?php echo @$item['svg']; ?></span>
                     <?php endif?>
                     <?php if (@$item['icon']) : ?>
                         <i class="icon <?php echo @$item['icon']; ?>"></i>
