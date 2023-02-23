@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.17
+Version: 1.0.18
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -219,8 +219,9 @@ pre {
   position: relative;
 }
 .collapsible-menu .mos-menu-block .title::before {
-  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 24 24' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M3.5 7.5h17a1.5 1.5 0 1 0 0-3h-17a1.5 1.5 0 1 0 0 3zM20.5 10.5h-17a1.5 1.5 0 1 0 0 3h17a1.5 1.5 0 1 0 0-3zM20.5 16.5h-17a1.5 1.5 0 1 0 0 3h17a1.5 1.5 0 1 0 0-3z' fill='%23000000' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E"); */
-  background-image: url(images/menu-icon.svg);
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 24 24' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M3.5 7.5h17a1.5 1.5 0 1 0 0-3h-17a1.5 1.5 0 1 0 0 3zM20.5 10.5h-17a1.5 1.5 0 1 0 0 3h17a1.5 1.5 0 1 0 0-3zM20.5 16.5h-17a1.5 1.5 0 1 0 0 3h17a1.5 1.5 0 1 0 0-3z' fill='%23000000' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E"); 
+  background-image: url(images/menu-icon.svg);*/
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 64 64' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M59.5 18.5h-55c-1.1 0-2-.9-2-2s.9-2 2-2h55c1.1 0 2 .9 2 2s-.9 2-2 2zM32.5 34.5h-28c-1.1 0-2-.9-2-2s.9-2 2-2h28c1.1 0 2 .9 2 2s-.9 2-2 2zM59.5 50.5h-55c-1.1 0-2-.9-2-2s.9-2 2-2h55c1.1 0 2 .9 2 2s-.9 2-2 2z' fill='%23ffffff' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
   content: "";
   height: 30px;
   width: 30px;
@@ -1357,7 +1358,7 @@ body.woocommerce.single-product #shop-main {
 .woocommerce ul.products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 15px;
 }
 .woocommerce ul.products li.product {
   display: flex;
@@ -1416,6 +1417,17 @@ body.woocommerce.single-product #shop-main {
   box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 10%);
   border-radius: 4px;
   padding: 10px;
+
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+.woocommerce ul.products li.product:hover,
+.products .product:hover {
+  margin-top: -10px !important;
+  margin-bottom: 10px !important;
+  box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 30%);
 }
 .products .product a {
   color: #777777;
