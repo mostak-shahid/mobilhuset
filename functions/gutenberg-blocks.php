@@ -502,15 +502,6 @@ function mos_gutenberg_blocks() {
         ->set_attribute( 'type', 'number' )
         ->set_attribute( 'min', '-1' ),
     ))
-    ->add_tab(__('Content'), array(
-        Field::make( 'checkbox', 'mos_product_slider_block_show_image', __( 'Show Product image' ) ),
-        Field::make( 'checkbox', 'mos_product_slider_block_show_brand', __( 'Show Product brand' ) ),
-        Field::make( 'checkbox', 'mos_product_slider_block_show_stock', __( 'Show Product stock' ) ),
-        Field::make( 'checkbox', 'mos_product_slider_block_show_title', __( 'Show Product title' ) ),
-        Field::make( 'checkbox', 'mos_product_slider_block_show_price', __( 'Show Product price' ) ),
-        Field::make( 'checkbox', 'mos_product_slider_block_show_rating', __( 'Show Product rating' ) ),
-        Field::make( 'checkbox', 'mos_product_slider_block_show_button', __( 'Show Add to Cart button' ) ),
-    )) 
     ->add_tab(__('Slider Settings'), array(
         Field::make('text', 'mos_product_slider_block_desktop_count', __('Desktop Items'))
         ->set_attribute( 'type', 'number' )
