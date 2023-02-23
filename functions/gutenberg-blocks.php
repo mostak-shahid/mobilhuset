@@ -26,7 +26,7 @@ function mos_gutenberg_blocks() {
     )) 
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_block_style', __('Style'))
-        ->set_help_text('Please write your custom css without style tag'),
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
         Field::make('textarea', 'mos_block_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
     ))  
@@ -110,7 +110,7 @@ function mos_gutenberg_blocks() {
     ))  
     ->add_tab( __( 'Advanced' ), array(
         Field::make('textarea', 'mos_sec_style', __('Style'))
-        ->set_help_text( 'Please write your custom css without style tag' ),
+        ->set_help_text( 'Please write your custom css without style tag, you can use selector tag to target the parent element' ),
         Field::make('textarea', 'mos_sec_script', __('Script'))
         ->set_help_text( 'Please write your custom script without script tag' ),
     ))        
@@ -186,7 +186,7 @@ function mos_gutenberg_blocks() {
     ))      
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_icon_list_block_style', __('Style'))
-        ->set_help_text('Please write your custom css without style tag'),
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
         Field::make('textarea', 'mos_icon_list_block_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
     )) 
@@ -297,7 +297,7 @@ function mos_gutenberg_blocks() {
     )) 
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_slider_style', __('Style'))
-        ->set_help_text('Please write your custom css without style tag'),
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
         Field::make('textarea', 'mos_slider_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
     ))  
@@ -394,7 +394,7 @@ function mos_gutenberg_blocks() {
     )) 
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_product_categories_block_style', __('Style'))
-        ->set_help_text('Please write your custom css without style tag'),
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
         Field::make('textarea', 'mos_product_categories_block_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
     ))  
@@ -531,7 +531,7 @@ function mos_gutenberg_blocks() {
     )) 
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_product_slider_block_style', __('Style'))
-        ->set_help_text('Please write your custom css without style tag'),
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
         Field::make('textarea', 'mos_product_slider_block_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
     ))  
@@ -706,7 +706,7 @@ function mos_gutenberg_blocks() {
     )) 
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_promobox_block_style', __('Style'))
-        ->set_help_text('Please write your custom css without style tag'),
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
         Field::make('textarea', 'mos_promobox_block_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
     ))  
@@ -801,7 +801,7 @@ function mos_gutenberg_blocks() {
     )) 
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_menu_block_style', __('Style'))
-        ->set_help_text('Please write your custom css without style tag'),
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
         Field::make('textarea', 'mos_menu_block_script', __('Script'))
         ->set_help_text('Please write your custom script without script tag'),
     ))  
