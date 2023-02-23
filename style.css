@@ -51,6 +51,10 @@ a,
 a:hover {
   color: var(--mos-secondary-color);
 }
+svg {
+  max-width: 100%;
+  height: auto;
+}
 input,
 textarea {
   display: inline-block;
