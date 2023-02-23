@@ -132,7 +132,7 @@ jQuery(document).ready(function ($) {
 //    });
     $('.flex-control-thumbs').slick({
         infinite: true,
-        slidesToShow: 4,
+        slidesToShow: 5,
         slidesToScroll: 1
     });
 
