@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.21
+Version: 1.0.22
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -1505,9 +1505,9 @@ body.woocommerce.single-product #shop-main {
 .products .product .button,
 .woocommerce ul.products li.product .button {
   background-color: var(--mos-primary-color);
-  padding: 15px 14px;
+  padding: 10px 14px;
   font-size: 12px;
-  line-height: 16px;
+  line-height: 20px;
   text-align: center;
   color: #ffffff;
   border-radius: 0;
@@ -1522,6 +1522,16 @@ body.woocommerce.single-product #shop-main {
   cursor: pointer;
   transition: color 0.25s ease, background-color 0.25s ease,
     border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+.add_to_cart_button::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 32 32' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M2 3h3.208l3.535 15.026A2.992 2.992 0 0 0 9 24h17a1 1 0 0 0 0-2H9a1 1 0 0 1 0-2h16.882a2.99 2.99 0 0 0 2.92-2.313l2.119-9A3 3 0 0 0 28 5H7.733l-.759-3.229A1 1 0 0 0 6 1H2a1 1 0 0 0 0 2zm26 4a1.016 1.016 0 0 1 .974 1.229l-2.12 9a.994.994 0 0 1-.972.771h-15.09L8.2 7zM20 28a3 3 0 1 0 3-3 3 3 0 0 0-3 3zm4 0a1 1 0 1 1-1-1 1 1 0 0 1 1 1zM9 28a3 3 0 1 0 3-3 3 3 0 0 0-3 3zm4 0a1 1 0 1 1-1-1 1 1 0 0 1 1 1z' fill='%23ffffff' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  margin-right: 10px;
+  vertical-align: middle;
 }
 .products .product .button:hover,
 .woocommerce ul.products li.product .button:hover {
