@@ -336,8 +336,17 @@ function mos_theme_options() {
         ->set_attribute( 'min', 1 )
         ->set_default_value(9)
         ->set_required( true ),
-        Field::make('text', 'mos-woocommerce-add-to-cart-text', __('Add to cart button text'))
+        Field::make('text', 'mos-woocommerce-add-to-cart-text', __('Add to cart button text for simple product'))
         ->set_default_value("Add to cart")
+        ->set_required( true ),
+        Field::make('text', 'mos-woocommerce-add-to-cart-text-variable', __('Add to cart button text for variable product'))
+        ->set_default_value("Select options")
+        ->set_required( true ),
+        Field::make('text', 'mos-woocommerce-add-to-cart-text-grouped', __('Add to cart button text for grouped product'))
+        ->set_default_value("View products")
+        ->set_required( true ),
+        Field::make('text', 'mos-woocommerce-add-to-cart-text-outofstock', __('Add to cart button text for out of stock product'))
+        ->set_default_value("Read More")
         ->set_required( true ),
         Field::make( 'select', 'mos-woocommerce-show-price', __( 'Price visible to' ) )
         ->set_options( array(

@@ -192,12 +192,24 @@ function mos_woocommerce_show_product_loop_sale_flash () {
 
 // Change add to cart text on single product page
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'mos_woocommerce_add_to_cart_button_text_single' ); 
-function mos_woocommerce_add_to_cart_button_text_single() {
+function mos_woocommerce_add_to_cart_button_text_single() {	
     return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text' ), 'woocommerce' ); 
 }
 // Change add to cart text on product archives page
 add_filter( 'woocommerce_product_add_to_cart_text', 'mos_woocommerce_add_to_cart_button_text_archives' );  
 function mos_woocommerce_add_to_cart_button_text_archives() {
+	global $product;
+	if ($product->get_stock_status() == 'outofstock')
+	return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-outofstock' ), 'woocommerce' );
+	else if ($product->get_type() == 'variable')
+    return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-variable' ), 'woocommerce' );
+	else if ($product->get_type() == 'grouped')
+    return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-grouped' ), 'woocommerce' );
+	else if ($product->get_type() == 'external') {
+		$button_text = get_post_meta($product->get_id(), '_button_text', true);
+		return __( $button_text, 'woocommerce' );
+	}    
+	else
     return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text' ), 'woocommerce' );
 }
 
