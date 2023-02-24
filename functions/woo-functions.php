@@ -199,18 +199,20 @@ function mos_woocommerce_add_to_cart_button_text_single() {
 add_filter( 'woocommerce_product_add_to_cart_text', 'mos_woocommerce_add_to_cart_button_text_archives' );  
 function mos_woocommerce_add_to_cart_button_text_archives() {
 	global $product;
-	if ($product->get_stock_status() == 'outofstock')
-	return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-outofstock' ), 'woocommerce' );
-	else if ($product->get_type() == 'variable')
-    return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-variable' ), 'woocommerce' );
-	else if ($product->get_type() == 'grouped')
-    return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-grouped' ), 'woocommerce' );
-	else if ($product->get_type() == 'external') {
-		$button_text = get_post_meta($product->get_id(), '_button_text', true);
-		return __( $button_text, 'woocommerce' );
-	}    
+	if($product){
+		if ($product->get_stock_status() == 'outofstock')
+		return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-outofstock' ), 'woocommerce' );
+		else if ($product->get_type() == 'variable')
+		return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-variable' ), 'woocommerce' );
+		else if ($product->get_type() == 'grouped')
+		return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-grouped' ), 'woocommerce' );
+		else if ($product->get_type() == 'external') 
+		return __( get_post_meta($product->get_id(), '_button_text', true), 'woocommerce' );		   
+		else
+		return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text' ), 'woocommerce' );
+	} 
 	else
-    return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text' ), 'woocommerce' );
+	return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text' ), 'woocommerce' );
 }
 
 add_action('woocommerce_before_main_content', 'mos_bootstrap_wrapper_start', 1);

@@ -503,6 +503,7 @@ function mos_gutenberg_blocks() {
         ))
         ->set_attribute( 'type', 'number' )
         ->set_attribute( 'min', '-1' ),
+        Field::make( 'checkbox', 'mos_product_slider_block_hide_outofstock', __( 'Hide out of stock products' ) )
     ))
     ->add_tab(__('Slider Settings'), array(
         Field::make('text', 'mos_product_slider_block_desktop_count', __('Desktop Items'))
@@ -536,6 +537,7 @@ function mos_gutenberg_blocks() {
         ->set_help_text('Please write your custom script without script tag'),
     ))  
     ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+        
         $args = array(
 			'post_status'    => 'publish',
 			'post_type'      => 'product',
@@ -544,6 +546,15 @@ function mos_gutenberg_blocks() {
         $args['orderby'] = 'meta_value';
         $args['meta_key'] = '_stock_status';
         $args['order'] = 'ASC';
+        $args['meta_query']['relation'] = 'OR';
+        if (@$fields['mos_product_slider_block_hide_outofstock']){
+            $args['meta_query'] = array(
+                array(
+                    'key' => '_stock_status',
+                    'value' => 'instock'
+                )
+            );
+        }
 
         if (@$fields['mos_product_slider_block_option'] == 'toprated') {
             $args['meta_key'] = '_wc_average_rating';
@@ -564,7 +575,7 @@ function mos_gutenberg_blocks() {
             $args['order'] = 'DESC';
         } elseif (@$fields['mos_product_slider_block_option'] == 'onsale') {
             $args['meta_query'] = array(
-                'relation' => 'OR',
+                //'relation' => 'OR',
                 array( // Simple products type
                     'key'           => '_sale_price',
                     'value'         => 0,
