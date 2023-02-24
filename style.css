@@ -1867,6 +1867,17 @@ body.more-then-one-product-available .usp-group {
 .single-product .product_meta {
   display: none !important;
 }
+.wc-block-mini-cart__drawer .components-modal__header {
+  top: 0;
+  right: 0;
+  height: 56px;
+}
+.wc-block-components-drawer .components-modal__header .components-button {
+  padding: 0;
+  margin: 0;
+  width: 40px;
+  height: 40px;
+}
 #block-8 p {
   display: none;
 }
