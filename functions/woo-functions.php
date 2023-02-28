@@ -26,6 +26,14 @@ function mos_custom_page_title () {
     </section>
 	<?php
 }
+add_action('yith_wacp_after_related_item', 'mos_custom_product_stock_status');
+function mos_custom_product_stock_status () {
+	global $product;
+	//echo $product->get_id();
+	?>
+	<div class="mos-ststus"><?php echo do_shortcode('[product-status]'); ?></div>
+	<?php
+}
 add_action( 'wp_head', 'mos_customize_woo_action' );
 function mos_customize_woo_action() {
 	remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10 );
