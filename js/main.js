@@ -135,6 +135,17 @@ jQuery(document).ready(function ($) {
         slidesToShow: 5,
         slidesToScroll: 1
     });
+    /*$('.searchform').submit(function(e){
+        //alert(0);
+        e.preventDefault();
+        var mos_product_search = $(this).find('.mos-product-search').val();
+        //console.log(mos_product_search);
+        if (mos_product_search.length>3) {
+            $(this).unbind( 'submit' ).submit();
+        } else {
+            $(this).find('.mos-product-search').attr('placeholder', 'Please type your keywords here.');
+        }
+    });*/
 
 });
 // var swiper = new Swiper(".flex-control-thumbs", {
@@ -180,6 +191,7 @@ function backToTop() {
         });
     }, false);
 })();
+
 function setCookie(cname,cvalue,exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));

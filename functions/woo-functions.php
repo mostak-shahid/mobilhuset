@@ -235,12 +235,12 @@ function mos_view_change(){
 	<?php
 }
 add_action('woocommerce_before_shop_loop', 'mos_div_wrapper_end', 40);
-add_action('woocommerce_single_product_summary', 'mos_usp_text', 31);
+add_action('woocommerce_single_product_summary', 'mos_usp_text', 30);
 function mos_usp_text () {
 	?>
 	<ul class="list-inline usp-group">
 		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-purchase-fbg.svg" alt="Snabb Leverans"><span class="usp-text">Snabb Leverans</span></li>
-		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-payments-vCm.svg" alt="Säkra betalningar"><span class="usp-text">Snabb Leverans</span></li>
+		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-payments-vCm.svg" alt="Säkra betalningar"><span class="usp-text">Säkra betalningar</span></li>
 		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-delivery-ua6.svg" alt="14 dagars öppet köp"><span class="usp-text">14 dagars öppet köp</span></li>
 	</ul>
 	<?php
@@ -271,14 +271,15 @@ function mos_woo_custom_product_searchform( $form ) {
 		$selected = (@$_GET['category'] && $_GET['category'] == $cat["slug"])?'selected':'';
 		$options .= '<option '.$selected.' value="'.$cat["slug"].'">'.$cat["name"].'</option>';
 	}
-	$form = '<form role="search" method="get" id="searchform" action="' . esc_url( home_url( '/'  ) ) . '">
+	ob_start(); ?>
+	<form role="search" method="get" class="searchform" id="searchform" action="<?php echo esc_url( home_url( '/'  ) )?>">
 		<div class="input-group">
-			<label class="screen-reader-text" for="s">' . __( 'Search for:', 'woocommerce' ) . '</label>
+			<label class="screen-reader-text" for="s"><?php echo __( 'Search for:', 'woocommerce' )?></label>
 			
 			<select name="category" class="form-select mos-product-categories d-none" id="inputGroupSelect01">
-				<option value="">All Categories</option>'.$options.'
+				<option value="">All Categories</option><?php echo $options?>
 			</select>
-			<input class="form-control mos-product-search" type="text" name="s" id="s" placeholder="' . __( 'Search for Products', 'woocommerce' ) . '" autocomplete="off" value="'.get_search_query().'"  />
+			<input class="form-control mos-product-search" type="text" name="s" id="s" placeholder="<?php echo __( 'Search for Products', 'woocommerce' )?>" autocomplete="off" value="<?php echo get_search_query()?>" required oninvalid="this.setCustomValidity('Please type your keywords here.')" onvalid="this.setCustomValidity('')" />
 			<button type="submit" id="searchsubmit" class="btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="18.382" height="18.34" viewBox="0 0 18.382 18.34">
 <g id="searc-icon" transform="translate(-1250 -76)">
@@ -288,8 +289,8 @@ function mos_woo_custom_product_searchform( $form ) {
             </button> 
 			<input type="hidden" name="post_type" value="product" />
 		</div>
-	</form>';
-	//onkeyup="showHint(this.value)"
+	</form>
+	<?php $form = ob_get_clean();	
 	return $form;
 	
 }
