@@ -135,6 +135,22 @@ jQuery(document).ready(function ($) {
         slidesToShow: 5,
         slidesToScroll: 1
     });
+    $('.single-product .quantity').find('.qty').before('<span class="qty-btn minus">-</span>');
+    $('.single-product .quantity').find('.qty').after('<span class="qty-btn plus">+</span>');
+    $('body').on('click', '.minus', function (){
+        var $input = $(this).parent().find('input');
+        var count = parseInt($input.val()) - 1;
+        count = count < 1 ? 1 : count;
+        $input.val(count);
+        $input.change();
+        return false;
+    });
+    $('body').on('click', '.plus', function (){
+        var $input = $(this).parent().find('input');
+        $input.val(parseInt($input.val()) + 1);
+        $input.change();
+        return false;
+    });
     /*$('.searchform').submit(function(e){
         //alert(0);
         e.preventDefault();

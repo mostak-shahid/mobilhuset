@@ -12,11 +12,11 @@ function add_slug_body_class( $classes ) {
     } else {
         $classes[] = 'guest-user';
     }
-    if ( is_product() ) {
+    /*if ( is_product() ) {
         global $product;
         $prefix = ($product->get_stock_quantity()>1)?'more-then-one':'less-then-one';
         $classes[] = $prefix .'-product-available';
-    }
+    }*/
     if (taxonomy_exists( 'product_cat' ) && !is_shop()) {
         $term_id = get_queried_object()->term_id;
         $termchildren = get_term_children( $term_id, 'product_cat' );
