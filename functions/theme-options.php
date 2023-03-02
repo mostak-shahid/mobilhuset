@@ -376,6 +376,7 @@ function mos_theme_options() {
         ))
         ->set_default_value("Login")
         ->set_required( true ),
+        Field::make('checkbox', 'mos-woocommerce-hide-additional-tab', __('Hide additional tab'))
     ));
     Container::make('theme_options', __('Footer Section'))
     ->set_page_parent($basic_options_container) // reference to a top level container

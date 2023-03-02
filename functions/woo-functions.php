@@ -150,7 +150,16 @@ function mos_customize_add_tocart(){
 	}
 }
 add_action( 'wp_head', 'mos_customize_add_tocart' );
-
+function mos_remove_product_addiotional_tabs(){
+	if (carbon_get_theme_option( 'mos-woocommerce-hide-additional-tab')) {
+		add_filter( 'woocommerce_product_tabs', 'mos_remove_product_tabs', 9999 );
+	}	
+}
+add_action( 'wp_head', 'mos_remove_product_addiotional_tabs' );
+function mos_remove_product_tabs( $tabs ) {
+    unset( $tabs['additional_information'] ); 
+    return $tabs;
+}
 /**
  * Change number of products that are displayed per page (shop page)
  */
