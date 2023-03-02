@@ -1,4 +1,8 @@
 jQuery(document).ready(function ($) {
+    resizeFunctionality ();
+    $(window).resize(function(){
+        resizeFunctionality ();
+    });
     $('.header-category-menu .wp-block-navigation__responsive-container-open').append("<b>Alla Produkter</b>");
     $('.header-category-menu .wp-block-navigation__responsive-container-open').on('click', function(){
         $(this).find('svg').css('opacity', 0);
@@ -150,6 +154,16 @@ jQuery(document).ready(function ($) {
         $input.val(parseInt($input.val()) + 1);
         $input.change();
         return false;
+    });
+    function resizeFunctionality (){
+        if($(window).width() <=768) {
+            $('.woocommerce.single-product').find('.woocommerce-tabs').addClass('mos-wc-accordion-tabs');
+        } else {
+            $('.woocommerce.single-product').find('.woocommerce-tabs').removeClass('mos-wc-accordion-tabs');
+        }
+    }
+    $('body').on('click', '.mos-wc-accordion-tabs .tab-title', function (){
+        $(this).next().slideToggle('slow');
     });
     /*$('.searchform').submit(function(e){
         //alert(0);

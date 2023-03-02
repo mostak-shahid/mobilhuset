@@ -38,7 +38,7 @@ require_once('functions/gutenberg-blocks.php');
 require_once('functions/post-metas.php');
 require_once('functions/term-metas.php');
 require_once('functions/woo-functions.php');
-require_once('functions/MobileDetect.php');
+//require_once('functions/MobileDetect.php');
 // $detect = new Mobile_Detect;
 // var_dump($detect->isMobile());
 /*if (version_compare($GLOBALS['wp_version'], '5.0-beta', '>')) {    

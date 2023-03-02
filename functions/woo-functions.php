@@ -336,7 +336,7 @@ function woo_new_product_tab( $tabs ) {
 				'callback' 	=> function () use ($product_tab) {
 					// The new tab content		
 					echo '<h2 class="tab-title">'.$product_tab['title'].'</h2>';
-					echo $product_tab['intro'];			
+					echo '<div class="tab-intro">'.$product_tab['intro'].'</div>';		
 				}
 			);
 		}
