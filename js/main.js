@@ -165,6 +165,21 @@ jQuery(document).ready(function ($) {
     $('body').on('click', '.mos-wc-accordion-tabs .tab-title', function (){
         $(this).next().slideToggle('slow');
     });
+    $('body').on('click', '.sidebar-activator', function (){
+        $('body').addClass('active-filter');
+    });
+    $('body').on('click', '.sidebar-close', function (){
+        $('body').removeClass('active-filter');
+    });
+    var container = $(".woocommerce .sidebar");
+
+    // if the target of the click isn't the container nor a descendant of the container
+    if (!container.is(e.target) && container.has(e.target).length === 0) 
+    {
+        //container.hide();
+        $('body').removeClass('active-filter');
+    }
+
     /*$('.searchform').submit(function(e){
         //alert(0);
         e.preventDefault();

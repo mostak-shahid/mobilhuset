@@ -136,9 +136,11 @@ function mos_woocommerce_shop_loop_item_short_description() {
 }
 
 add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_title_meta_set_2_start', 12, 0);
-function mos_woocommerce_shop_loop_item_title_meta_set_2_start( ) {
+function mos_woocommerce_shop_loop_item_title_meta_set_2_start() {
 	?>
-	<div class="mos-product-meta mos-product-meta-2 d-flex justify-content-between align-items-center w-100">	    
+	<div class="mos-product-meta mos-product-meta-2 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center w-100">	
+		    <!-- mos-product-meta mos-product-meta-2 d-flex flex-column flex-sm-row justify-content-between align-items-sm-center w-100 -->
+			<!-- mos-product-meta mos-product-meta-2 d-flex justify-content-between align-items-center w-100 -->
 	<?php
 };
 function mos_customize_add_tocart(){

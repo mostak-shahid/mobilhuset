@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.26
+Version: 1.0.27
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -1347,6 +1347,7 @@ body.woocommerce.single-product #shop-main {
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 }
+
 .woocommerce ul.products li.product {
   display: flex;
   flex-direction: column;
@@ -1475,7 +1476,6 @@ body.woocommerce.single-product #shop-main {
 .woocommerce ul.products li.product .price,
 .products .product .price {
   min-height: 52px;
-  min-height: 52px;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -1525,6 +1525,11 @@ body.woocommerce.single-product #shop-main {
   cursor: pointer;
   transition: color 0.25s ease, background-color 0.25s ease,
     border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+  border-radius: 4px;
+}
+.products .product.outofstock .button,
+.woocommerce ul.products li.product.outofstock .button {
+  background-color: rgba(119, 119, 119, 0.5);
 }
 .add_to_cart_button::before {
   content: "";
@@ -1677,6 +1682,7 @@ body.woocommerce.single-product #shop-main {
   background-color: var(--mos-primary-color);
   color: #ffffff;
   margin-left: 30px;
+  border-radius: 4px;
 }
 .single-product .quantity {
   display: flex;
@@ -2209,13 +2215,18 @@ body.more-then-one-product-available .usp-group {
     max-width: 1420px;
   }
 }
-@media (min-width: 1399.98px) {
+@media (min-width: 1400px) {
   .vertical-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu,
   .collapsible-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu {
     width: calc(1140px - 250px);
   }
 }
 
+@media (min-width: 992px) {
+  .woocommerce.mos-product-cat-parent ul.products {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 @media (max-width: 1199.98px) {
   .vertical-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu,
   .collapsible-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu {
@@ -2228,11 +2239,80 @@ body.more-then-one-product-available .usp-group {
     grid-template-columns: repeat(2, 1fr);
   }
   .woocommerce.single-product .related ul.products {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   .vertical-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu,
   .collapsible-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu {
     width: calc(720px - 250px);
+  }
+  body.active-filter::before {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    content: "";
+    z-index: 8;
+  }
+  .woocommerce .sidebar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 280px;
+    background-color: #ffffff;
+    z-index: 9;
+    left: -100%;
+    padding: 20px;
+    bottom: 0;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  .woocommerce.active-filter .sidebar {
+    left: 0;
+  }
+  /* width */
+  .woocommerce .sidebar::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  /* Track */
+  .woocommerce .sidebar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  .woocommerce .sidebar::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  .woocommerce .sidebar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .sidebar-activator,
+  .woocommerce .sidebar .sidebar-close {
+    width: 40px;
+    height: 40px;
+    background-size: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  .woocommerce .sidebar .sidebar-close {
+    top: 0;
+    right: 0;
+    position: absolute;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 64 64' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M4.59 59.41a2 2 0 0 0 2.83 0L32 34.83l24.59 24.58a2 2 0 0 0 2.83-2.83L34.83 32 59.41 7.41a2 2 0 0 0-2.83-2.83L32 29.17 7.41 4.59a2 2 0 0 0-2.82 2.82L29.17 32 4.59 56.59a2 2 0 0 0 0 2.82z' fill='%23ed1c24' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  }
+  .sidebar-activator {
+    position: fixed;
+    left: 0;
+    top: 200px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 393 393.99' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M368.313 0H17.05A16.5 16.5 0 0 0 2.344 8.96a16.732 16.732 0 0 0 1.3 17.415l128.688 181.281c.043.063.09.121.133.184a36.769 36.769 0 0 1 7.219 21.816v147.797a16.429 16.429 0 0 0 16.433 16.535c2.227 0 4.426-.445 6.48-1.297l72.313-27.574c6.48-1.976 10.781-8.09 10.781-15.453V229.656a36.774 36.774 0 0 1 7.215-21.816c.043-.063.09-.121.133-.184L381.723 26.367a16.717 16.717 0 0 0 1.3-17.406A16.502 16.502 0 0 0 368.313 0zM236.78 195.992a56.931 56.931 0 0 0-11.097 33.664v117.578l-66 25.164V229.656a56.909 56.909 0 0 0-11.102-33.664L23.648 20h338.07zm0 0' fill='%23ffffff' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+    background-color: var(--mos-primary-color);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
 }
 
@@ -2258,6 +2338,11 @@ body.more-then-one-product-available .usp-group {
   .woocommerce.single-product .related ul.products {
     grid-template-columns: repeat(2, 1fr);
   }
+  .woocommerce .before-product-list .woocommerce-ordering select {
+    padding-left: 0;
+    padding-right: 0;
+    background-position: right 0 center;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -2270,16 +2355,45 @@ body.more-then-one-product-available .usp-group {
   }
 
   .woocommerce ul.products {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   .woocommerce.single-product .related ul.products {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
   .woocommerce ul.products.products-list-view li.product {
     flex-direction: column;
   }
   .woocommerce ul.products.products-list-view li.product a img {
     margin: 0 0 1em;
+  }
+  .woocommerce ul.products li.product,
+  .products .product,
+  .woocommerce ul.products li.product .price del bdi,
+  .products .product .price del bdi {
+    font-size: 12px;
+  }
+  .woocommerce ul.products li.product .price,
+  .products .product .price {
+    min-height: 41px;
+  }
+  .woocommerce
+    ul.products
+    li.product-category
+    .woocommerce-loop-category__title,
+  .woocommerce ul.products li.product .price bdi,
+  .products .product .price bdi {
+    font-size: 14px;
+  }
+  .woocommerce ul.products li.product .woocommerce-loop-product__title,
+  .products .product .woocommerce-loop-product__title {
+    font-size: 14px;
+    line-height: 16px;
+    height: 32px;
+    margin-bottom: 0;
+  }
+  .products .product .button,
+  .woocommerce ul.products li.product .button {
+    padding: 5px;
   }
 }
 
