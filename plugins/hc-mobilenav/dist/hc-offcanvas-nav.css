@@ -535,6 +535,9 @@ body.hc-nav-open {
 .hc-offcanvas-nav.nav-close-button-empty .nav-title {
   padding-right: 55px;
   margin-bottom: 0;
+}
+.hc-offcanvas-nav .nav-content > .level-title,
+.hc-offcanvas-nav.nav-close-button-empty .nav-title {
   background-color: var(--mos-primary-color);
   color: #ffffff;
 }
