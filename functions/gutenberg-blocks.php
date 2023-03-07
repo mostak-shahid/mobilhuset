@@ -391,6 +391,8 @@ function mos_gutenberg_blocks() {
         Field::make('text', 'mos_product_categories_block_mobile_grid', __('Mobile Grid'))
         ->set_attribute('type', 'number')
         ->set_default_value(2),
+        Field::make('text', 'mos_product_categories_block_image_size', __('Image Size'))
+        ->set_attribute( 'type', 'number' ),
     )) 
     ->add_tab(__('Advanced'), array(
         Field::make('textarea', 'mos_product_categories_block_style', __('Style'))
@@ -410,7 +412,12 @@ function mos_gutenberg_blocks() {
                 $link = get_term_link( (int)$item['id'], 'product_cat' );
                 $thumbnail_id = get_woocommerce_term_meta( (int)$item['id'], 'thumbnail_id', true );                            
                 ?>
-                <div class="part-img"><?php echo wp_get_attachment_image( $thumbnail_id, "full", "", array( "class" => "img-responsive img-fluid" ) ); ?></div>
+                <div class="part-img">
+                    <?php 
+                    if (@$fields['mos_product_categories_block_image_size']) echo '<img class="img-responsive img-fluid" src="' .aq_resize(wp_get_attachment_url($thumbnail_id),$fields['mos_product_categories_block_image_size'],$fields['mos_product_categories_block_image_size'], true).'" width="'.$fields['mos_product_categories_block_image_size'].'" height="'.$fields['mos_product_categories_block_image_size'].'" alt="'.$term->name.'">';                    
+                    else echo wp_get_attachment_image( $thumbnail_id, "full", "", array( "class" => "img-responsive img-fluid", "alt"=>$term->name ) ); 
+                    ?>
+                </div>
                 <div class="part-text"><?php echo $term->name; ?></div>
                 <a href="<?php echo $link ?>" class="hidden-link">Read more about <?php echo $term->name; ?></a>
             </div>
