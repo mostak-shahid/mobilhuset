@@ -1796,6 +1796,7 @@ body.woocommerce.single-product #shop-main {
   .tab-title
   + * {
   display: none;
+  margin-top: 15px;
 }
 h2.wc-block-mini-cart__title {
   font-size: 20px;

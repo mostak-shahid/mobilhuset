@@ -225,7 +225,8 @@ function mos_product_status( ) {
     if($product->is_in_stock()) {
         $stock = [
             'class' => 'in-stock',
-            'name'  => $availability['availability'] ? $availability['availability'] : __('In Stock', 'woodmart'),
+            //'name'  => $availability['availability'] ? $availability['availability'] : __('In Stock', 'woodmart'),
+            'name'  => __('In Stock', 'woodmart'),
         ];
     } elseif($product->is_on_backorder()) {
         $stock = [

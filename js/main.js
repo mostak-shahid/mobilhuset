@@ -163,7 +163,7 @@ jQuery(document).ready(function ($) {
         }
     }
     $('body').on('click', '.mos-wc-accordion-tabs .tab-title', function (){
-        $(this).next().slideToggle('slow');
+        $(this).toggleClass('active').next().slideToggle('slow');
     });
     $('body').on('click', '.sidebar-activator', function (){
         $('body').addClass('active-filter');
