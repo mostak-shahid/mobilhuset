@@ -324,8 +324,8 @@ function mos_gutenberg_blocks() {
                         }
                     }
                 }'>
-                    <?php foreach($fields['mos_slider_items'] as $id => $slider) : ?>
-                        <div class="item item-<?php echo $id ?>">
+                    <?php foreach($fields['mos_slider_items'] as $index => $slider) : ?>
+                        <div class="item item-<?php echo $index ?>">
                             <div class="wrapper">
                                 <div class="text-part">
                                     <?php if (@$slider['title']) : ?>
@@ -335,9 +335,9 @@ function mos_gutenberg_blocks() {
                                         <div class="intro <?php echo @$fields['mos_slider_intro_class'];?>"><?php echo do_shortcode($slider['intro']) ?></div>
                                     <?php endif?>
                                     <?php if (@$slider['buttons'] && sizeof($slider['buttons'])) : ?>
-                                        <?php foreach($slider['buttons'] as $id=>$button) : ?>
+                                        <?php foreach($slider['buttons'] as $key=>$button) : ?>
                                             <?php if (@$button['title'] && @$button['url']) : ?>
-                                            <div class="is-layout-flex wp-block-buttons wp-block-buttons-<?php echo $id ?>">
+                                            <div class="is-layout-flex wp-block-buttons wp-block-buttons-<?php echo $key ?>">
                                                 <div class="wp-block-button"><a href="<?php echo $button['url'] ?>" class="wp-block-button__link wp-element-button"><?php echo $button['title'] ?></a></div>
                                             </div>
                                             <?php endif?>
