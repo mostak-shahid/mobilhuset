@@ -55,7 +55,7 @@ svg {
   max-width: 100%;
   height: auto;
 }
-input,
+input:not([type="checkbox"]):not([type="radio"]),
 textarea {
   display: inline-block;
   padding: 0.375rem 0.75rem;
@@ -1366,6 +1366,14 @@ li.product .yith-wcwl-add-to-wishlist .feedback + a {
 body.woocommerce #shop-main {
   margin-top: 70px;
   margin-bottom: 70px;
+}
+.woocommerce .cart-collaterals .cross-sells,
+.woocommerce-page .cart-collaterals .cross-sells {
+  width: 68%;
+}
+.woocommerce .cart-collaterals .cart_totals,
+.woocommerce-page .cart-collaterals .cart_totals {
+  width: 28%;
 }
 body.woocommerce.single-product #shop-main {
   margin-top: 20px;
