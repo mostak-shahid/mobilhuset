@@ -254,6 +254,13 @@ function mos_view_change(){
 	<?php
 }
 add_action('woocommerce_before_shop_loop', 'mos_div_wrapper_end', 40);
+add_action('woocommerce_single_product_summary', 'mos_out_of_stock_text', 30);
+function mos_out_of_stock_text () {	
+	global $product;
+	if($product->get_stock_status() == 'outofstock') {
+		echo '<span class="button mos-outofstock-single-button">Out of Stock</span>';
+	}
+}
 add_action('woocommerce_single_product_summary', 'mos_usp_text', 30);
 function mos_usp_text () {
 	?>
