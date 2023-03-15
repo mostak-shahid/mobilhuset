@@ -1367,14 +1367,7 @@ body.woocommerce #shop-main {
   margin-top: 70px;
   margin-bottom: 70px;
 }
-.woocommerce .cart-collaterals .cross-sells,
-.woocommerce-page .cart-collaterals .cross-sells {
-  width: 68%;
-}
-.woocommerce .cart-collaterals .cart_totals,
-.woocommerce-page .cart-collaterals .cart_totals {
-  width: 28%;
-}
+
 body.woocommerce.single-product #shop-main {
   margin-top: 20px;
 }
@@ -1399,6 +1392,7 @@ body.woocommerce.single-product .mos-outofstock-single-button {
   transition: color 0.25s ease, background-color 0.25s ease,
     border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
   border-radius: 4px;
+  margin-bottom: 10px;
 }
 .woocommerce ul.products {
   display: grid;
@@ -2178,6 +2172,14 @@ body.more-then-one-product-available .usp-group {
     -webkit-animation-delay: 1s;
     -moz-animation-delay: 1s;
     animation-delay: 1s;
+  }
+  .woocommerce .cart-collaterals .cross-sells,
+  .woocommerce-page .cart-collaterals .cross-sells {
+    width: 68%;
+  }
+  .woocommerce .cart-collaterals .cart_totals,
+  .woocommerce-page .cart-collaterals .cart_totals {
+    width: 28%;
   }
 }
 
