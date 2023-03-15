@@ -103,7 +103,7 @@ function mosgutenberg_enqueue_scripts() {
     wp_register_script( 'hc-offcanvas-nav', get_template_directory_uri() . '/plugins/hc-mobilenav/dist/hc-offcanvas-nav.js' );
     wp_enqueue_script( 'hc-offcanvas-nav' );	
 
-	wp_register_style( 'style', get_template_directory_uri() .  '/style.css');
+	wp_register_style( 'style', get_template_directory_uri() .  '/style.css', '', time());
 	wp_enqueue_style( 'style' );
 		
 	wp_register_script('main.min', get_template_directory_uri() . '/js/main.js', 'jquery', '', true);
