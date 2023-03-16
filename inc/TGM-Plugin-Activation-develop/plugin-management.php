@@ -144,7 +144,7 @@ function mosgutenberg_plugins_management() {
 			'required'			=> true,
 			'force_activation'	=> true, 
 		),
-		array(
+		/*array(
 			'name'				=> 'Contact Form 7', 
 			'slug'				=> 'contact-form-7',  
 			'required'			=> false,
@@ -167,7 +167,7 @@ function mosgutenberg_plugins_management() {
 			'slug'				=> 'wp-asset-clean-up',  
 			'required'			=> false,
 			'force_activation'	=> false, 
-		),
+		),*/
 
 		// This is an example of how to include a plugin from a GitHub repository in your theme.
 		// This presumes that the plugin code is based in the root of the GitHub repository
