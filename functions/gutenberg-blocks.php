@@ -235,6 +235,7 @@ function mos_gutenberg_blocks() {
             Field::make('rich_text', 'intro', __('Intro')),
             Field::make('image', 'image', __('Image')),
             Field::make('image', 'image-2', __('Image 2')),
+            Field::make('image', 'image-3', __('Background Image')),
             Field::make('complex', 'buttons', __('Buttons'))
             ->add_fields(array(
                 Field::make('text', 'title', __('Title')),
@@ -325,7 +326,7 @@ function mos_gutenberg_blocks() {
                     }
                 }'>
                     <?php foreach($fields['mos_slider_items'] as $index => $slider) : ?>
-                        <div class="item item-<?php echo $index ?>">
+                        <div class="item item-<?php echo $index ?>" <?php if (@$slider['image-3']) : ?>style="background-image:url(<?php echo wp_get_attachment_url($slider['image-3']) ?>)"<?php endif ?>>
                             <div class="wrapper">
                                 <div class="text-part">
                                     <?php if (@$slider['title']) : ?>
@@ -410,7 +411,7 @@ function mos_gutenberg_blocks() {
                 <?php 
                 $term = get_term( (int)$item['id'] , 'product_cat' );
                 $link = get_term_link( (int)$item['id'], 'product_cat' );
-                $thumbnail_id = get_woocommerce_term_meta( (int)$item['id'], 'thumbnail_id', true );                            
+                $thumbnail_id = get_term_meta( (int)$item['id'], 'thumbnail_id', true );                            
                 ?>
                 <div class="part-img">
                     <?php 

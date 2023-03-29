@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.30
+Version: 1.0.31
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -94,8 +94,7 @@ select {
   outline: none;
   cursor: pointer;
 }
-select.orderby {
-}
+
 pre {
   background: #eceff3;
   font-family: "Courier 10 Pitch", Courier, monospace;
@@ -498,10 +497,7 @@ pre {
   position: relative;
   z-index: 9;
 }
-.top-header {
-}
-.top-header .top-header-left {
-}
+
 .top-header .top-header-left li {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -885,8 +881,7 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   background-color: var(--mos-primary-color);
   border-radius: 2px;
 }
-#newsletter {
-}
+
 #newsletter .form-control {
   border-color: #333;
   background-color: transparent;
@@ -913,16 +908,12 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.home-main-banner-carousel {
-}
-.home-main-banner-carousel .mos-owl-carousel {
-}
 
-.home-main-banner-carousel .mos-owl-carousel .item {
+.mos-slider-wrapper .mos-owl-carousel .item {
   width: 100%;
 }
 /*
-.home-main-banner-carousel .mos-owl-carousel .item {
+.mos-slider-wrapper .mos-owl-carousel .item {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   width: 100%;
@@ -932,42 +923,41 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   margin-left: auto;
 }
 @media (min-width: 576px) {
-  .home-main-banner-carousel .mos-owl-carousel .item {
+  .mos-slider-wrapper .mos-owl-carousel .item {
     width: 100%;
   }
 }
 
 @media (min-width: 768px) {
-  .home-main-banner-carousel .mos-owl-carousel .item {
+  .mos-slider-wrapper .mos-owl-carousel .item {
     max-width: 720px;
   }
 }
 @media (min-width: 992px) {
-  .home-main-banner-carousel .mos-owl-carousel .item {
+  .mos-slider-wrapper .mos-owl-carousel .item {
     max-width: 960px;
   }
 }
 @media (min-width: 1200px) {
-  .home-main-banner-carousel .mos-owl-carousel .item {
+  .mos-slider-wrapper .mos-owl-carousel .item {
     max-width: 1140px;
   }
 }
 @media (min-width: 1400px) {
-  .home-main-banner-carousel .mos-owl-carousel .item {
+  .mos-slider-wrapper .mos-owl-carousel .item {
     max-width: 1320px;
   }
 }
 */
-.home-main-banner-carousel .mos-owl-carousel .item .wrapper {
+.mos-slider-wrapper .mos-owl-carousel .item .wrapper {
   display: flex;
   align-items: center;
 }
-.home-main-banner-carousel .mos-owl-carousel .item .wrapper > * {
+.mos-slider-wrapper .mos-owl-carousel .item .wrapper > * {
   width: 50%;
 }
-.home-main-banner-carousel .mos-owl-carousel .item .text-part .title {
-}
-.home-main-banner-carousel .mos-owl-carousel .active .item .text-part .title {
+
+.mos-slider-wrapper .mos-owl-carousel .active .item .text-part .title {
   -webkit-animation-name: fadeInLeftBig;
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: 1;
@@ -975,7 +965,7 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   animation-duration: 1s;
   animation-iteration-count: 1;
 }
-.home-main-banner-carousel
+.mos-slider-wrapper
   .mos-owl-carousel
   .active
   .item
@@ -988,19 +978,14 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   animation-duration: 1.2s;
   animation-iteration-count: 1;
 }
-.home-main-banner-carousel .mos-owl-carousel .item .wrapper .media-part {
+.mos-slider-wrapper .mos-owl-carousel .item .wrapper .media-part {
   position: relative;
 }
-.home-main-banner-carousel .mos-owl-carousel .item .wrapper .media-part img {
+.mos-slider-wrapper .mos-owl-carousel .item .wrapper .media-part img {
   max-height: 400px;
   width: auto;
 }
-.home-main-banner-carousel
-  .mos-owl-carousel
-  .active
-  .item
-  .media-part
-  .image-1 {
+.mos-slider-wrapper .mos-owl-carousel .active .item .media-part .image-1 {
   -webkit-animation-name: fadeInRightBig;
   -webkit-animation-duration: 1s;
   -webkit-animation-iteration-count: 1;
@@ -1008,12 +993,7 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   animation-duration: 1s;
   animation-iteration-count: 1;
 }
-.home-main-banner-carousel
-  .mos-owl-carousel
-  .active
-  .item
-  .media-part
-  .image-2 {
+.mos-slider-wrapper .mos-owl-carousel .active .item .media-part .image-2 {
   -webkit-animation-name: fadeInRightBig;
   -webkit-animation-duration: 1.2s;
   -webkit-animation-iteration-count: 1;
@@ -1021,32 +1001,24 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   animation-duration: 1.2s;
   animation-iteration-count: 1;
 }
-.home-main-banner-carousel
-  .mos-owl-carousel
-  .item
-  .wrapper
-  .media-part
-  .image-2 {
+.mos-slider-wrapper .mos-owl-carousel .item .wrapper .media-part .image-2 {
   position: absolute;
   top: 0;
   left: 0;
 }
-.home-main-banner-carousel
-  .mos-owl-carousel
-  .item
-  .wrapper
-  .media-part
-  .image-2
-  img {
-}
-.home-main-banner-carousel .owl-theme .owl-nav {
+.mos-slider-wrapper .owl-theme .owl-nav {
   margin-top: 0;
 }
-.home-main-banner-carousel .owl-theme .owl-dots,
-.home-main-banner-carousel .owl-theme .owl-nav {
+.mos-slider-wrapper .owl-theme .owl-dots,
+.mos-slider-wrapper .owl-theme .owl-nav {
   text-align: left;
 }
-.home-main-banner-carousel .owl-theme .owl-nav [class*="owl-"] {
+.mos-slider-wrapper .owl-theme .owl-dots {
+  margin-top: -25px !important;
+  z-index: 1;
+  position: relative;
+}
+.mos-slider-wrapper .owl-theme .owl-nav [class*="owl-"] {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -1065,32 +1037,24 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   transition: all 0.3s ease-out;
 }
 .home-main-banner:hover
-  .home-main-banner-carousel
+  .mos-slider-wrapper
   .owl-theme
   .owl-nav
   [class*="owl-"] {
   opacity: 1;
 }
-.home-main-banner-carousel .owl-carousel .owl-nav .owl-prev {
+.mos-slider-wrapper .owl-carousel .owl-nav .owl-prev {
   left: -88px;
   background-image: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='512' height='512'%3E%3Ctitle%3Earrow-svg%3C/title%3E%3Cstyle%3E.s0 %7B fill: %23000000 %7D %3C/style%3E%3Cg id='Layer'%3E%3Cg id='Layer 65'%3E%3Cpath id='Layer' class='s0' d='m34.7 62q-0.2-0.1-0.4-0.2-0.2-0.1-0.3-0.2-0.2-0.2-0.4-0.3l-23.2-28q-0.2-0.3-0.3-0.6-0.1-0.3-0.1-0.7 0-0.3 0.1-0.7 0.1-0.3 0.3-0.6l23.2-28c0.4-0.4 0.9-0.6 1.4-0.6 0.5-0.1 1 0.1 1.4 0.4 0.4 0.3 0.7 0.8 0.7 1.3 0.1 0.6-0.1 1.1-0.4 1.5l-22.1 26.7 22.1 26.7q0.4 0.5 0.5 1 0 0.6-0.2 1.2-0.3 0.5-0.8 0.8-0.4 0.3-1 0.3-0.2 0-0.5 0z'/%3E%3Cpath id='Layer' class='s0' d='m51.5 62q-0.2-0.1-0.4-0.2-0.2-0.1-0.4-0.2-0.1-0.2-0.3-0.3l-23.2-28q-0.2-0.3-0.3-0.6-0.1-0.3-0.1-0.7 0-0.3 0.1-0.7 0.1-0.3 0.3-0.6l23.2-28c0.4-0.4 0.8-0.7 1.4-0.7 0.5-0.1 1.1 0.1 1.5 0.4 0.4 0.4 0.6 0.9 0.7 1.4 0 0.5-0.1 1.1-0.5 1.5l-22.2 26.7 22.2 26.7q0.4 0.5 0.5 1 0 0.6-0.2 1.2-0.3 0.5-0.8 0.8-0.5 0.3-1 0.3-0.3 0-0.5 0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
-.home-main-banner-carousel .owl-carousel .owl-nav .owl-next {
+.mos-slider-wrapper .owl-carousel .owl-nav .owl-next {
   right: -88px;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 64 64' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cg data-name='Layer 65'%3E%3Cpath d='M28.79 62a2 2 0 0 1-1.54-3.28L49.4 32 27.25 5.28a2 2 0 0 1 3.08-2.55l23.21 28a2 2 0 0 1 0 2.55l-23.21 28a2 2 0 0 1-1.54.72z' fill='%23000000' data-original='%23000000'%3E%3C/path%3E%3Cpath d='M12 62a2 2 0 0 1-1.54-3.28L32.62 32 10.46 5.28a2 2 0 1 1 3.08-2.55l23.21 28a2 2 0 0 1 0 2.55l-23.21 28A2 2 0 0 1 12 62z' fill='%23000000' data-original='%23000000'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }
-.home-main-banner:hover
-  .home-main-banner-carousel
-  .owl-carousel
-  .owl-nav
-  .owl-prev {
+.home-main-banner:hover .mos-slider-wrapper .owl-carousel .owl-nav .owl-prev {
   left: -44px;
 }
-.home-main-banner:hover
-  .home-main-banner-carousel
-  .owl-carousel
-  .owl-nav
-  .owl-next {
+.home-main-banner:hover .mos-slider-wrapper .owl-carousel .owl-nav .owl-next {
   right: -44px;
 }
 .home-product-slider-section .owl-item {
@@ -2379,18 +2343,10 @@ body.more-then-one-product-available .usp-group {
 }
 
 @media (max-width: 767.98px) {
-  .home-main-banner:hover
-    .home-main-banner-carousel
-    .owl-carousel
-    .owl-nav
-    .owl-prev {
+  .home-main-banner:hover .mos-slider-wrapper .owl-carousel .owl-nav .owl-prev {
     left: 0;
   }
-  .home-main-banner:hover
-    .home-main-banner-carousel
-    .owl-carousel
-    .owl-nav
-    .owl-next {
+  .home-main-banner:hover .mos-slider-wrapper .owl-carousel .owl-nav .owl-next {
     right: 0;
   }
   .woocommerce.single-product ul.products[class*="columns-"] li.product,
@@ -2408,11 +2364,11 @@ body.more-then-one-product-available .usp-group {
 }
 
 @media (max-width: 575.98px) {
-  .home-main-banner-carousel .mos-owl-carousel .item .wrapper {
+  .mos-slider-wrapper .mos-owl-carousel .item .wrapper {
     flex-direction: column-reverse;
     padding: 15px;
   }
-  .home-main-banner-carousel .mos-owl-carousel .item .wrapper > * {
+  .mos-slider-wrapper .mos-owl-carousel .item .wrapper > * {
     width: 100%;
   }
 
