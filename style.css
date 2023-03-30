@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.31
+Version: 1.0.32
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -964,6 +964,7 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   animation-name: fadeInLeftBig;
   animation-duration: 1s;
   animation-iteration-count: 1;
+  text-shadow: 0px 0px 5px #ffffff;
 }
 .mos-slider-wrapper
   .mos-owl-carousel
@@ -1030,33 +1031,24 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   background-repeat: no-repeat;
   text-indent: -99px;
   overflow: hidden;
-  opacity: 0;
+  opacity: 1;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
-.home-main-banner:hover
-  .mos-slider-wrapper
-  .owl-theme
-  .owl-nav
-  [class*="owl-"] {
-  opacity: 1;
-}
+
 .mos-slider-wrapper .owl-carousel .owl-nav .owl-prev {
-  left: -88px;
-  background-image: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='512' height='512'%3E%3Ctitle%3Earrow-svg%3C/title%3E%3Cstyle%3E.s0 %7B fill: %23000000 %7D %3C/style%3E%3Cg id='Layer'%3E%3Cg id='Layer 65'%3E%3Cpath id='Layer' class='s0' d='m34.7 62q-0.2-0.1-0.4-0.2-0.2-0.1-0.3-0.2-0.2-0.2-0.4-0.3l-23.2-28q-0.2-0.3-0.3-0.6-0.1-0.3-0.1-0.7 0-0.3 0.1-0.7 0.1-0.3 0.3-0.6l23.2-28c0.4-0.4 0.9-0.6 1.4-0.6 0.5-0.1 1 0.1 1.4 0.4 0.4 0.3 0.7 0.8 0.7 1.3 0.1 0.6-0.1 1.1-0.4 1.5l-22.1 26.7 22.1 26.7q0.4 0.5 0.5 1 0 0.6-0.2 1.2-0.3 0.5-0.8 0.8-0.4 0.3-1 0.3-0.2 0-0.5 0z'/%3E%3Cpath id='Layer' class='s0' d='m51.5 62q-0.2-0.1-0.4-0.2-0.2-0.1-0.4-0.2-0.1-0.2-0.3-0.3l-23.2-28q-0.2-0.3-0.3-0.6-0.1-0.3-0.1-0.7 0-0.3 0.1-0.7 0.1-0.3 0.3-0.6l23.2-28c0.4-0.4 0.8-0.7 1.4-0.7 0.5-0.1 1.1 0.1 1.5 0.4 0.4 0.4 0.6 0.9 0.7 1.4 0 0.5-0.1 1.1-0.5 1.5l-22.2 26.7 22.2 26.7q0.4 0.5 0.5 1 0 0.6-0.2 1.2-0.3 0.5-0.8 0.8-0.5 0.3-1 0.3-0.3 0-0.5 0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  left: 0;
+  /* background-image: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='512' height='512'%3E%3Ctitle%3Earrow-svg%3C/title%3E%3Cstyle%3E.s0 %7B fill: %23000000 %7D %3C/style%3E%3Cg id='Layer'%3E%3Cg id='Layer 65'%3E%3Cpath id='Layer' class='s0' d='m34.7 62q-0.2-0.1-0.4-0.2-0.2-0.1-0.3-0.2-0.2-0.2-0.4-0.3l-23.2-28q-0.2-0.3-0.3-0.6-0.1-0.3-0.1-0.7 0-0.3 0.1-0.7 0.1-0.3 0.3-0.6l23.2-28c0.4-0.4 0.9-0.6 1.4-0.6 0.5-0.1 1 0.1 1.4 0.4 0.4 0.3 0.7 0.8 0.7 1.3 0.1 0.6-0.1 1.1-0.4 1.5l-22.1 26.7 22.1 26.7q0.4 0.5 0.5 1 0 0.6-0.2 1.2-0.3 0.5-0.8 0.8-0.4 0.3-1 0.3-0.2 0-0.5 0z'/%3E%3Cpath id='Layer' class='s0' d='m51.5 62q-0.2-0.1-0.4-0.2-0.2-0.1-0.4-0.2-0.1-0.2-0.3-0.3l-23.2-28q-0.2-0.3-0.3-0.6-0.1-0.3-0.1-0.7 0-0.3 0.1-0.7 0.1-0.3 0.3-0.6l23.2-28c0.4-0.4 0.8-0.7 1.4-0.7 0.5-0.1 1.1 0.1 1.5 0.4 0.4 0.4 0.6 0.9 0.7 1.4 0 0.5-0.1 1.1-0.5 1.5l-22.2 26.7 22.2 26.7q0.4 0.5 0.5 1 0 0.6-0.2 1.2-0.3 0.5-0.8 0.8-0.5 0.3-1 0.3-0.3 0-0.5 0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
+  background-image: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='512' height='512'%3E%3Ctitle%3Earrow-right-2-svg%3C/title%3E%3Cstyle%3E.s0 %7B fill: %23000000 %7D %3C/style%3E%3Cg id='Layer'%3E%3Cpath id='Layer' class='s0' d='m21.3 29.6l16.5-16.5 2.4-2.4c1.8-1.8 4.7 1 2.8 2.8l-16.5 16.5-0.9 0.9 15 15 2.3 2.3c1.8 1.8-1 4.7-2.8 2.8l-16.4-16.4-2.3-2.3c-0.9-0.6-0.9-1.9-0.1-2.7z'/%3E%3C/g%3E%3C/svg%3E");
 }
 .mos-slider-wrapper .owl-carousel .owl-nav .owl-next {
-  right: -88px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 64 64' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cg data-name='Layer 65'%3E%3Cpath d='M28.79 62a2 2 0 0 1-1.54-3.28L49.4 32 27.25 5.28a2 2 0 0 1 3.08-2.55l23.21 28a2 2 0 0 1 0 2.55l-23.21 28a2 2 0 0 1-1.54.72z' fill='%23000000' data-original='%23000000'%3E%3C/path%3E%3Cpath d='M12 62a2 2 0 0 1-1.54-3.28L32.62 32 10.46 5.28a2 2 0 1 1 3.08-2.55l23.21 28a2 2 0 0 1 0 2.55l-23.21 28A2 2 0 0 1 12 62z' fill='%23000000' data-original='%23000000'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  right: 0;
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 64 64' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cg data-name='Layer 65'%3E%3Cpath d='M28.79 62a2 2 0 0 1-1.54-3.28L49.4 32 27.25 5.28a2 2 0 0 1 3.08-2.55l23.21 28a2 2 0 0 1 0 2.55l-23.21 28a2 2 0 0 1-1.54.72z' fill='%23000000' data-original='%23000000'%3E%3C/path%3E%3Cpath d='M12 62a2 2 0 0 1-1.54-3.28L32.62 32 10.46 5.28a2 2 0 1 1 3.08-2.55l23.21 28a2 2 0 0 1 0 2.55l-23.21 28A2 2 0 0 1 12 62z' fill='%23000000' data-original='%23000000'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='512' height='512' x='0' y='0' viewBox='0 0 64 64' style='enable-background:new 0 0 512 512' xml:space='preserve' class=''%3E%3Cg%3E%3Cpath d='M42.7 29.6 26.2 13.1l-2.4-2.4c-1.8-1.8-4.7 1-2.8 2.8L37.5 30l.9.9-15 15-2.3 2.3c-1.8 1.8 1 4.7 2.8 2.8l16.4-16.4 2.3-2.3c.9-.6.9-1.9.1-2.7z' fill='%23000000' data-original='%23000000' class=''%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
-.home-main-banner:hover .mos-slider-wrapper .owl-carousel .owl-nav .owl-prev {
-  left: -44px;
-}
-.home-main-banner:hover .mos-slider-wrapper .owl-carousel .owl-nav .owl-next {
-  right: -44px;
-}
+
 .home-product-slider-section .owl-item {
   padding: 20px 10px;
 }
@@ -2343,12 +2335,6 @@ body.more-then-one-product-available .usp-group {
 }
 
 @media (max-width: 767.98px) {
-  .home-main-banner:hover .mos-slider-wrapper .owl-carousel .owl-nav .owl-prev {
-    left: 0;
-  }
-  .home-main-banner:hover .mos-slider-wrapper .owl-carousel .owl-nav .owl-next {
-    right: 0;
-  }
   .woocommerce.single-product ul.products[class*="columns-"] li.product,
   .woocommerce-page.single-product ul.products[class*="columns-"] li.product {
     width: 100% !important;

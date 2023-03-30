@@ -1,10 +1,12 @@
 <?php
 function add_slug_body_class( $classes ) {
     global $post;
-    if ( isset( $post ) AND $post->post_type == 'page' ) {
-        $classes[] = $post->post_type . '-' . $post->post_name;
-    } else {
-        $classes[] = $post->post_type . '-archive';
+    if (@$post && isset( $post )){
+        if ($post->post_type == 'page' ) {
+            $classes[] = $post->post_type . '-' . $post->post_name;
+        } else {
+            $classes[] = $post->post_type . '-archive';
+        }
     }
     
     if ( is_user_logged_in() ) {
@@ -18,7 +20,8 @@ function add_slug_body_class( $classes ) {
         $classes[] = $prefix .'-product-available';
     }*/
     if (taxonomy_exists( 'product_cat' ) && !is_shop()) {
-        $term_id = get_queried_object()->term_id;
+        $term = get_queried_object();
+        $term_id = (@$term)?$term->term_id:0;
         $termchildren = get_term_children( $term_id, 'product_cat' );
         if (sizeof($termchildren)) {
             $classes[] = 'mos-product-cat-parent';

@@ -217,7 +217,8 @@ function mos_woocommerce_add_to_cart_button_text_single() {
 // Change add to cart text on product archives page
 add_filter( 'woocommerce_product_add_to_cart_text', 'mos_woocommerce_add_to_cart_button_text_archives' );  
 function mos_woocommerce_add_to_cart_button_text_archives() {
-	global $product;
+	//global $product;
+	$product = wc_get_product( get_the_ID() );
 	if($product){
 		if ($product->get_stock_status() == 'outofstock')
 		return __( carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-outofstock' ), 'woocommerce' );
@@ -258,7 +259,7 @@ add_action('woocommerce_single_product_summary', 'mos_out_of_stock_text', 30);
 function mos_out_of_stock_text () {	
 	global $product;
 	if($product->get_stock_status() == 'outofstock') {
-		echo '<span class="button mos-outofstock-single-button">Out of Stock</span>';
+		echo '<span class="button mos-outofstock-single-button">Slut i lager</span>';
 	}
 }
 add_action('woocommerce_single_product_summary', 'mos_usp_text', 30);
@@ -416,3 +417,18 @@ function wcc_change_breadcrumb_delimiter( $defaults ) {
 	$defaults['delimiter'] = ' &gt; ';
 	return $defaults;
 }
+
+function tax_cat_active( $output, $args ) {
+
+	if(is_single()){
+	  global $post;
+  
+	  $terms = get_the_terms( $post->ID, $args['taxonomy'] );
+	  foreach( $terms as $term )
+		  if ( preg_match( '#cat-item-' . $term ->term_id . '#', $output ) )
+			  $output = str_replace('cat-item-'.$term ->term_id, 'cat-item-'.$term ->term_id . ' current-cat', $output);
+	}
+  
+	return $output;
+  }
+  add_filter( 'wp_list_categories', 'tax_cat_active', 10, 2 );

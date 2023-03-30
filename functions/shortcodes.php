@@ -225,26 +225,31 @@ function mos_product_status( ) {
     if($product->is_in_stock()) {
         $stock = [
             'class' => 'in-stock',
-            //'name'  => $availability['availability'] ? $availability['availability'] : __('In Stock', 'woodmart'),
-            'name'  => __('In Stock', 'woodmart'),
+            //'name'  => $availability['availability'] ? $availability['availability'] : __('In Stock', 'woocommerce'),
+            //'name'  => esc_html__('In Stock', 'woocommerce'),
+            'name'  => esc_html__('I lager', 'woocommerce'),
         ];
     } elseif($product->is_on_backorder()) {
         $stock = [
             'class' => 'on-backorder',
-            'name'  => esc_html__('Backorder', 'woodmart'),
+            //'name'  => esc_html__('Backorder', 'woocommerce'),
+            'name'  => esc_html__('Restorder', 'woocommerce'),
         ];
     } else {
         $stock = [
             'class' => 'out-of-stock',
-            //'name'  => esc_html__('Ej i lager', 'woodmart'),
-            'name'  => __('Out of Stock', 'woodmart'),
+            //'name'  => esc_html__('Ej i lager', 'woocommerce'),
+            //'name'  => esc_html__('Out of Stock', 'woocommerce'),
+            'name'  => esc_html__('Slut i lager', 'woocommerce'),
         ];
     }
+    //return esc_html_e('In Stock');
 	return '<div class="mos-product-stock '.$stock['class'].'">'.$stock['name'].'</div>';
     //echo sprintf('<div class="wd-product-stock %1$s">%2$s</div>', $stock['class'], $stock['name']);
 }
 add_shortcode('product-status', 'mos_product_status');
 function mos_product_cat_filter_func( $atts = array(), $content = null ) {
+    $cterm = get_queried_object();
 	$html = '';
 	$atts = shortcode_atts( array(
 		'class' => '',
@@ -261,7 +266,8 @@ function mos_product_cat_filter_func( $atts = array(), $content = null ) {
 		if(@$term && $term->name !='product') {
             //var_dump($term->name);
 			$parent_term = (@$term->parent)?get_term($term->parent):$term;    
-			$termchildren = get_term_children( (@$parent_term->term_id)?$parent_term->term_id:0, $taxonomy_name );    
+			$termchildren = get_term_children( (@$parent_term->term_id)?$parent_term->term_id:0, $taxonomy_name );  
+            $active_class = ($cterm->name == $parent_term->name)?'active':'';  
 			$args = array(
 				'taxonomy' => $taxonomy_name,
 				'depth'    => 1,
