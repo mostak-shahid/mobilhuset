@@ -49,4 +49,5 @@ $wrapper_classes   = apply_filters( 'woocommerce_single_product_image_gallery_cl
 		do_action( 'woocommerce_product_thumbnails' );
 		?>
 	</figure>
+	<div class="woocommerce-after-product-thumbnails"><?php do_action( 'woocommerce_after_product_thumbnails' ); ?></div>
 </div>

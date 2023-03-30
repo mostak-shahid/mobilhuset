@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.32
+Version: 1.0.33
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -1326,6 +1326,7 @@ body.woocommerce #shop-main {
 
 body.woocommerce.single-product #shop-main {
   margin-top: 20px;
+  position: relative;
 }
 body.woocommerce.single-product .mos-outofstock-single-button {
   display: inline-block;
@@ -1349,6 +1350,21 @@ body.woocommerce.single-product .mos-outofstock-single-button {
     border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
   border-radius: 4px;
   margin-bottom: 10px;
+}
+body.woocommerce.single-product
+  div.product
+  div.images.woocommerce-product-gallery {
+  display: flex;
+  flex-direction: column;
+}
+body.woocommerce.single-product
+  div.product
+  div.images.woocommerce-product-gallery
+  .woocommerce-after-product-thumbnails {
+  order: 1;
+}
+body.woocommerce.single-product .related.products {
+  clear: both;
 }
 .woocommerce ul.products {
   display: grid;
@@ -1716,6 +1732,11 @@ body.woocommerce.single-product .mos-outofstock-single-button {
 .woocommerce.single-product div.product .woocommerce-tabs ul.tabs {
   padding: 0;
   margin: 0;
+  position: sticky;
+  top: 45px;
+  z-index: 3;
+  background-color: #ffffff;
+  border-bottom: 1px solid #d3ced2;
 }
 .woocommerce.single-product div.product .woocommerce-tabs ul.tabs::before {
   display: none;
@@ -1743,6 +1764,7 @@ body.woocommerce.single-product .mos-outofstock-single-button {
 .woocommerce div.product .woocommerce-tabs .panel {
   border: 1px solid #d3ced2;
   padding: 15px;
+  border-top-style: none;
 }
 .woocommerce.single-product div.product .woocommerce-tabs .panel .tab-title {
   display: none;
@@ -2026,6 +2048,9 @@ body.more-then-one-product-available .usp-group {
 .widget .product-category-filter-wrapper > ul::-webkit-scrollbar-thumb:hover,
 .widget > ul::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+.widget .product-category-filter-wrapper .current-cat a {
+  font-weight: 700;
 }
 .widget ul ul {
   padding-left: 10px;
