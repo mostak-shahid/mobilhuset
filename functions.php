@@ -1,5 +1,5 @@
 <?php
-show_admin_bar( false );
+// show_admin_bar( false );
 // add_filter('show_admin_bar', false, PHP_INT_MAX);
 function disable_edit_options() {
 	define('DISALLOW_FILE_EDIT',true);
