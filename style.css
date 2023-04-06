@@ -1380,6 +1380,7 @@ body.woocommerce.single-product .comment-reply-title {
   display: block;
 }
 /*body.woocommerce.single-product #comments,*/
+.woocommerce #reviews #comments .woocommerce-noreviews,
 .woocommerce #reviews #comments ol.commentlist,
 body.woocommerce.single-product #review_form_wrapper,
 body.woocommerce.single-product .woobt-products {
