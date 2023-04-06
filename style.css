@@ -1398,7 +1398,7 @@ body.woocommerce.single-product #review_form_wrapper form {
 body.woocommerce.single-product #comments {
   margin-bottom: 20px;
 }
-body.woocommerce.single-product .comment-form .comment-form-author label {
+body.woocommerce.single-product .comment-form label {
   display: block;
   margin-bottom: 5px;
 }
