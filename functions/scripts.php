@@ -106,7 +106,7 @@ function mosgutenberg_enqueue_scripts() {
 	wp_register_style( 'style', get_template_directory_uri() .  '/style.css', '', time());
 	wp_enqueue_style( 'style' );
 		
-	wp_register_script('main.min', get_template_directory_uri() . '/js/main.js', 'jquery', '', true);
+	wp_register_script('main.min', get_template_directory_uri() . '/js/main.js', 'jquery', time(), true);
 	wp_enqueue_script( 'main.min' );
 
 }
