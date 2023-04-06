@@ -608,3 +608,4 @@ function custom_get_availability( $availability, $_product ) {
 
   return $availability;
 }
+

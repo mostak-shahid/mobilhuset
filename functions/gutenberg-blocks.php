@@ -406,13 +406,15 @@ function mos_gutenberg_blocks() {
         $id = 'element-'.time().rand(1000, 9999);
         ?>
         <div id="<?php echo $id ?>" class="mos-product-categories-block-wrapper <?php echo @$fields['mos_product_categories_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
-        <?php foreach($fields['mos_product_categories_items'] as $index=>$item) :?>
+        <?php foreach($fields['mos_product_categories_items'] as $index=>$item) :
+            $term = get_term( (int)$item['id'] , 'product_cat' );
+            $link = get_term_link( (int)$item['id'], 'product_cat' );
+            $thumbnail_id = get_term_meta( (int)$item['id'], 'thumbnail_id', true );  
+            if($term) :                          
+            ?>
+
             <div class="unit position-relative unit-<?php echo $index ?> <?php echo @$fields['mos_product_categories_block_unit_class'] ?>">
-                <?php 
-                $term = get_term( (int)$item['id'] , 'product_cat' );
-                $link = get_term_link( (int)$item['id'], 'product_cat' );
-                $thumbnail_id = get_term_meta( (int)$item['id'], 'thumbnail_id', true );                            
-                ?>
+                
                 <div class="part-img">
                     <?php 
                     if (@$fields['mos_product_categories_block_image_size']) echo '<img class="img-responsive img-fluid" src="' .aq_resize(wp_get_attachment_url($thumbnail_id),$fields['mos_product_categories_block_image_size'],$fields['mos_product_categories_block_image_size'], true).'" width="'.$fields['mos_product_categories_block_image_size'].'" height="'.$fields['mos_product_categories_block_image_size'].'" alt="'.$term->name.'">';                    
@@ -422,6 +424,7 @@ function mos_gutenberg_blocks() {
                 <div class="part-text"><?php echo $term->name; ?></div>
                 <a href="<?php echo $link ?>" class="hidden-link">Read more about <?php echo $term->name; ?></a>
             </div>
+            <?php endif?>
         <?php endforeach;?>
         </div>
         <style>
