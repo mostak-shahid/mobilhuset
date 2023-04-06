@@ -261,7 +261,7 @@ add_action('woocommerce_single_product_summary', 'mos_out_of_stock_text', 30);
 function mos_out_of_stock_text () {	
 	global $product;
 	if($product->get_stock_status() == 'outofstock') {
-		echo '<span class="button mos-outofstock-single-button">Slut i lager</span>';
+		echo '<span class="button mos-outofstock-single-button">'.carbon_get_theme_option( 'mos-woocommerce-outofstock-text' ).'</span>';
 	}
 }
 add_action('woocommerce_single_product_summary', 'mos_usp_text', 30);
