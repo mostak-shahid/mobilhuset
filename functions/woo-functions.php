@@ -583,15 +583,28 @@ function wcc_change_breadcrumb_delimiter( $defaults ) {
 
 function tax_cat_active( $output, $args ) {
 
-	if(is_single()){
-	  global $post;
-  
-	  $terms = get_the_terms( $post->ID, $args['taxonomy'] );
-	  foreach( $terms as $term )
-		  if ( preg_match( '#cat-item-' . $term ->term_id . '#', $output ) )
-			  $output = str_replace('cat-item-'.$term ->term_id, 'cat-item-'.$term ->term_id . ' current-cat', $output);
-	}
-  
-	return $output;
-  }
-  add_filter( 'wp_list_categories', 'tax_cat_active', 10, 2 );
+if(is_single()){
+	global $post;
+
+	$terms = get_the_terms( $post->ID, $args['taxonomy'] );
+	foreach( $terms as $term )
+		if ( preg_match( '#cat-item-' . $term ->term_id . '#', $output ) )
+			$output = str_replace('cat-item-'.$term ->term_id, 'cat-item-'.$term ->term_id . ' current-cat', $output);
+}
+
+return $output;
+}
+add_filter( 'wp_list_categories', 'tax_cat_active', 10, 2 );
+
+add_filter( 'woocommerce_get_availability', 'custom_get_availability', 1, 2);
+
+function custom_get_availability( $availability, $_product ) {
+  global $product;
+  $stock = $product->get_stock_quantity();
+
+  if ( $_product->is_in_stock() ) $availability['availability'] = carbon_get_theme_option( 'mos-woocommerce-instock-text' );
+  elseif ( $_product->is_on_backorder() ) $availability['availability'] = carbon_get_theme_option( 'mos-woocommerce-backorder-text' );
+  else $availability['availability'] = carbon_get_theme_option( 'mos-woocommerce-outofstock-text' );
+
+  return $availability;
+}

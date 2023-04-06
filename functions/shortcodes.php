@@ -227,20 +227,23 @@ function mos_product_status( ) {
             'class' => 'in-stock',
             //'name'  => $availability['availability'] ? $availability['availability'] : __('In Stock', 'woocommerce'),
             //'name'  => esc_html__('In Stock', 'woocommerce'),
-            'name'  => esc_html__('I lager', 'woocommerce'),
+            //'name'  => esc_html__('I lager', 'woocommerce'),
+            'name'  => carbon_get_theme_option( 'mos-woocommerce-instock-text' ),
         ];
     } elseif($product->is_on_backorder()) {
         $stock = [
             'class' => 'on-backorder',
             //'name'  => esc_html__('Backorder', 'woocommerce'),
-            'name'  => esc_html__('Restorder', 'woocommerce'),
+            //'name'  => esc_html__('Restorder', 'woocommerce'),
+            'name'  => carbon_get_theme_option( 'mos-woocommerce-backorder-text' ),            
         ];
     } else {
         $stock = [
             'class' => 'out-of-stock',
             //'name'  => esc_html__('Ej i lager', 'woocommerce'),
             //'name'  => esc_html__('Out of Stock', 'woocommerce'),
-            'name'  => esc_html__('Slut i lager', 'woocommerce'),
+            //'name'  => esc_html__('Slut i lager', 'woocommerce'),
+            'name'  => carbon_get_theme_option( 'mos-woocommerce-outofstock-text' ),
         ];
     }
     //return esc_html_e('In Stock');

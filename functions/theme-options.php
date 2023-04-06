@@ -348,7 +348,17 @@ function mos_theme_options() {
         ->set_required( true ),
         Field::make('text', 'mos-woocommerce-add-to-cart-text-outofstock', __('Add to cart button text for out of stock product'))
         ->set_default_value("Read More")
+        ->set_required( true ),        
+        Field::make('text', 'mos-woocommerce-instock-text', __('In Stock text'))
+        ->set_default_value("In Stock")
         ->set_required( true ),
+        Field::make('text', 'mos-woocommerce-outofstock-text', __('Out of Stock text'))
+        ->set_default_value("Out of Stock")
+        ->set_required( true ),
+        Field::make('text', 'mos-woocommerce-backorder-text', __('Backorder text'))
+        ->set_default_value("Backorder")
+        ->set_required( true ),
+
         Field::make( 'select', 'mos-woocommerce-show-price', __( 'Price visible to' ) )
         ->set_options( array(
             'all' => 'All',
