@@ -266,15 +266,48 @@ function mos_out_of_stock_text () {
 }
 add_action('woocommerce_single_product_summary', 'mos_usp_text', 30);
 function mos_usp_text () {
-	?>
-	<ul class="list-inline usp-group">
-		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-purchase-fbg.svg" alt="Snabb Leverans"><span class="usp-text">Snabb Leverans</span></li>
-		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-payments-vCm.svg" alt="Säkra betalningar"><span class="usp-text">Säkra betalningar</span></li>
-		<li class="list-inline-item"><img class="img-usp" src="<?php echo get_template_directory_uri() ?>/images/Vector-delivery-ua6.svg" alt="14 dagars öppet köp"><span class="usp-text">14 dagars öppet köp</span></li>
-	</ul>
-	<?php
+	//mos-woocommerce-usp
+	$usp = carbon_get_theme_option( 'mos-woocommerce-usp');
+	if(sizeof($usp)): ?>
+		<ul class="list-inline usp-group">
+			<?php foreach($usp as $key => $value) : ?>
+			<li class="list-inline-item position-relative">
+				<?php if ($value["image"]) : ?>
+					<?php echo wp_get_attachment_image( $value["image"], "full", "", array( "class" => "img-usp img-fluid" ) );  ?>
+				<?php endif?>
+				<?php if ($value["title"]) : ?>
+					<span class="usp-text"><?php echo do_shortcode($value["title"]) ?></span>
+				<?php endif?>
+				<?php if ($value["link"]) : ?>
+					<a class="hidden-link" href="<?php echo do_shortcode($value["link"]) ?>">Read more about <?php echo do_shortcode($value["title"]) ?></a>
+				<?php endif?>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	<?php endif;
 }
-add_action('woocommerce_single_product_summary', 'mos_product_reply', 31);
+
+add_action( 'woocommerce_single_product_summary', 'mos_product_reply', 32);
+function mos_product_reply(){
+  comments_template();
+}
+
+add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
+function woo_remove_product_tabs( $tabs ) {
+    unset( $tabs['reviews'] );
+    return $tabs;
+}
+
+/*
+add_filter( 'woocommerce_product_tabs','woocommerce_product_reviews_tab');
+//remove_action( 'woocommerce_product_tab_panels','woocommerce_product_reviews_panel', 30);
+function woocommerce_product_reviews_tab ( $tabs ) {
+    //unset( $tabs['additional_information'] ); 
+	unset( $tabs['reviews'] );
+    return $tabs;
+}
+
+add_action('woocommerce_single_product_summary', 'mos_product_reply', 32);
 function mos_product_reply () {
 	global $product;
 
@@ -289,7 +322,7 @@ function mos_product_reply () {
 				<?php
 				$count = $product->get_review_count();
 				if ( $count && wc_review_ratings_enabled() ) {
-					/* translators: 1: reviews count 2: product name */
+					// translators: 1: reviews count 2: product name
 					$reviews_title = sprintf( esc_html( _n( '%1$s review for %2$s', '%1$s reviews for %2$s', $count, 'woocommerce' ) ), esc_html( $count ), '<span>' . get_the_title() . '</span>' );
 					echo apply_filters( 'woocommerce_reviews_title', $reviews_title, $count, $product ); // WPCS: XSS ok.
 				} else {
@@ -330,9 +363,9 @@ function mos_product_reply () {
 					<?php
 					$commenter    = wp_get_current_commenter();
 					$comment_form = array(
-						/* translators: %s is product title */
+						// translators: %s is product title 
 						'title_reply'         => have_comments() ? esc_html__( 'Add a review', 'woocommerce' ) : sprintf( esc_html__( 'Be the first to review &ldquo;%s&rdquo;', 'woocommerce' ), get_the_title() ),
-						/* translators: %s is product title */
+						// translators: %s is product title
 						'title_reply_to'      => esc_html__( 'Leave a Reply to %s', 'woocommerce' ),
 						'title_reply_before'  => '<span id="reply-title" class="comment-reply-title">',
 						'title_reply_after'   => '</span>',
@@ -375,7 +408,7 @@ function mos_product_reply () {
 	
 					$account_page_url = wc_get_page_permalink( 'myaccount' );
 					if ( $account_page_url ) {
-						/* translators: %s opening and closing link tags respectively */
+						// translators: %s opening and closing link tags respectively
 						$comment_form['must_log_in'] = '<p class="must-log-in">' . sprintf( esc_html__( 'You must be %1$slogged in%2$s to post a review.', 'woocommerce' ), '<a href="' . esc_url( $account_page_url ) . '">', '</a>' ) . '</p>';
 					}
 	
@@ -404,6 +437,7 @@ function mos_product_reply () {
 	</div>
 	<?php
 }
+*/
 add_action('woocommerce_archive_description', 'mos_archive_banner', 1);
 function mos_archive_banner() {
 	$term_id = get_queried_object_id();
@@ -476,7 +510,7 @@ function mos_div_wrapper_end() {
  */
 add_filter( 'woocommerce_product_tabs', 'woo_new_product_tab' );
 function woo_new_product_tab( $tabs ) {
-	unset( $tabs['reviews'] );
+	//unset( $tabs['reviews'] );
 	global $product;
 	$product_tabs = carbon_get_post_meta( $product->get_id(), 'mos_product_tabs' );
 	// Adds the new tab
@@ -514,7 +548,7 @@ function mos_woo_move_description_tab($tabs) {
 		}
 	}
     //$tabs['test_tab']['priority'] = 15;
-    //$tabs['reviews']['priority'] = 110;
+    //$tabs['reviews']['priority'] = 30;
     return $tabs;
 }
 

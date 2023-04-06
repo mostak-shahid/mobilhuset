@@ -263,7 +263,7 @@ function mos_product_cat_filter_func( $atts = array(), $content = null ) {
         $term = get_queried_object();
         
 		$args = [];
-		if(@$term && $term->name !='product') {
+		if(@$term && $term->name !='product' && $term->parent) {
             //var_dump($term->name);
 			$parent_term = (@$term->parent)?get_term($term->parent):$term;    
 			$termchildren = get_term_children( (@$parent_term->term_id)?$parent_term->term_id:0, $taxonomy_name );  

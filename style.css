@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.33
+Version: 1.0.34
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -172,6 +172,9 @@ pre {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.logo-wrapper .logo img {
+  width: 100%;
 }
 .mos-menu-block ul {
   list-style: none;
@@ -1366,6 +1369,38 @@ body.woocommerce.single-product
 body.woocommerce.single-product .related.products {
   clear: both;
 }
+body.woocommerce.single-product .woobt-before-text.woobt-text,
+body.woocommerce.single-product #reviews #comments h2,
+body.woocommerce.single-product .comment-reply-title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 31px;
+  margin-bottom: 15px;
+  display: block;
+}
+/*body.woocommerce.single-product #comments,*/
+.woocommerce #reviews #comments ol.commentlist,
+body.woocommerce.single-product #review_form_wrapper,
+body.woocommerce.single-product .woobt-products {
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  padding: 15px;
+}
+body.woocommerce.single-product .comment-reply-title {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+body.woocommerce.single-product #review_form_wrapper form {
+  margin-top: 15px;
+}
+body.woocommerce.single-product #comments {
+  margin-bottom: 20px;
+}
+.woocommerce p.stars a::before,
+.woocommerce .star-rating span::before {
+  color: #faaf40;
+}
 .woocommerce ul.products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1506,7 +1541,7 @@ body.woocommerce.single-product .related.products {
 }
 .woocommerce ul.products li.product .price bdi,
 .products .product .price bdi {
-  color: #d90207;
+  color: var(--mos-primary-color);
   font-weight: 600;
   font-size: 18px;
 }
@@ -1682,6 +1717,16 @@ body.woocommerce.single-product .related.products {
 .woocommerce.single-product div.product .woobt-products form.cart {
   display: block;
 }
+.woocommerce.single-product div.product .woobt-products form.cart:last-child {
+  margin-bottom: 0;
+}
+.woocommerce.single-product
+  div.product
+  .woobt-products
+  form.cart:last-child
+  .woobt-product {
+  border-bottom-style: none;
+}
 .woocommerce.single-product .quantity .qty {
   border: 1px solid var(--mos-primary-color);
 }
@@ -1729,14 +1774,20 @@ body.woocommerce.single-product .related.products {
 .woocommerce.single-product div.product form.cart .quantity.hidden + .button {
   margin-left: 0;
 }
+.woocommerce div.product .woocommerce-tabs {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--mos-primary-color);
+}
 .woocommerce.single-product div.product .woocommerce-tabs ul.tabs {
   padding: 0;
   margin: 0;
   position: sticky;
   top: 45px;
   z-index: 3;
-  background-color: #ffffff;
-  border-bottom: 1px solid #d3ced2;
+  background-color: #bbbbbb;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 .woocommerce.single-product div.product .woocommerce-tabs ul.tabs::before {
   display: none;
@@ -1746,16 +1797,16 @@ body.woocommerce.single-product .related.products {
   background-color: transparent;
   border-style: none;
   margin: 0;
-  border: 1px solid #d3ced2;
-  border-bottom-style: none;
+  border-style: none;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li a {
   text-transform: uppercase;
-  opacity: 0.7;
-  color: #333333;
+  opacity: 1;
+  color: #ffffff;
 }
 .woocommerce div.product .woocommerce-tabs ul.tabs li.active a {
   opacity: 1;
+  color: var(--mos-primary-color);
 }
 .woocommerce.single-product div.product .woocommerce-tabs ul.tabs li::before,
 .woocommerce.single-product div.product .woocommerce-tabs ul.tabs li::after {

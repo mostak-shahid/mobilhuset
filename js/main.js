@@ -171,6 +171,10 @@ jQuery(document).ready(function ($) {
     $('body').on('click', '.sidebar-close', function (){
         $('body').removeClass('active-filter');
     });
+    $('body.woocommerce.single-product #review_form_wrapper form').hide();
+    $('body.woocommerce.single-product .comment-reply-title').click(function(){
+        $(this).next().slideToggle();
+    });
 
     /*$('.searchform').submit(function(e){
         //alert(0);

@@ -377,7 +377,22 @@ function mos_theme_options() {
         ))
         ->set_default_value("Login")
         ->set_required( true ),
-        Field::make('checkbox', 'mos-woocommerce-hide-additional-tab', __('Hide additional tab'))
+        Field::make('checkbox', 'mos-woocommerce-hide-additional-tab', __('Hide additional tab')),
+        
+        Field::make('complex', 'mos-woocommerce-usp', __('USP'))
+        ->add_fields(array(
+            Field::make('text', 'title', __('Title'))
+            ->set_required(true),
+            Field::make('text', 'link', __('Link'))
+            ->set_attribute( 'type', 'url' ),
+            Field::make('image', 'image', __('Image')),
+        ))        
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- link ? "(" + link + ")" : "" %>
+            <% } %>
+        ')
+        ->set_collapsed(true),
     ));
     Container::make('theme_options', __('Footer Section'))
     ->set_page_parent($basic_options_container) // reference to a top level container
