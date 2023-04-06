@@ -448,7 +448,7 @@ function mos_archive_banner() {
 }
 add_action('woocommerce_archive_description', 'mos_archive_banner_title', 2);
 function mos_archive_banner_title() {
-	echo '<h1 class="woocommerce-products-header__title page-title">';
+	echo '<h1 class="woocommerce-products-header__title page-title mb-3">';
 	woocommerce_page_title();
 	echo '</h1>';
 }
