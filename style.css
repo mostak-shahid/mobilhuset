@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.42
+Version: 1.0.43
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -1247,6 +1247,24 @@ li.product .yith-wcwl-add-to-wishlist .feedback + a {
 .woocommerce-product-gallery__wrapper:hover .owl-carousel .owl-nav .owl-next {
   right: 0;
 }
+.woocommerce .term-description.collapsed {
+  height: 72px;
+  overflow: hidden;
+}
+.woocommerce .term-description.opened {
+  height: auto;
+}
+.term-description-readmore {
+  cursor: pointer;
+}
+.term-description-readmore.active .read-more,
+.term-description-readmore .read-less {
+  display: none;
+}
+.term-description-readmore .read-more,
+.term-description-readmore.active .read-less {
+  display: block;
+}
 .woocommerce div.product div.images .flex-control-thumbs li {
   padding: 5px;
 }
@@ -1665,7 +1683,6 @@ body.woocommerce.single-product
 }
 .woocommerce ul.products li.product-category .woocommerce-loop-category__title {
   margin-bottom: 0;
-  text-transform: uppercase;
   font-size: 20px;
   padding: 0;
 }

@@ -97,6 +97,18 @@ if($btt_enable) :
     </script>
     <?php endif?>
 
+    <script>
+        jQuery(document).ready(function($) {
+            if($('.woocommerce .term-description').height() > 72) {
+                $('.woocommerce .term-description').addClass('collapsed');
+                $('.woocommerce .term-description').after('<span class="term-description-readmore text-theme"><span class="read-more"><?php echo __('Show more')?></span><span class="read-less"><?php echo __('Show less')?></span></span>');
+            }
+            $('body').on('click', '.term-description-readmore', function (){
+                $('.woocommerce .term-description').toggleClass('collapsed');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
 </body>
 
 </html>
