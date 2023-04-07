@@ -7,19 +7,19 @@ function mos_post_meta_options() {
     Container::make('post_meta', 'Audio Data')
     ->where('post_type', '=', 'post')
     ->add_fields(array(
-        Field::make( 'select', 'mos_blog_details_audio_option', __( 'Audio Source' ) )
-        ->set_options( array(
+        Field::make('select', 'mos_blog_details_audio_option', __('Audio Source'))
+        ->set_options(array(
             'none' => 'No Audio',
             'ga' => 'Given Audio',
         )),
         Field::make('file', 'mos_blog_details_audio', __('Audio File'))
-        ->set_type(array( 'audio' ))
+        ->set_type(array('audio'))
     ));
     Container::make('post_meta', 'Page Data')
     ->where('post_type', '=', 'page')
     ->add_fields(array(        
-        Field::make( 'checkbox', 'mos_page_hide_header', __( 'Hide Header' ) ),
-        Field::make( 'checkbox', 'mos_page_hide_footer', __( 'Hide Footer' ) ),
+        Field::make('checkbox', 'mos_page_hide_header', __('Hide Header')),
+        Field::make('checkbox', 'mos_page_hide_footer', __('Hide Footer')),
     ));
     Container::make('post_meta', 'Additional Tabs')
     ->where('post_type', '=', 'product')

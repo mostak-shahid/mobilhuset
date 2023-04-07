@@ -45,23 +45,23 @@ function site_identity_func( $atts = array(), $content = null ) {
 		'container_class' => ''
 	), $atts, 'site-identity' ); 
     ob_start(); ?>
-<div class="logo-wrapper <?php echo $atts['container_class']?>">
-    <?php if($logo) : ?>
-    <a class="logo <?php echo $atts['class']?>" href="<?php echo home_url()?>">
-        <?php if(carbon_get_theme_option( 'mos-logo' )) : ?>
-        <?php echo wp_get_attachment_image( $logo, 'full', "", array( "class" => "img-responsive img-fluid" ) );  ?>
+    <div class="logo-wrapper <?php echo $atts['container_class']?>">
+        <?php if($logo) : ?>
+        <a class="logo <?php echo $atts['class']?>" href="<?php echo home_url()?>">
+            <?php if(carbon_get_theme_option( 'mos-logo' )) : ?>
+            <?php echo wp_get_attachment_image( $logo, 'full', "", array( "class" => "img-responsive img-fluid" ) );  ?>
+            <?php else : ?>
+            <img class="img-responsive img-fluid" src="<?php echo get_template_directory_uri(). '/images/logo.png'?>" alt="<?php echo get_bloginfo('name').' - Logo'?>">
+            <?php endif?>
+        </a>
         <?php else : ?>
-        <img class="img-responsive img-fluid" src="<?php echo get_template_directory_uri(). '/images/logo.png'?>" alt="<?php echo get_bloginfo('name').' - Logo'?>">
-        <?php endif?>
-    </a>
-    <?php else : ?>
-    <div class="<?php echo $atts['class']?>">
-        <h1 class="site-title"><a href="<?php echo home_url()?>"><?php echo get_bloginfo('name')?></a></h1>
-        <p class="site-description"><?php echo get_bloginfo( 'description' )?></p>
+        <div class="<?php echo $atts['class']?>">
+            <h1 class="site-title"><a href="<?php echo home_url()?>"><?php echo get_bloginfo('name')?></a></h1>
+            <p class="site-description"><?php echo get_bloginfo( 'description' )?></p>
+        </div>
+        <?php endif;?>
     </div>
-    <?php endif;?>
-</div>
-<?php $html = ob_get_clean();	
+    <?php $html = ob_get_clean();	
 	return $html;
 }
 add_shortcode( 'site-identity', 'site_identity_func' );
@@ -96,24 +96,26 @@ function email_func($atts = array(), $content = '') {
     $emails = carbon_get_theme_option( 'mos-contact-email' );  
     if($emails && sizeof($emails)) :
     ?>
-<span class="email-wrapper <?php echo $atts['class'] ?>">
-    <?php if (!is_numeric($atts['display'])) : ?>
-    <?php foreach($emails as $email) :?>
-    <span class="email-unit">
-        <span class="email-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $email['title'] ?></span>
-        <span class="email-link"><a href="mailto:<?php echo $email['email'] ?>"><?php echo $email['email'] ?></a></span>
+    <span class="email-wrapper <?php echo $atts['class'] ?>">
+        <?php if (!is_numeric($atts['display'])) : ?>
+        <?php foreach($emails as $email) :?>
+        <span class="contact-unit email-unit">
+            <span class="contact-unit-title email-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $email['title'] ?></span>
+            <span class="contact-unit-intro email-link"><a href="mailto:<?php echo $email['email'] ?>"><?php echo $email['email'] ?></a></span>
+        </span>
+        <?php endforeach;?>
+        <?php else : ?>
+        <span class="contact-unit email-unit">
+            <span class="contact-unit-title email-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $emails[$atts['display']]['title'] ?></span>
+            <span class="contact-unit-intro email-link"><a href="mailto:<?php echo $emails[$atts['display']]['email'] ?>"><?php echo $emails[$atts['display']]['email'] ?></a></span>
+        </span>
+        <?php endif ?>
+        <?php echo do_shortcode($content) ?>
     </span>
-    <?php endforeach;?>
     <?php else : ?>
-    <span class="email-unit">
-        <span class="email-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $emails[$atts['display']]['title'] ?></span>
-        <span class="email-link"><a href="mailto:<?php echo $emails[$atts['display']]['email'] ?>"><?php echo $emails[$atts['display']]['email'] ?></a></span>
-    </span>
-    <?php endif ?>
-    <?php echo do_shortcode($content) ?>
-</span>
-<?php endif?>
-<?php $html = ob_get_clean();
+        <span class="contact-unit email-unit">Please contact web admin</span>
+    <?php endif?>
+    <?php $html = ob_get_clean();
     return $html;
 }
 add_shortcode( 'email', 'email_func' );
@@ -128,27 +130,97 @@ function phone_func($atts = array(), $content = '') {
     $phones = carbon_get_theme_option( 'mos-contact-phone' );  
     if($phones && sizeof($phones)) :
     ?>
-<span class="phone-wrapper <?php echo $atts['class'] ?>">
-    <?php if (!is_numeric($atts['display'])) : ?>
-    <?php foreach($phones as $phone) :?>
-    <span class="phone-unit">
-        <span class="phone-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $phone['title'] ?></span>
-        <span class="phone-link"><a href="mailto:<?php echo $phone['number'] ?>"><?php echo $phone['number'] ?></a></span>
+    <span class="phone-wrapper <?php echo $atts['class'] ?>">
+        <?php if (!is_numeric($atts['display'])) : ?>
+        <?php foreach($phones as $phone) :?>
+        <span class="contact-unit phone-unit">
+            <span class="contact-unit-title phone-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $phone['title'] ?></span>
+            <span class="contact-unit-intro phone-link"><a href="mailto:<?php echo $phone['number'] ?>"><?php echo $phone['number'] ?></a></span>
+        </span>
+        <?php endforeach;?>
+        <?php else : ?>
+        <span class="contact-unit phone-unit">
+            <span class="contact-unit-title phone-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $phones[$atts['display']]['title'] ?></span>
+            <span class="contact-unit-intro phone-link"><a href="mailto:<?php echo $phones[$atts['display']]['number'] ?>"><?php echo $phones[$atts['display']]['number'] ?></a></span>
+        </span>
+        <?php endif ?>
+        <?php echo do_shortcode($content) ?>
     </span>
-    <?php endforeach;?>
     <?php else : ?>
-    <span class="phone-unit">
-        <span class="phone-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $phones[$atts['display']]['title'] ?></span>
-        <span class="phone-link"><a href="mailto:<?php echo $phones[$atts['display']]['number'] ?>"><?php echo $phones[$atts['display']]['number'] ?></a></span>
-    </span>
-    <?php endif ?>
-    <?php echo do_shortcode($content) ?>
-</span>
-<?php endif?>
-<?php $html = ob_get_clean();
+        <span class="contact-unit phone-unit">Please contact web admin</span>
+    <?php endif?>
+    <?php $html = ob_get_clean();
     return $html;
 }
 add_shortcode( 'phone', 'phone_func' );
+
+function business_hours_func($atts = array(), $content = '') {
+	$atts = shortcode_atts( array(
+        'class' => '',
+        'display' => 'all',
+		'title' => 0,
+	), $atts, 'business-hours' );  
+    ob_start();     
+    $hours = carbon_get_theme_option( 'mos-contact-business-hours' );  
+    if($hours && sizeof($hours)) :
+    ?>
+    <span class="business-hour-wrapper <?php echo $atts['class'] ?>">
+        <?php if (!is_numeric($atts['display'])) : ?>
+        <?php foreach($hours as $hour) :?>
+        <span class="contact-unit business-hour-unit">
+            <span class="contact-unit-title business-hour-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $hour['title'] ?></span>
+            <span class="contact-unit-intro business-hour-time"><?php echo $hour['hours'] ?></span>
+        </span>
+        <?php endforeach;?>
+        <?php else : ?>
+        <span class="contact-unit business-hour-unit">
+            <span class="contact-unit-title business-hour-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $hours[$atts['display']]['title'] ?></span>
+            <span class="contact-unit-intro business-hour-time"><?php echo $hours[$atts['display']]['hours'] ?></span>
+        </span>
+        <?php endif ?>
+        <?php echo do_shortcode($content) ?>
+    </span>
+    <?php else : ?>
+        <span class="contact-unit business-hour-unit">Please contact web admin</span>
+    <?php endif?>
+    <?php $html = ob_get_clean();
+    return $html;
+}
+add_shortcode( 'business-hours', 'business_hours_func' );
+
+function contact_address_func($atts = array(), $content = '') {
+	$atts = shortcode_atts( array(
+        'class' => '',
+        'display' => 'all',
+		'title' => 0,
+	), $atts, 'contact-address' );  
+    ob_start();     
+    $address = carbon_get_theme_option( 'mos-contact-contact-address' );  
+    if($address && sizeof($address)) :
+    ?>
+    <span class="contact-address-wrapper <?php echo $atts['class'] ?>">
+        <?php if (!is_numeric($atts['display'])) : ?>
+        <?php foreach($address as $value) :?>
+        <span class="contact-unit contact-address-unit">
+            <span class="contact-unit-title contact-address-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $value['title'] ?></span>
+            <span class="contact-unit-intro contact-address-time"><?php echo $value['address'] ?></span>
+        </span>
+        <?php endforeach;?>
+        <?php else : ?>
+        <span class="contact-unit contact-address-unit">
+            <span class="contact-unit-title contact-address-title <?php if(!$atts['title']) echo 'd-none'?>"><?php echo $address[$atts['display']]['title'] ?></span>
+            <span class="contact-unit-intro contact-address-time"><?php echo $address[$atts['display']]['address'] ?></span>
+        </span>
+        <?php endif ?>
+        <?php echo do_shortcode($content) ?>
+    </span>
+    <?php else : ?>
+        <span class="contact-unit contact-address-unit">Please contact web admin</span>
+    <?php endif?>
+    <?php $html = ob_get_clean();
+    return $html;
+}
+add_shortcode( 'contact-address', 'contact_address_func' );
 function mos_social_func($atts = array(), $content = '') {
 	$atts = shortcode_atts( array(
         'class' => '',

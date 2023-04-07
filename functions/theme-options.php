@@ -170,7 +170,7 @@ function mos_theme_options() {
     Container::make('theme_options', __('Contact Info'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
-        Field::make('text', 'mos-contact-page', __('Contact Page')),
+        Field::make('text', 'mos-contact-form-shortcode', __('Contact form shortcode ')),
         Field::make('complex', 'mos-contact-phone', __('Phone'))
         ->add_fields(array(
             Field::make('text', 'title', __('Title')),

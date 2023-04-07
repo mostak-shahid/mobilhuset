@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.43
+Version: 1.0.44
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -2153,6 +2153,77 @@ body.more-then-one-product-available .usp-group {
 }
 .single .widget {
   padding-bottom: 0;
+}
+.contact-metas {
+  padding: 120px 0 70px;
+}
+.contact-metas .unit-meta {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  text-align: center;
+  height: 100%;
+  border: 1px solid #eaeaea;
+  padding: 10px;
+  padding-top: calc(50px + 10px);
+}
+.contact-metas .unit-meta .svg-wrap {
+  content: "";
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid #eaeaea;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -50px;
+  background-color: #ffffff;
+}
+.contact-metas .unit-meta .svg-wrap svg {
+  fill: var(--mos-primary-color);
+  max-width: 50%;
+}
+.contact-metas .unit-meta .contact-unit-title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 28px;
+  letter-spacing: 0.05em;
+  padding: 10px 0;
+  display: block;
+}
+.contact-metas .unit-meta .contact-unit-intro {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+}
+section.contact-form {
+  background-color: #f3f6fb;
+}
+section.contact-map,
+section.contact-form {
+  padding: 70px 0;
+}
+section.contact-form input:not([type="checkbox"]):not([type="radio"]),
+section.contact-form textarea {
+  background-color: #ffffff;
+  border-radius: 0;
+}
+section.contact-form
+  .frm_style_formidable-style.with_frm_style
+  .frm_submit
+  button {
+  padding: 15px 20px;
+}
+.ratio-450::before {
+  padding-top: 450px;
 }
 .footer {
   clear: both;
