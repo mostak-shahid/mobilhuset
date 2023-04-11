@@ -286,8 +286,10 @@ function mos_usp_text () {
 		</ul>
 	<?php endif;
 }
+add_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 33);
 
-add_action( 'woocommerce_single_product_summary', 'mos_product_reply', 32);
+
+add_action( 'woocommerce_single_product_summary', 'mos_product_reply', 33);
 function mos_product_reply(){
   comments_template();
 }

@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.44
+Version: 1.0.45
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -1438,6 +1438,10 @@ body.woocommerce.single-product
   display: inline-block;
   margin-bottom: 0;
 }
+
+body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
+  display: none;
+}
 .woocommerce p.stars a::before,
 .woocommerce .star-rating span::before {
   color: #faaf40;
@@ -2539,6 +2543,47 @@ section.contact-form
     padding-left: 0;
     padding-right: 0;
     background-position: right 0 center;
+  }
+  .woocommerce div.product .woocommerce-tabs .panel {
+    padding: 15px 0;
+    border-style: none;
+  }
+
+  .woocommerce div.product .woocommerce-tabs .panel:not(:last-child) {
+    margin-bottom: 0;
+    border-style: none;
+    border-bottom-style: solid;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+  }
+  .woocommerce div.product .woocommerce-tabs .panel .tab-title {
+    position: relative;
+  }
+  .woocommerce div.product .woocommerce-tabs .panel .tab-title::after {
+    display: flex;
+    align-items: center;
+    content: "\f107";
+    font-family: "FontAwesome";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 20px;
+    font-weight: 600;
+    height: 30px;
+  }
+
+  .woocommerce div.product .woocommerce-tabs .panel .tab-title.active::after {
+    transform: rotate(180deg);
+  }
+  .woocommerce
+    div.product
+    .woocommerce-after-product-thumbnails
+    .woocommerce-tabs {
+    display: none;
+  }
+  body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
+    display: block;
   }
 }
 
