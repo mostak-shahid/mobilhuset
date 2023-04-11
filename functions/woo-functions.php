@@ -288,6 +288,11 @@ function mos_usp_text () {
 }
 add_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 33);
 
+add_action('woocommerce_before_single_product', function() {mos_div_wrapper_start('before-product-single text-center');}, 0);
+add_action( 'woocommerce_before_single_product', 'woocommerce_template_single_rating', 5);
+add_action( 'woocommerce_before_single_product', 'woocommerce_template_single_title', 6);
+add_action( 'woocommerce_before_single_product', 'mos_div_wrapper_end', 7);
+
 
 add_action( 'woocommerce_single_product_summary', 'mos_product_reply', 33);
 function mos_product_reply(){
@@ -509,6 +514,9 @@ function mos_flex_wrapper_start($class_name = '') {
     echo '<div class="d-flex justify-content-between align-items-center '.$class_name .'">';
 }
 
+function mos_div_wrapper_start($class_name = '') {
+    echo '<div class="'.$class_name .'">';
+}
 function mos_div_wrapper_end() {
     echo '</div>';
 }

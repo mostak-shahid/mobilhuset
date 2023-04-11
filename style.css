@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.45
+Version: 1.0.46
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -2263,6 +2263,9 @@ section.contact-form
   color: #606060;
 }
 
+.woocommerce .before-product-single {
+  display: none;
+}
 @media (min-width: 576px) {
   .group-container-sm > .wp-block-group__inner-container,
   .group-container > .wp-block-group__inner-container {
@@ -2584,6 +2587,46 @@ section.contact-form
   }
   body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
     display: block;
+  }
+  .woocommerce .before-product-single {
+    display: block;
+  }
+  .woocommerce .before-product-single .product_title,
+  .woocommerce div.product .product_title {
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+  .woocommerce div.product .product_title {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .woocommerce div.product .summary .product_title,
+  .woocommerce div.product .summary .woocommerce-product-rating {
+    display: none;
+  }
+
+  body.woocommerce.single-product .woobt-before-text.woobt-text,
+  body.woocommerce.single-product #reviews #comments h2,
+  body.woocommerce.single-product .comment-reply-title,
+  .woocommerce div.product .woocommerce-tabs .panel .tab-title {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+  .woocommerce div.product .woocommerce-tabs .panel .tab-title {
+    line-height: 30px;
+  }
+  .woocommerce .before-product-single .woocommerce-product-rating,
+  .woocommerce div.product .woocommerce-product-rating {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .woocommerce .before-product-single .woocommerce-product-rating .star-rating,
+  .woocommerce .woocommerce-product-rating .star-rating {
+    float: none;
+    display: inline-block;
+  }
+  .single-product .mos-brand {
+    display: none;
   }
 }
 
