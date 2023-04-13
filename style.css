@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.46
+Version: 1.0.47
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -102,6 +102,25 @@ pre {
   overflow: auto;
   max-width: 100%;
   padding: 1.6em;
+}
+/*.woobt-choose {
+  grid-area: image;
+}
+.woobt-title {
+  grid-area: intro;
+}
+.woobt-button {
+  grid-area: button;
+}
+.woobt-wrap-responsive .woobt-products .woobt-product.woobt-product-together {
+  display: grid;
+  grid-template-areas: "image intro button";
+  grid-template-columns: 80px 1fr 150px;
+}*/
+.woobt-button .single_add_to_cart_button {
+  width: 100%;
+  font-size: 14px;
+  margin-left: 0 !important;
 }
 .wp-block-button__link {
   background-color: var(--mos-primary-color);
@@ -1760,9 +1779,12 @@ body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
 }
 .woocommerce.single-product div.product .woobt-products form.cart {
   display: block;
+  border-bottom: 1px solid #d2d2d2;
+  margin-bottom: 0;
+  padding: 20px 0;
 }
 .woocommerce.single-product div.product .woobt-products form.cart:last-child {
-  margin-bottom: 0;
+  border-bottom-style: none;
 }
 .woocommerce.single-product
   div.product
@@ -1770,6 +1792,12 @@ body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
   form.cart:last-child
   .woobt-product {
   border-bottom-style: none;
+}
+.mos-woobt-product-together .woobt-button .amount bdi {
+  color: var(--mos-primary-color);
+}
+.mos-woobt-product-together .woobt-button .woobt-price del .amount bdi {
+  color: #7f7f7f;
 }
 .woocommerce.single-product .quantity .qty {
   border: 1px solid var(--mos-primary-color);
@@ -2680,6 +2708,13 @@ section.contact-form
   .woocommerce ul.products li.product .button {
     padding: 5px;
   }
+  /*.woobt-wrap-responsive .woobt-products .woobt-product.woobt-product-together {
+    display: grid;
+    grid-template-areas:
+      "image intro"
+      "button button";
+    grid-template-columns: 80px 1fr;
+  }*/
 }
 
 @media screen and (orientation: portrait) {

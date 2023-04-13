@@ -175,7 +175,7 @@ jQuery(document).ready(function ($) {
     $('body.woocommerce.single-product .comment-reply-title').click(function(){
         $(this).next().slideToggle();
     });
-
+    $('.woocommerce-Tabs-panel').find('table').addClass('table table-striped').wrap( '<div class="table-responsive"></div>');
 
     /*$('.searchform').submit(function(e){
         //alert(0);
