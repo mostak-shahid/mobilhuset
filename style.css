@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.47
+Version: 1.0.48
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -1851,12 +1851,15 @@ body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
   padding-top: 20px;
   border-top: 1px solid var(--mos-primary-color);
 }
+.woocommerce-Reviews,
 .woocommerce.single-product div.product .woocommerce-tabs ul.tabs {
-  padding: 0;
-  margin: 0;
   position: sticky;
   top: 45px;
   z-index: 3;
+}
+.woocommerce.single-product div.product .woocommerce-tabs ul.tabs {
+  padding: 0;
+  margin: 0;
   background-color: #bbbbbb;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
