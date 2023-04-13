@@ -27,4 +27,4 @@ $heading = apply_filters( 'woocommerce_product_description_heading', __( 'Descri
 	<h2 class="tab-title"><?php echo esc_html( $heading ); ?></h2>
 <?php endif; ?>
 
-<?php the_content(); ?>
+<div class="tab-intro"><?php the_content(); ?></div>
