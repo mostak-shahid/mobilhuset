@@ -42,3 +42,18 @@ add_action('manage_post_posts_custom_column', function($column_key, $post_id) {
         }
 	}
 }, 10, 2);
+add_filter('manage_product_posts_columns', function($columns) {
+	return array_merge($columns, ['reviews' => __('Reviews', 'textdomain')]);
+});
+ 
+add_action('manage_product_posts_custom_column', function($column_key, $post_id) {
+	if ($column_key == 'reviews') {
+        global $product;
+        echo $product->get_review_count();
+		// if (has_post_thumbnail()) {
+        //     $featured_img_url = get_the_post_thumbnail_url(get_the_ID());
+        //     $featured_img_resized = aq_resize($featured_img_url, 100, 100, true);
+        //     echo '<img class="post-grid-featured_img" src="'.$featured_img_url.'">';
+        // }
+	}
+}, 10, 2);
