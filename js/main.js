@@ -171,12 +171,14 @@ jQuery(document).ready(function ($) {
     $('body').on('click', '.sidebar-close', function (){
         $('body').removeClass('active-filter');
     });
-    $('body.woocommerce.single-product #review_form_wrapper form').hide();
-    $('body.woocommerce.single-product .comment-reply-title').click(function(){
-        $(this).next().slideToggle();
-    });
+    //$('body.woocommerce.single-product #review_form_wrapper form').hide();
+    // $('body.woocommerce.single-product .comment-reply-title').click(function(){
+    //     $(this).next().slideToggle();
+    // });
     $('.woocommerce-Tabs-panel').find('table').addClass('table table-striped').wrap( '<div class="table-responsive"></div>');
-
+    $('.mos-comment-wrapper-btn').find('button').click(function(){
+        $('.mos-review').toggle();
+    });
     /*$('.searchform').submit(function(e){
         //alert(0);
         e.preventDefault();

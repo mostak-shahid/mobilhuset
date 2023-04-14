@@ -620,7 +620,8 @@ function mos_woo_custom_product_searchform( $form ) {
 			<select name="category" class="form-select mos-product-categories d-none" id="inputGroupSelect01">
 				<option value="">All Categories</option><?php echo $options?>
 			</select>
-			<input class="form-control mos-product-search" type="text" name="s" id="s" placeholder="<?php echo __( 'Search for Products', 'woocommerce' )?>" autocomplete="off" value="<?php echo get_search_query()?>" required oninvalid="this.setCustomValidity('Please type your keywords here.')" onvalid="this.setCustomValidity('')" />
+			<!-- <input class="form-control mos-product-search" type="text" name="s" id="s" placeholder="<?php echo esc_html__( 'Search for Products', 'woocommerce' )?>" autocomplete="off" value="<?php echo get_search_query()?>" required oninvalid="this.setCustomValidity('Please type your keywords here.')" onvalid="this.setCustomValidity('')" /> -->
+			<input class="form-control mos-product-search" type="text" name="s" id="s" placeholder="<?php echo esc_html__( 'Sök efter produkter', 'woocommerce' )?>" autocomplete="off" value="<?php echo get_search_query()?>" required oninvalid="this.setCustomValidity('Vänligen skriv dina sökord här.')" onvalid="this.setCustomValidity('')" />
 			<button type="submit" id="searchsubmit" class="btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="18.382" height="18.34" viewBox="0 0 18.382 18.34">
 <g id="searc-icon" transform="translate(-1250 -76)">
