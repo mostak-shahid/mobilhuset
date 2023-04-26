@@ -328,6 +328,69 @@ function mos_theme_options() {
             ->set_default_value('scroll'),
         )),
     ));
+
+    Container::make('theme_options', __('Breadcumb Section'))
+    ->set_page_parent($basic_options_container) // reference to a top level container
+    ->add_fields(array(
+        Field::make('text', 'mos-breadcumb-height', __('Height')),
+        Field::make('text', 'mos-breadcumb-padding', __('Padding')),
+        Field::make('text', 'mos-breadcumb-margin', __('Margin')),
+        Field::make('text', 'mos-breadcumb-border', __('Border')),
+        Field::make('text', 'mos-breadcumb-class', __('Class')),
+        Field::make('color', 'mos-breadcumb-content-color', __('Content Color')),
+        Field::make('color', 'mos-breadcumb-link-color', __('Links Color')),
+        Field::make('color', 'mos-breadcumb-link-color-hover', __('Hover Color')),
+        Field::make('complex', 'mos-breadcumb-background', __('Background'))
+        ->set_max(1)
+        ->set_collapsed(true)
+        ->add_fields(array(
+            Field::make('color', 'background-color', __('Background Color')),
+            Field::make('image', 'background-image', __('Background Image')),
+            Field::make('select', 'background-position', __('Background Position'))
+            ->set_options(array(
+                'top left' => 'Top Left',
+                'top center' => 'Top Center',
+                'top right' => 'Top Right',
+                'center left' => 'Center Left',
+                'center center' => 'Center Center',
+                'center right' => 'Center Right',
+                'bottom left' => 'Bottom left',
+                'bottom center' => 'Bottom Center',
+                'bottom right' => 'Bottom Right',
+            ))
+            ->set_default_value('top left'),
+            Field::make('select', 'background-size', __('Background Size'))
+            ->set_options(array(
+                'cover' => 'cover',
+                'contain' => 'contain',
+                'auto' => 'auto',
+                'inherit' => 'inherit',
+                'initial' => 'initial',
+                'revert' => 'revert',
+                'revert-layer' => 'revert-layer',
+                'unset' => 'unset',
+            ))
+            ->set_default_value('cover'),
+            //background-repeat: repeat|repeat-x|repeat-y|no-repeat|initial|inherit;
+            Field::make('select', 'background-repeat', __('Background Repeat'))
+            ->set_options(array(
+                'repeat' => 'repeat',
+                'repeat-x' => 'repeat-x',
+                'repeat-y' => 'repeat-y',
+                'no-repeat' => 'no-repeat',
+                'initial' => 'initial',
+                'inherit' => 'inherit',
+            ))
+            ->set_default_value('no-repeat'),
+            Field::make('select', 'background-attachment', __('Background Attachment'))
+            ->set_options(array(
+                'scroll' => 'Scroll',
+                'fixed' => 'Fixed',
+            ))
+            ->set_default_value('scroll'),
+        )),
+    ));
+
     Container::make('theme_options', __('Woocommerce'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(

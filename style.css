@@ -644,7 +644,7 @@ pre {
   z-index: 9;
 }
 /*Page Title*/
-section.page-title {
+/*section.page-title {
   background-color: #f9e8e6;
 }
 section.page-title .wrapper {
@@ -667,6 +667,8 @@ section.page-title.woocommerce-page-title .wrapper {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+*/
+section.page-title .breadcrumb,
 section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   margin-bottom: 0;
 }

@@ -54,6 +54,26 @@ if($btt_enable) :
     }
 
     <?php endif?><?php $footer_background=carbon_get_theme_option('mos-footer-background');
+    $breadcumb_background=carbon_get_theme_option('mos-breadcumb-background');
+
+    ?>section.page-title {        
+        <?php if(carbon_get_theme_option('mos-breadcumb-padding')): ?> padding: <?php echo carbon_get_theme_option('mos-breadcumb-padding') ?>; <?php endif?> <?php if(carbon_get_theme_option('mos-breadcumb-margin')): ?> margin: <?php echo carbon_get_theme_option('mos-breadcumb-margin') ?>; <?php endif?> <?php if(carbon_get_theme_option('mos-breadcumb-border')): ?> border: <?php echo carbon_get_theme_option('mos-breadcumb-border') ?>; <?php endif?> <?php if(carbon_get_theme_option('mos-breadcumb-height')): ?> height: <?php echo carbon_get_theme_option('mos-breadcumb-height') ?>; <?php endif?>
+        <?php if(carbon_get_theme_option('mos-breadcumb-content-color')): ?> color: <?php echo carbon_get_theme_option('mos-breadcumb-content-color') ?>; <?php endif?><?php if(@$breadcumb_background && sizeof($breadcumb_background)): ?> <?php foreach($breadcumb_background as $value): ?> <?php //var_dump($value) ?>
+            <?php foreach($value as $key=> $val): ?> <?php if ($key !='background-image'&& $key !='_type'): ?> <?php echo $val? $key . ':'. $val . ';':''?> <?php elseif ($key=='background-image'): ?> <?php echo $val ? $key . ':url('. wp_get_attachment_url($val) . ');':''?> <?php endif?> <?php endforeach?> <?php endforeach?> <?php endif?>
+    }
+    section.page-title .breadcrumb-item.active {
+        <?php if(carbon_get_theme_option('mos-breadcumb-content-color')): ?> color: <?php echo carbon_get_theme_option('mos-breadcumb-content-color') ?>; <?php endif?>
+    }
+    section.page-title .woocommerce-breadcrumb a,
+    section.page-title .breadcrumb-item a {
+        color: <?php echo carbon_get_theme_option('mos-breadcumb-link-color') ?>
+    }
+    <?php if(carbon_get_theme_option('mos-breadcumb-link-color-hover')) : ?>section.page-title .woocommerce-breadcrumb a:hover,
+    section.page-title .breadcrumb-item a:hover {
+        color: <?php echo carbon_get_theme_option('mos-breadcumb-link-color-hover') ?>
+    }
+
+    <?php endif?><?php $footer_background=carbon_get_theme_option('mos-footer-background');
 
     ?>.footer {
         <?php if(carbon_get_theme_option('mos-footer-content-color')): ?> color: <?php echo carbon_get_theme_option('mos-footer-content-color') ?>; <?php endif?> <?php if(carbon_get_theme_option('mos-footer-padding')): ?> padding: <?php echo carbon_get_theme_option('mos-footer-padding') ?>; <?php endif?> <?php if(carbon_get_theme_option('mos-footer-margin')): ?> margin: <?php echo carbon_get_theme_option('mos-footer-margin') ?>; <?php endif?> <?php if(carbon_get_theme_option('mos-footer-border')): ?> border: <?php echo carbon_get_theme_option('mos-footer-border') ?>; <?php endif?> <?php if(@$footer_background && sizeof($footer_background)): ?> <?php foreach($footer_background as $value): ?> <?php //var_dump($value) ?>
