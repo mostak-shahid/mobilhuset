@@ -917,7 +917,7 @@ function mos_add_handling_fee() {
 					$profit_with_tax = $price - $mos_product_purchase_price;
 					$raw_profit = $profit_with_tax/(1 + $item_rate/100);
 					$raw_tax = round($profit_with_tax - (($profit_with_tax)/(1 + $item_rate/100)));
-					$item_tax = $woocommerce->cart->get_taxes_total();
+					$item_tax = round($product->get_price() - (($product->get_price())/(1 + $item_rate/100)));
 					$new_tax = $raw_tax * $cart_item['quantity'];
 				}
 				// else {
