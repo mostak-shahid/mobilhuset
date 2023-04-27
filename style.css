@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.52
+Version: 1.0.53
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -1269,14 +1269,20 @@ li.product .yith-wcwl-add-to-wishlist .feedback + a {
   right: 0;
 }
 .woocommerce .term-description.collapsed {
-  height: 72px;
+  height: 24px;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 .woocommerce .term-description.opened {
   height: auto;
 }
 .term-description-readmore {
   cursor: pointer;
+}
+.woocommerce .term-description + .term-description-readmore {
+  display: block;
+  margin-top: -20px;
+  margin-bottom: 20px;
 }
 .term-description-readmore.active .read-more,
 .term-description-readmore .read-less {
@@ -1467,6 +1473,74 @@ body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
 .woocommerce p.stars a::before,
 .woocommerce .star-rating span::before {
   color: #faaf40;
+}
+.woocommerce .category-child-slider {
+  padding: 0;
+  margin-bottom: 20px;
+}
+.woocommerce
+  .category-child-slider.slick-initialized
+  .slick-slide.product-category {
+  padding: 5px;
+}
+.woocommerce
+  .category-child-slider.slick-initialized
+  .slick-slide.product-category
+  a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #ffffff;
+  padding: 3px;
+  box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 10%);
+}
+.woocommerce .category-child-slider .slick-arrow {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
+}
+.woocommerce .category-child-slider .slick-prev {
+  left: -12px;
+}
+.woocommerce .category-child-slider .slick-next {
+  right: -12px;
+}
+.woocommerce
+  .category-child-slider.slick-initialized
+  .slick-slide.product-category:hover
+  a {
+  box-shadow: 0px 0px 4px 0px rgb(0 0 0 / 20%);
+}
+.woocommerce
+  .category-child-slider.slick-initialized
+  .slick-slide.product-category
+  a
+  img {
+  flex: 0 0 50px;
+  max-width: 50px;
+  height: auto;
+}
+.woocommerce
+  .category-child-slider.slick-initialized
+  .slick-slide.product-category
+  a
+  .woocommerce-loop-category__title {
+  flex: 1;
+  line-height: 20px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+.woocommerce
+  .category-child-slider.slick-initialized
+  .slick-slide.product-category
+  a
+  .woocommerce-loop-category__title
+  .count {
+  display: none;
 }
 .woocommerce ul.products {
   display: grid;
@@ -2494,9 +2568,9 @@ section.contact-form
 }
 
 @media (min-width: 768px) {
-  .woocommerce.mos-product-cat-parent ul.products {
+  /* .woocommerce.mos-product-cat-parent ul.products {
     grid-template-columns: repeat(4, 1fr);
-  }
+  } */
 }
 @media (max-width: 1199.98px) {
   .vertical-menu .mos-menu-block .mos-menu li.megamenu > .sub-menu,

@@ -139,6 +139,12 @@ jQuery(document).ready(function ($) {
         slidesToShow: 5,
         slidesToScroll: 1
     });
+    $('.category-child-slider').slick({
+        infinite: true,
+        slidesToShow: 5,
+        slidesToScroll: 1
+    });
+
     $('.single-product .quantity').find('.qty').before('<span class="qty-btn minus">-</span>');
     $('.single-product .quantity').find('.qty').after('<span class="qty-btn plus">+</span>');
     $('body').on('click', '.minus', function (){

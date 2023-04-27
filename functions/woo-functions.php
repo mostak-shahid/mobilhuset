@@ -601,9 +601,39 @@ function mos_archive_banner_title() {
 	woocommerce_page_title();
 	echo '</h1>';
 }
-add_action( 'woocommerce_after_main_content', 'woocommerce_taxonomy_archive_description', 10);
+// add_action( 'woocommerce_after_main_content', 'woocommerce_taxonomy_archive_description', 10);
+add_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 3);
+
+remove_filter( 'woocommerce_product_loop_start', 'woocommerce_maybe_show_product_subcategories' );
+add_action( 'woocommerce_archive_description', 'mos_woocommerce_maybe_show_product_subcategories', 4);
+function mos_woocommerce_maybe_show_product_subcategories() {
+	$display_type = woocommerce_get_loop_display_mode();
+	//var_dump($display_type);
+	if ( 'subcategories' === $display_type || 'both' === $display_type ) {
+		echo '<ul class="category-child-slider">';
+		woocommerce_output_product_categories(
+			array(
+				'parent_id' => is_product_category() ? get_queried_object_id() : 0,
+			)
+		);
+		echo '</ul>';
+	}
+	if ( 'subcategories' === $display_type ) {
+		wc_set_loop_prop( 'total', 0 );
+
+		// This removes pagination and products from display for themes not using wc_get_loop_prop in their product loops.  @todo Remove in future major version.
+		global $wp_query;
+
+		if ( $wp_query->is_main_query() ) {
+			$wp_query->post_count    = 0;
+			$wp_query->max_num_pages = 0;
+		}
+	}
+}
+
 add_filter( 'get_product_search_form' , 'mos_woo_custom_product_searchform' );
 
+// remove_filter( string $hook_name, callable|string|array $callback, int $priority = 10 );
 /**
  * mos_woo_custom_product_searchform
  *
