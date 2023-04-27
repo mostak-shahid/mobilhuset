@@ -896,7 +896,7 @@ function custom_cart_items_prices( $cart ) {
 /**
 *  Add custom handling fee to an order 
 */
-function pt_add_handling_fee() {
+function mos_add_handling_fee() {
     if ( is_admin() && ! defined( 'DOING_AJAX' ) ) return;
     global $woocommerce;
 	global $new_total_tax;
@@ -917,8 +917,8 @@ function pt_add_handling_fee() {
 					$profit_with_tax = $price - $mos_product_purchase_price;
 					$raw_profit = $profit_with_tax/(1 + $item_rate/100);
 					$raw_tax = round($profit_with_tax - (($profit_with_tax)/(1 + $item_rate/100)));
-					$item_tax = round($product->get_price() - (($product->get_price())/(1 + $item_rate/100)));
-					$new_tax = $raw_tax;
+					$item_tax = $woocommerce->cart->get_taxes_total();
+					$new_tax = $raw_tax * $cart_item['quantity'];
 				}
 				// else {
 				// 	$price = (get_post_meta($cart_item['product_id'], '_sale_price', true))?get_post_meta($cart_item['product_id'], '_sale_price', true):get_post_meta($cart_item['product_id'], '_regular_price', true);
@@ -930,6 +930,10 @@ function pt_add_handling_fee() {
 			}
 		}
 	}
+	// $title2 = "Get_taxes_total: " . $woocommerce->cart->get_taxes_total() . ", New tax: " .$new_tax;
+	// $fee2 = 0;
+    // $woocommerce->cart->add_fee( $title2, $fee2, TRUE, 'standard' );
+
 	if (get_option('woocommerce_calc_taxes') == 'yes'){
 		$new_total_tax = $woocommerce->cart->get_taxes_total() - $total_tax_reduiced;
 		add_filter( 
@@ -947,9 +951,6 @@ function pt_add_handling_fee() {
 	
 	// $fee = 0.00;
     // $woocommerce->cart->add_fee( $title, $fee, TRUE, 'standard' );
-	// $title2 = "Purchase price: " . $mos_product_purchase_price . ", Get price: " . $price . ", Item_tax: " . $item_tax . ", New Tax: " . $raw_tax . ", Tax reduced: " . $item_tax_reduced . ", Total tax reduced: " . $total_tax_reduiced . ", Profit Tax: " . $profit_with_tax . ", Raw Profit: " . $raw_profit;
-	// $fee2 = 0;
-    // $woocommerce->cart->add_fee( $title2, $fee2, TRUE, 'standard' );
 	//var_dump($woocommerce->cart->get_tax_totals());
 	//$woocommerce->cart->get_tax_totals()
 	//*$woocommerce->cart->get_taxes_total()
@@ -959,7 +960,17 @@ function pt_add_handling_fee() {
 }
  
 // Action -> Add custom handling fee to an order
-add_action( 'woocommerce_cart_calculate_fees', 'pt_add_handling_fee' );
+add_action( 'woocommerce_cart_calculate_fees', 'mos_add_handling_fee' );
+function mos_show_regular_price_on_cart( $price, $values, $cart_item_key ) { 
+   $is_on_sale = $values['data']->is_on_sale(); 
+   if ( $is_on_sale ) { 
+        $_product = $values['data'];
+        $regular_price = $_product->get_regular_price();
+        $price = '<span class="wpd-discount-price" style="text-decoration: line-through; opacity: 0.5; padding-right: 5px;">' . wc_price( $regular_price ) . '</span>' . $price; 
+   } 
+   return $price; 
+}
+add_filter( 'woocommerce_cart_item_price', 'mos_show_regular_price_on_cart', 30, 3 );
 
 //add_filter( 'woocommerce_cart_taxes_total', 'wp_kama_woocommerce_cart_taxes_total_filter', 10, 4 );
 function wp_kama_woocommerce_cart_taxes_total_filter( $total, $compound, $display, $that ){
@@ -971,3 +982,55 @@ function wp_kama_woocommerce_cart_taxes_total_filter( $total, $compound, $displa
 // 	var_dump($product);
 // }
 // add_action('wp_head', 'get_product_data');
+// add_action( 'woocommerce_cart_totals_after_order_total', 'uw_display_cart_totals_after' );
+// add_action( 'woocommerce_review_order_after_order_total', 'uw_display_cart_totals_after' );
+add_action( 'woocommerce_cart_totals_before_order_total', 'uw_display_cart_totals_after', 99 );
+/**
+ * Pulls in cart totals and adds a new table row to the cart/checkout totals
+ *
+ * @author UltimateWoo - https://www.ultimatewoo.com
+ */
+function uw_display_cart_totals_after() {
+    global $woocommerce;
+	global $new_total_tax;
+	$tax = new WC_Tax();
+	$total_tax_reduiced = $item_rate = $item_tax = $raw_tax = $raw_profit = $total_profit = 0;
+	foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+		//$product_id = $cart_item['product_id'];
+		$product = $cart_item['data'];
+		$mos_product_purchase_price = get_post_meta($cart_item['product_id'],'_mos_product_purchase_price', true);
+		if ($mos_product_purchase_price) {
+			$taxes = $tax->get_rates($product->get_tax_class());
+			$rates = array_shift($taxes);
+			//Take only the item rate and round it. 
+			$item_rate = round(array_shift($rates));
+			if (get_option('woocommerce_calc_taxes') == 'yes'){
+				if (get_option('woocommerce_prices_include_tax') == 'yes'){
+					$price = $product->get_price();
+					$profit_with_tax = $price - $mos_product_purchase_price;
+					$raw_profit = $profit_with_tax/(1 + $item_rate/100) * $cart_item['quantity'];
+					$raw_tax = round($profit_with_tax - (($profit_with_tax)/(1 + $item_rate/100)));
+					$item_tax = $woocommerce->cart->get_taxes_total();
+					$new_tax = $raw_tax * $cart_item['quantity'];
+				}
+				$total_profit += $raw_profit;
+			}
+		}
+	}
+	if ($total_profit) {
+		?>
+		<tr class="taxable-amount" id="final-total">
+			<th><?php _e( 'Taxable amount', 'woocommerce' ); ?></th>
+			<td><?php echo $total_profit . get_woocommerce_currency_symbol() ?></td>
+		</tr>
+		<!-- <script>
+			jQuery(document).ready(function($) {
+				$('#final-total').insertBefore( '.shop_table .order-total' );
+				$('[name=update_cart]').click(function(){
+					$('#final-total').insertBefore( '.shop_table .order-total' );
+				});
+			});
+		</script> -->
+		<?php
+	}
+}
