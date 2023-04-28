@@ -61,13 +61,18 @@ if($btt_enable) :
         <?php if(carbon_get_theme_option('mos-breadcumb-content-color')): ?> color: <?php echo carbon_get_theme_option('mos-breadcumb-content-color') ?>; <?php endif?><?php if(@$breadcumb_background && sizeof($breadcumb_background)): ?> <?php foreach($breadcumb_background as $value): ?> <?php //var_dump($value) ?>
             <?php foreach($value as $key=> $val): ?> <?php if ($key !='background-image'&& $key !='_type'): ?> <?php echo $val? $key . ':'. $val . ';':''?> <?php elseif ($key=='background-image'): ?> <?php echo $val ? $key . ':url('. wp_get_attachment_url($val) . ');':''?> <?php endif?> <?php endforeach?> <?php endforeach?> <?php endif?>
     }
-    section.page-title .breadcrumb-item.active {
-        <?php if(carbon_get_theme_option('mos-breadcumb-content-color')): ?> color: <?php echo carbon_get_theme_option('mos-breadcumb-content-color') ?>; <?php endif?>
+    <?php if(carbon_get_theme_option('mos-breadcumb-content-color')): ?>
+    section.page-title .breadcrumb-item.active{
+         color: <?php echo carbon_get_theme_option('mos-breadcumb-content-color') ?>; 
     }
+    <?php endif?>
+    <?php if(carbon_get_theme_option('mos-breadcumb-link-color')): ?>
     section.page-title .woocommerce-breadcrumb a,
-    section.page-title .breadcrumb-item a {
+    section.page-title .breadcrumb-item a,
+    .breadcrumb-item+.breadcrumb-item::before  {
         color: <?php echo carbon_get_theme_option('mos-breadcumb-link-color') ?>
     }
+    <?php endif?>
     <?php if(carbon_get_theme_option('mos-breadcumb-link-color-hover')) : ?>section.page-title .woocommerce-breadcrumb a:hover,
     section.page-title .breadcrumb-item a:hover {
         color: <?php echo carbon_get_theme_option('mos-breadcumb-link-color-hover') ?>
