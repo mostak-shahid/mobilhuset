@@ -62,14 +62,15 @@ if($btt_enable) :
             <?php foreach($value as $key=> $val): ?> <?php if ($key !='background-image'&& $key !='_type'): ?> <?php echo $val? $key . ':'. $val . ';':''?> <?php elseif ($key=='background-image'): ?> <?php echo $val ? $key . ':url('. wp_get_attachment_url($val) . ');':''?> <?php endif?> <?php endforeach?> <?php endforeach?> <?php endif?>
     }
     <?php if(carbon_get_theme_option('mos-breadcumb-content-color')): ?>
-    section.page-title .breadcrumb-item.active{
+    section.page-title .breadcrumb-item.active,
+    .woocommerce .woocommerce-breadcrumb,
+    .breadcrumb-item+.breadcrumb-item::before {
          color: <?php echo carbon_get_theme_option('mos-breadcumb-content-color') ?>; 
     }
     <?php endif?>
     <?php if(carbon_get_theme_option('mos-breadcumb-link-color')): ?>
     section.page-title .woocommerce-breadcrumb a,
-    section.page-title .breadcrumb-item a,
-    .breadcrumb-item+.breadcrumb-item::before  {
+    section.page-title .breadcrumb-item a {
         color: <?php echo carbon_get_theme_option('mos-breadcumb-link-color') ?>
     }
     <?php endif?>

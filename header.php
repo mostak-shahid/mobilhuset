@@ -99,20 +99,24 @@ else $page_id = get_the_ID();
         </div>
     </div>
     <header id="header" class="main-header smooth <?php echo carbon_get_theme_option( 'mos-header-class' ) ?>">
-        <div class="wrapper">
-            <?php 
-            $header_layout = carbon_get_theme_option( 'mos-header-layout' );
-            if(!carbon_get_post_meta( get_the_ID(), 'mos_page_hide_header' ) && $header_layout) : 
-            ?>
-            <?php 
-                $my_postid = $header_layout[0]['id'];//This is page id or post id
-                $content_post = get_post($my_postid);
-                $content = $content_post->post_content;
-                $content = apply_filters('the_content', $content);
-                $content = str_replace(']]>', ']]&gt;', $content);
-                echo $content;            
-            ?>
-            <?php endif?>
-        </div>
-    </header>
+            <div class="wrapper">
+                <?php 
+                $option_header_layout = carbon_get_theme_option( 'mos-header-layout' );
+                $mos_page_header_type = carbon_get_post_meta( get_the_ID(), 'mos_page_header_type' );
+                $mos_page_header_layout = carbon_get_post_meta( get_the_ID(), 'mos_page_header_layout' );
+                $header_layout = ($mos_page_header_type == 'custom')?$mos_page_header_layout:$option_header_layout;
+
+                if($mos_page_header_type != 'none' && @$header_layout) : 
+                ?>
+                <?php 
+                    $layout_id = $header_layout[0]['id'];//This is page id or post id
+                    $content_post = get_post($layout_id);
+                    $content = $content_post->post_content;
+                    $content = apply_filters('the_content', $content);
+                    $content = str_replace(']]>', ']]&gt;', $content);
+                    echo $content;            
+                ?>
+                <?php endif?>
+            </div>
+        </header>
 
