@@ -9,8 +9,10 @@ function mos_theme_options() {
     ->add_fields(array(
         Field::make('image', 'mos-logo', __('Logo'))
         ->set_default_value(get_template_directory_uri() . '/assets/img/logo.svg'),
-        Field::make('header_scripts', 'crb_header_script', __('Header Script')),
-        Field::make('footer_scripts', 'crb_footer_script', __('Footer Script')),
+        Field::make('header_scripts', 'crb_header_script', __('Header Script'))
+        ->set_classes('html-editor'),
+        Field::make('footer_scripts', 'crb_footer_script', __('Footer Script'))
+        ->set_classes('html-editor'),
     ));
 
     Container::make('theme_options', __('Color scheme'))
@@ -400,6 +402,7 @@ function mos_theme_options() {
         ->set_attribute( 'min', 1 )
         ->set_default_value(9)
         ->set_required( true ),
+        Field::make( 'checkbox', 'mos-woocommerce-vmb', 'Enable Marginal Vat' ),
         Field::make('text', 'mos-woocommerce-add-to-cart-text', __('Add to cart button text for simple product'))
         ->set_default_value("Add to cart")
         ->set_required( true ),

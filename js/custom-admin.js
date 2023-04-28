@@ -1,4 +1,9 @@
 jQuery(document).ready(function($) {    
+    $( window ).load(function() {
+        $('.html-editor').find("textarea").ace({ theme: 'twilight', lang: 'html', height: 400 });
+        $('.css-editor').find("textarea").ace({ theme: 'twilight', lang: 'css' });
+        $('.js-editor').find("textarea").ace({ theme: 'twilight', lang: 'javascript' });
+    });
     var page_template = $('#page_template').val();
     show_meta_boxes (page_template);
 
@@ -25,7 +30,7 @@ jQuery(document).ready(function($) {
             if (image.height > 150 || image.width > 150) { thum_link = image.sizes.thumbnail.url; }
             //console.log(image);
             //button.siblings('input.photo_url').val(image_link);
-            //button..before('<div class="screenshot-photo"><a class="of-uploaded-photo" href="'+ image_link +'" target="_blank"><img class="redux-option-photo" src="'+ thum_link +'"></a></div>');;
+            //button..before('<div class="screenshot-photo"><a class="of-uploaded-photo" href="'+ image_link +'" target="_blank"><img class="redux-option-photo" src="'+ thum_link +'"></a></div>');
 
             button.closest('.photo-container').siblings('.redux-slides-list').find('.photo').val(image_link);
             button.closest('.photo-container').siblings('.redux-slides-list').find('.photo-id').val(image.id);
