@@ -336,16 +336,40 @@ function mos_theme_options() {
     Container::make('theme_options', __('Sticky Header'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
+        Field::make( 'checkbox', 'mos-header-sticky-enable', __( 'Enable Sticky Header' ) ),
         Field::make( 'radio_image', 'mos-header-sticky-layout', __( 'Sticky Header Layout' ) )
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-sticky-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
         ->set_options( array(
             'mountain' => 'https://source.unsplash.com/X1UTzW8e7Q4/800x600',
             'temple' => 'https://source.unsplash.com/ioJVccFmWxE/800x600',
             'road' => 'https://source.unsplash.com/5c8fczgvar0/800x600',
         )),
-        Field::make('image', 'mos-header-sticky-menu-icon', __('Sticky Header Menu Icon')),
+        Field::make('image', 'mos-header-sticky-menu-icon', __('Sticky Header Menu Icon'))
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-sticky-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        )),
         Field::make('complex', 'mos-header-sticky-icons', __('Sticky Header Icons'))
-        ->set_collapsed(true)
-        
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-sticky-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_collapsed(true)        
         ->add_fields(array(
             Field::make('text', 'title', __('Title')),
             Field::make('image', 'icon', __('Icon')),
@@ -362,14 +386,39 @@ function mos_theme_options() {
     Container::make('theme_options', __('Mobile Header'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
+        Field::make( 'checkbox', 'mos-header-mobile-enable', __( 'Enable Mobile Header' ) ),
         Field::make( 'radio_image', 'mos-header-mobile-layout', __( 'Mobile Header Layout' ) )
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-mobile-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
         ->set_options( array(
             'mountain' => 'https://source.unsplash.com/X1UTzW8e7Q4/800x600',
             'temple' => 'https://source.unsplash.com/ioJVccFmWxE/800x600',
             'road' => 'https://source.unsplash.com/5c8fczgvar0/800x600',
         )),
-        Field::make('image', 'mos-header-mobile-menu-icon', __('Mobile Header Menu Icon')),
+        Field::make('image', 'mos-header-mobile-menu-icon', __('Mobile Header Menu Icon'))
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-mobile-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        )),
         Field::make('complex', 'mos-header-mobile-icons', __('Mobile Header Icons'))
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-mobile-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
         ->set_collapsed(true)
         
         ->add_fields(array(
