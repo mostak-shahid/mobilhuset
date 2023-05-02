@@ -280,6 +280,8 @@ function mos_theme_options() {
         Field::make('color', 'mos-header-content-color', __('Content Color')),
         Field::make('color', 'mos-header-link-color', __('Links Color')),
         Field::make('color', 'mos-header-link-color-hover', __('Hover Color')),
+
+        
         Field::make('complex', 'mos-header-background', __('Background'))
         ->set_max(1)
         ->set_collapsed(true)
@@ -329,6 +331,58 @@ function mos_theme_options() {
             ))
             ->set_default_value('scroll'),
         )),
+    ));
+
+    Container::make('theme_options', __('Sticky Header'))
+    ->set_page_parent($basic_options_container) // reference to a top level container
+    ->add_fields(array(
+        Field::make( 'radio_image', 'mos-header-sticky-layout', __( 'Sticky Header Layout' ) )
+        ->set_options( array(
+            'mountain' => 'https://source.unsplash.com/X1UTzW8e7Q4/800x600',
+            'temple' => 'https://source.unsplash.com/ioJVccFmWxE/800x600',
+            'road' => 'https://source.unsplash.com/5c8fczgvar0/800x600',
+        )),
+        Field::make('image', 'mos-header-sticky-menu-icon', __('Sticky Header Menu Icon')),
+        Field::make('complex', 'mos-header-sticky-icons', __('Sticky Header Icons'))
+        ->set_collapsed(true)
+        
+        ->add_fields(array(
+            Field::make('text', 'title', __('Title')),
+            Field::make('image', 'icon', __('Icon')),
+            Field::make('text', 'link', __('Link'))
+            ->set_attribute( 'type', 'url' ),
+        ))
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- link ? "(" + link + ")" : "" %>
+            <% } %>
+        '),
+    ));
+
+    Container::make('theme_options', __('Mobile Header'))
+    ->set_page_parent($basic_options_container) // reference to a top level container
+    ->add_fields(array(
+        Field::make( 'radio_image', 'mos-header-mobile-layout', __( 'Mobile Header Layout' ) )
+        ->set_options( array(
+            'mountain' => 'https://source.unsplash.com/X1UTzW8e7Q4/800x600',
+            'temple' => 'https://source.unsplash.com/ioJVccFmWxE/800x600',
+            'road' => 'https://source.unsplash.com/5c8fczgvar0/800x600',
+        )),
+        Field::make('image', 'mos-header-mobile-menu-icon', __('Mobile Header Menu Icon')),
+        Field::make('complex', 'mos-header-mobile-icons', __('Mobile Header Icons'))
+        ->set_collapsed(true)
+        
+        ->add_fields(array(
+            Field::make('text', 'title', __('Title')),
+            Field::make('image', 'icon', __('Icon')),
+            Field::make('text', 'link', __('Link'))
+            ->set_attribute( 'type', 'url' ),
+        ))
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %> <%- link ? "(" + link + ")" : "" %>
+            <% } %>
+        '),
     ));
 
     Container::make('theme_options', __('Breadcumb Section'))

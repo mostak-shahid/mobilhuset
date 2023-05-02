@@ -24,6 +24,15 @@ function shortcodes_page(){
         <li>[this-year] <span class="sdetagils">displays 4 digit current year</span></li>
         <li>[email class='' display='all' title='0'] <span class="sdetagils">displays email from theme options</span></li>
         <li>[phone class='' display='all' title='0'] <span class="sdetagils">displays phone from theme options</span></li>
+        <li>[business-hours class='' display='all' title='0'] <span class="sdetagils">displays business hours from theme options</span></li>
+        <li>[contact-address class='' display='all' title='0'] <span class="sdetagils">displays contact address from theme options</span></li>
+        <li>[woo-searchform class=''] <span class="sdetagils">displays woo searchform from theme options</span></li>
+        <li>[newsletter-form class=''] <span class="sdetagils">displays newsletter form from theme options</span></li>
+        <li>[product-brand] <span class="sdetagils">displays product brand</span></li>
+        <li>[product-status] <span class="sdetagils">displays product status</span></li>
+        <li>[product-category-filter class='' title=''] <span class="sdetagils">displays product category filter</span></li>
+        <li>[mobile-menu class='' title=''] <span class="sdetagils">displays mobile menu icon</span></li>
+        <li>[mos-translate input='' ucf=false] <span class="sdetagils">displays translate</span></li>
     </ol>
 </div>
 <?php
@@ -221,30 +230,6 @@ function contact_address_func($atts = array(), $content = '') {
     return $html;
 }
 add_shortcode( 'contact-address', 'contact_address_func' );
-function mos_social_func($atts = array(), $content = '') {
-	$atts = shortcode_atts( array(
-        'class' => '',
-	), $atts, 'social' ); 
-    ?>
-    <div class="social-wrapper <?php echo $atts['class'] ?>">
-    <?php 
-    $socials = carbon_get_theme_option( 'mos-contact-social-media' );
-    if ($socials and sizeof($socials)) :?>
-        <div class="mos-socials">
-            <ul>
-                <?php foreach($socials as $social) : ?>
-                <li class="list-inline-item">
-                    <a class="<?php echo sanitize_title($social['title'])?>-icon" href="<?php echo $social['link']?>" <?php if ($social['new-tab']) echo ' target="_blank"' ?>><?php echo $social['title']?></a>
-                </li>
-                <?php endforeach;?>
-            </ul>
-        </div>
-        <?php endif?>
-    </div>
-    <?php 
-    $html = ob_get_clean();
-    return $html;
-}
 
 function woo_searchform_func( $atts = array(), $content = null ) {
 	$html = '';
@@ -260,6 +245,7 @@ function woo_searchform_func( $atts = array(), $content = null ) {
 	return $html;
 }
 add_shortcode( 'woo-searchform', 'woo_searchform_func' );
+
 function newsletter_form_func( $atts = array(), $content = null ) {
 	$html = '';
 	$atts = shortcode_atts( array(
@@ -388,3 +374,29 @@ function mos_mobile_menu_func( $atts = array(), $content = null ) {
 	return $html;
 }
 add_shortcode( 'mobile-menu', 'mos_mobile_menu_func' );
+
+
+function _mos_translate($input='', $ucf=false){
+    $words = carbon_get_theme_option( 'mos-translate' );
+    $found = 0;
+    foreach($words as $word) {
+        if (strtolower($word['input']) == strtolower($input)) {
+            $found++;
+            break;
+        } 
+    }
+    $t_input = __($input, 'mosgutenberg');
+    return ($ucf)?(ucfirst(($found)?$word['output']:$t_input)):strtolower(($found)?$word['output']:$t_input);
+}
+function _e_mos_translate($input='', $ucf=false){
+    echo _mos_translate($input, $ucf);
+}
+
+function mos_translate_func( $atts = array(), $content = null ) {
+	$atts = shortcode_atts( array(
+		'input' => '',
+        'ucf' => false
+	), $atts, 'mos-translate' ); 
+    return _mos_translate($atts['input'],$atts['ucf']);
+}
+add_shortcode( 'mos-translate', 'mos_translate_func' );
