@@ -323,3 +323,61 @@ function fix_svg() {
         </style>';
 }
 add_action( 'admin_head', 'fix_svg' );
+
+function mos_header_builder($lauout='header-1', $icons=''){
+    ?>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center gap-3 <?php echo $lauout?>">
+            <div class="left-part d-flex justify-content-start align-items-center gap-3">
+                <?php if($lauout=='header-1' || $lauout=='header-2' || $lauout=='header-5' || $lauout=='header-6' || $lauout=='header-7') : ?>
+                    <?php echo do_shortcode("[mobile-menu]") ?>
+                <?php endif ?>
+                <?php if($lauout=='header-5' || $lauout=='header-6') : ?>
+                    <div class="header-icons d-flex align-items-center gap-1"><?php mos_header_icon_builder ($icons) ?></div>
+                <?php endif ?>
+                <?php if($lauout=='header-3' || $lauout=='header-4' || $lauout=='header-5' || $lauout=='header-6' || $lauout=='header-7') : ?>
+                    <?php echo do_shortcode("[site-identity]")?>
+                <?php endif ?>
+            </div>
+
+            <?php if($lauout=='header-1' || $lauout=='header-2') : ?>
+                <div class="middle-part">
+                    <?php echo do_shortcode("[site-identity]")?>
+                </div>
+            <?php endif ?>
+            <div class="right-part d-flex justify-content-end align-items-center gap-3">
+                <?php if($lauout=='header-1' || $lauout=='header-2' || $lauout=='header-3' || $lauout=='header-4' || $lauout=='header-7') : ?>
+                    <div class="header-icons d-flex align-items-center gap-1"><?php mos_header_icon_builder ($icons) ?></div>
+                <?php endif ?>
+                <?php if($lauout=='header-3' || $lauout=='header-4') : ?>
+                    <?php echo do_shortcode("[mobile-menu]") ?>
+                <?php endif ?>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+function mos_header_icon_builder ($icons='') {
+    if ($icons && sizeof($icons)) :
+        foreach($icons as $item) : ?>
+            <div <?php echo @$item['attributes'] ?>>
+            <?php if (@$item['svg']) : ?>
+                <span class="svg"><?php echo $item['svg']; ?></span>
+            <?php endif?>
+            <?php if (@$item['icon']) : ?>
+                <i class="icon <?php echo $item['icon']; ?>"></i>
+            <?php endif?>
+            <?php if (@$item['image']) : ?>
+                <div class="image"><?php echo wp_get_attachment_image( $item['image'], "full", "", array( "class" => "img-fluid" ) );  ?></div>
+            <?php endif?>
+            <?php if (@$item['title']) : ?>
+                <span class="title"><?php echo $item['title'] ?></span>
+            <?php endif?>
+            <?php if (@$item['link']) : ?>
+                <a href="<?php echo $item['link']; ?>" class="hidden-link">Read More about <?php echo $item['title'] ?></a>
+            <?php endif?>
+            </div>
+        <?php 
+        endforeach;
+    endif;
+}

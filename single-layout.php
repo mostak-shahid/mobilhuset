@@ -1,4 +1,5 @@
 <?php get_header();?>
+
 <section class="layout-single-wrapper">
     <div class="wrapper">
             <article id="<?php echo get_post_type() ?>-<?php echo $post_id ?>" <?php post_class( 'single-blog' ); ?> itemtype="https://schema.org/CreativeWork" itemscope="itemscope">
@@ -10,4 +11,5 @@
         </div>
     </div>
 </section> 
+
 <?php get_footer() ?>

@@ -49,6 +49,7 @@ else $page_id = get_the_ID();
         <?php endif?>
     </div>
     <?php endif; ?>
+    <?php if (carbon_get_theme_option( 'mos-header-mobile-enable' ) == 'on' || carbon_get_theme_option( 'mos-header-sticky-enable' ) == 'on') : ?>
     <div>
         <div class="wrapper cf">
             <nav id="main-nav">
@@ -183,6 +184,7 @@ else $page_id = get_the_ID();
             </nav>
         </div>
     </div>
+    <?php endif; ?>
     <header id="header" class="main-header smooth <?php echo carbon_get_theme_option( 'mos-header-class' ) ?>">
         <div class="wrapper">
             <?php 
@@ -197,6 +199,31 @@ else $page_id = get_the_ID();
                 $content = str_replace(']]>', ']]&gt;', $content);
                 echo $content;            
             ?>
+            <?php endif?>
+            <?php if (carbon_get_theme_option( 'mos-header-mobile-enable' ) == 'on') : ?>
+                <?php 
+                    $mobile_layout = carbon_get_theme_option( 'mos-header-mobile-layout' );
+                    $mobile_icons = carbon_get_theme_option( 'mos-header-mobile-icons' );
+                    $search = carbon_get_theme_option( 'mos-header-mobile-search' );
+                ?>
+                <div class="wp-block-nk-awb nk-awb alignfull d-lg-none mobile-header"> 
+                    <?php if ($search=='top') : ?> 
+                        <div class="pb-3"><?php echo do_shortcode("[woo-searchform]")?></div>
+                    <?php endif?>
+                    <?php mos_header_builder($mobile_layout, $mobile_icons)?>
+                    <?php if ($search=='bottom') : ?> 
+                        <div class="pt-3"><?php echo do_shortcode("[woo-searchform]")?></div>
+                    <?php endif?>
+                </div>
+            <?php endif?>
+            <?php if (carbon_get_theme_option( 'mos-header-sticky-enable' ) == 'on') : ?>
+                <?php 
+                    $sticky_layout = carbon_get_theme_option( 'mos-header-sticky-layout' );
+                    $sticky_icons = carbon_get_theme_option( 'mos-header-sticky-icons' );
+                ?>
+                <div class="wp-block-nk-awb nk-awb alignfull scroll-header smooth scroll-header smooth">
+                    <?php mos_header_builder($sticky_layout, $sticky_icons)?>
+                </div>
             <?php endif?>
         </div>
     </header>

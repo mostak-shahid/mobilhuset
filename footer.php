@@ -94,7 +94,25 @@ if($btt_enable) :
         color: <?php echo carbon_get_theme_option('mos-footer-link-color-hover') ?>
     }
 
-    <?php endif?>    
+    <?php endif?>  
+    <?php if(carbon_get_theme_option('mos-header-sticky-menu-icon')): ?>
+        .scroll-header .hc-nav-trigger{
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image:url(<?php echo wp_get_attachment_url(carbon_get_theme_option('mos-header-sticky-menu-icon')) ?>);
+        }
+        .scroll-header .hc-nav-trigger span{display: none}
+    <?php endif?>   
+    <?php if(carbon_get_theme_option('mos-header-mobile-menu-icon')): ?>
+        .mobile-header .hc-nav-trigger{            
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image:url(<?php echo wp_get_attachment_url(carbon_get_theme_option('mos-header-mobile-menu-icon')) ?>);
+        }
+        .mobile-header .hc-nav-trigger span{display: none}
+    <?php endif?>   
 </style>
     <?php if (carbon_get_theme_option( 'mos_plugin_wow' ) == 'on') : ?>
     <script>new WOW().init();</script>

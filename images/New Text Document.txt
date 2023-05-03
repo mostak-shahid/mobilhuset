@@ -1,0 +1,5 @@
+header-1 all left - header 6 all right
+header-2 3 col - header-7 2 col
+header-3 2 col - header-4 2 col
+header-5 2 col
+header-6

@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.56
+Version: 1.0.57
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -151,7 +151,48 @@ pre {
 ::placeholder {
   color: #4c4d54;
 }
+.header-2,
+.header-4,
+.header-6,
+.header-2 .right-part,
+.header-4 .right-part,
+.header-6 .right-part,
+.header-2 .left-part,
+.header-4 .left-part,
+.header-6 .left-part {
+  flex-direction: row-reverse;
+}
+.header-icons > div {
+  position: relative;
+}
+.header-icons > div > * + .title {
+  display: none;
+}
+.scroll-header {
+  position: fixed;
+  width: 100%;
+  top: -100%;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px 0 rgb(36 50 66 / 8%);
+  padding: 10px 0 !important;
+}
+.scroll-header.active {
+  top: 0;
+}
 
+.scroll-header .form-control {
+  background-color: transparent !important;
+}
+.mobile-header {
+  padding: 20px 5px !important;
+}
+/* .scroll-header .container {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+} */
 .se-pre-con {
   z-index: 9999;
 }

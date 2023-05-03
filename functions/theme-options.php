@@ -347,10 +347,15 @@ function mos_theme_options() {
             )
         ))
         ->set_options( array(
-            'mountain' => 'https://source.unsplash.com/X1UTzW8e7Q4/800x600',
-            'temple' => 'https://source.unsplash.com/ioJVccFmWxE/800x600',
-            'road' => 'https://source.unsplash.com/5c8fczgvar0/800x600',
-        )),
+            'header-1' => get_template_directory_uri() . '/images/header-1.png',
+            'header-2' => get_template_directory_uri() . '/images/header-2.png',
+            'header-3' => get_template_directory_uri() . '/images/header-3.png',
+            'header-4' => get_template_directory_uri() . '/images/header-4.png',
+            'header-5' => get_template_directory_uri() . '/images/header-5.png',
+            'header-6' => get_template_directory_uri() . '/images/header-6.png',
+            'header-7' => get_template_directory_uri() . '/images/header-7.png',
+        ))
+        ->set_default_value('header-1'),
         Field::make('image', 'mos-header-sticky-menu-icon', __('Sticky Header Menu Icon'))
         ->set_conditional_logic( array(
             'relation' => 'AND', // Optional, defaults to "AND"
@@ -371,10 +376,15 @@ function mos_theme_options() {
         ))
         ->set_collapsed(true)        
         ->add_fields(array(
-            Field::make('text', 'title', __('Title')),
-            Field::make('image', 'icon', __('Icon')),
+            Field::make('text', 'title', __('Title'))
+            ->set_required( true ),
+            Field::make('text', 'icon', __('Icon Class')),
+            Field::make('textarea', 'svg', __('SVG')),
+            Field::make('image', 'image', __('Image')),
             Field::make('text', 'link', __('Link'))
             ->set_attribute( 'type', 'url' ),
+            Field::make('text', 'attributes', __('Attributes'))
+            ->set_help_text( 'You can add your tag attributes like class, id, data-* attributes here.' ),
         ))
         ->set_header_template('
             <% if (title) { %>
@@ -397,10 +407,15 @@ function mos_theme_options() {
             )
         ))
         ->set_options( array(
-            'mountain' => 'https://source.unsplash.com/X1UTzW8e7Q4/800x600',
-            'temple' => 'https://source.unsplash.com/ioJVccFmWxE/800x600',
-            'road' => 'https://source.unsplash.com/5c8fczgvar0/800x600',
-        )),
+            'header-1' => get_template_directory_uri() . '/images/header-1.png',
+            'header-2' => get_template_directory_uri() . '/images/header-2.png',
+            'header-3' => get_template_directory_uri() . '/images/header-3.png',
+            'header-4' => get_template_directory_uri() . '/images/header-4.png',
+            'header-5' => get_template_directory_uri() . '/images/header-5.png',
+            'header-6' => get_template_directory_uri() . '/images/header-6.png',
+            'header-7' => get_template_directory_uri() . '/images/header-7.png',
+        ))
+        ->set_default_value('header-1'),
         Field::make('image', 'mos-header-mobile-menu-icon', __('Mobile Header Menu Icon'))
         ->set_conditional_logic( array(
             'relation' => 'AND', // Optional, defaults to "AND"
@@ -419,19 +434,29 @@ function mos_theme_options() {
                 'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
             )
         ))
-        ->set_collapsed(true)
-        
+        ->set_collapsed(true)        
         ->add_fields(array(
-            Field::make('text', 'title', __('Title')),
-            Field::make('image', 'icon', __('Icon')),
+            Field::make('text', 'title', __('Title'))
+            ->set_required( true ),
+            Field::make('text', 'icon', __('Icon Class')),
+            Field::make('textarea', 'svg', __('SVG')),
+            Field::make('image', 'image', __('Image')),
             Field::make('text', 'link', __('Link'))
             ->set_attribute( 'type', 'url' ),
+            Field::make('text', 'attributes', __('Attributes'))
+            ->set_help_text( 'You can add your tag attributes like class, id, data-* attributes here.' ),
         ))
         ->set_header_template('
             <% if (title) { %>
                 <%- title %> <%- link ? "(" + link + ")" : "" %>
             <% } %>
-        '),
+        '),        
+        Field::make('select', 'mos-header-mobile-search', __('Search Option'))
+        ->set_options(array(
+            '' => 'None',
+            'top' => 'Top',
+            'bottom' => 'Bottom',
+        ))
     ));
 
     Container::make('theme_options', __('Breadcumb Section'))
