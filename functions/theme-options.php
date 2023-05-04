@@ -452,6 +452,14 @@ function mos_theme_options() {
             <% } %>
         '),        
         Field::make('select', 'mos-header-mobile-search', __('Search Option'))
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-mobile-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
         ->set_options(array(
             '' => 'None',
             'top' => 'Top',
@@ -462,6 +470,8 @@ function mos_theme_options() {
     Container::make('theme_options', __('Breadcumb Section'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
+        Field::make( 'checkbox', 'mos-header-sticky-enable', __( 'Enable Sticky Header' ) ),
+        
         Field::make('text', 'mos-breadcumb-height', __('Height')),
         Field::make('text', 'mos-breadcumb-padding', __('Padding')),
         Field::make('text', 'mos-breadcumb-margin', __('Margin')),

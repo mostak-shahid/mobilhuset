@@ -381,3 +381,24 @@ function mos_header_icon_builder ($icons='') {
         endforeach;
     endif;
 }
+/**
+ * Disable Plugin Updates 
+ */
+add_filter( 'site_transient_update_plugins', 'disable_multiple_plugin_updates' );
+
+ function disable_multiple_plugin_updates( $value ) {
+
+    $pluginsToDisableUpdates = [
+        'woo-bought-together/wpc-frequently-bought-together.php',
+        'yith-woocommerce-added-to-cart-popup-premium/init.php'
+    ];
+
+    if ( isset($value) && is_object($value) ) {
+        foreach ( $pluginsToDisableUpdates as $plugin) {
+            if ( isset( $value->response[$plugin] ) ) {
+                unset( $value->response[$plugin] );
+            }
+        }
+    }
+    return $value;
+}
