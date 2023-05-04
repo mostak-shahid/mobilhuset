@@ -108,3 +108,4 @@ defined( 'ABSPATH' ) || exit;
 
 	</tfoot>
 </table>
+
