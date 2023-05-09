@@ -910,25 +910,27 @@ function mos_add_handling_fee() {
 			if ($mos_product_purchase_price) {
 				$taxes = $tax->get_rates($product->get_tax_class());
 				$rates = array_shift($taxes);
-				//Take only the item rate and round it. 
-				$item_rate = round(array_shift($rates));
-				if (get_option('woocommerce_calc_taxes') == 'yes'){
-					if (get_option('woocommerce_prices_include_tax') == 'yes'){
-						$price = $product->get_price();
-						$profit_with_tax = $price - $mos_product_purchase_price;
-						$raw_profit = $profit_with_tax/(1 + $item_rate/100);
-						$raw_tax = round($profit_with_tax - (($profit_with_tax)/(1 + $item_rate/100)));
-						$item_tax = round($product->get_price() - (($product->get_price())/(1 + $item_rate/100))) * $cart_item['quantity'];
-						//$item_tax = $woocommerce->cart->get_taxes_total();
-						$new_tax = $raw_tax * $cart_item['quantity'];
+				if (is_array($taxes) && is_array($rates)){
+					//Take only the item rate and round it. 
+					$item_rate = round(array_shift($rates));
+					if (get_option('woocommerce_calc_taxes') == 'yes'){
+						if (get_option('woocommerce_prices_include_tax') == 'yes'){
+							$price = $product->get_price();
+							$profit_with_tax = $price - $mos_product_purchase_price;
+							$raw_profit = $profit_with_tax/(1 + $item_rate/100);
+							$raw_tax = round($profit_with_tax - (($profit_with_tax)/(1 + $item_rate/100)));
+							$item_tax = round($product->get_price() - (($product->get_price())/(1 + $item_rate/100))) * $cart_item['quantity'];
+							//$item_tax = $woocommerce->cart->get_taxes_total();
+							$new_tax = $raw_tax * $cart_item['quantity'];
+						}
+						// else {
+						// 	$price = (get_post_meta($cart_item['product_id'], '_sale_price', true))?get_post_meta($cart_item['product_id'], '_sale_price', true):get_post_meta($cart_item['product_id'], '_regular_price', true);
+						// 	$item_tax = round($price * $item_rate/100);
+						// 	$new_tax = ($price - $mos_product_purchase_price)*$item_rate/100;
+						// }				
+						$item_tax_reduced = $item_tax - $new_tax;
+						$total_tax_reduiced += $item_tax_reduced;
 					}
-					// else {
-					// 	$price = (get_post_meta($cart_item['product_id'], '_sale_price', true))?get_post_meta($cart_item['product_id'], '_sale_price', true):get_post_meta($cart_item['product_id'], '_regular_price', true);
-					// 	$item_tax = round($price * $item_rate/100);
-					// 	$new_tax = ($price - $mos_product_purchase_price)*$item_rate/100;
-					// }				
-					$item_tax_reduced = $item_tax - $new_tax;
-					$total_tax_reduiced += $item_tax_reduced;
 				}
 			}
 		}
