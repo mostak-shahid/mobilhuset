@@ -470,7 +470,7 @@ function mos_theme_options() {
     Container::make('theme_options', __('Breadcumb Section'))
     ->set_page_parent($basic_options_container) // reference to a top level container
     ->add_fields(array(
-        Field::make( 'checkbox', 'mos-header-sticky-enable', __( 'Enable Sticky Header' ) ),
+        Field::make( 'checkbox', 'mos-breadcump-enable', __( 'Enable Breadcump' ) ),
         
         Field::make('text', 'mos-breadcumb-height', __('Height')),
         Field::make('text', 'mos-breadcumb-padding', __('Padding')),
