@@ -390,7 +390,8 @@ add_filter( 'site_transient_update_plugins', 'disable_multiple_plugin_updates' )
 
     $pluginsToDisableUpdates = [
         'woo-bought-together/wpc-frequently-bought-together.php',
-        'yith-woocommerce-added-to-cart-popup-premium/init.php'
+        'yith-woocommerce-added-to-cart-popup-premium/init.php',
+        'advanced-backgrounds/advanced-backgrounds.php'
     ];
 
     if ( isset($value) && is_object($value) ) {
