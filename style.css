@@ -5,7 +5,7 @@ Author: Md. Mostak Shahid
 Author URI: http://mdmostakshahid.com/
 Description: Our Mobilhuset Theme default theme is clean, blog-focused, and designed for clarity. Mobilhuset Theme is simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach. Your visitors arrive by smartphone, tablet, laptop, or desktop computer can view site easily.
 License: GNU General Public License v2 or later
-Version: 1.0.61
+Version: 1.0.62
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, one-column, left-sidebar, right-sidebar, fixed-layout, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, post-formats, rtl-language-support, sticky-post, threaded-comments, translation-ready
 Text Domain: mobilhuset
@@ -1277,6 +1277,15 @@ li.product .yith-wcwl-add-to-wishlist .feedback + a {
   [class*="owl-"] {
   opacity: 1;
 }
+.mos-product-categories-block-wrapper.owl-carousel .owl-stage {
+  display: flex;
+  align-items: stretch;
+}
+.mos-product-categories-block-wrapper.owl-carousel .unit {
+  height: 100%;
+}
+.mos-product-categories-block-wrapper.owl-carousel .owl-nav .owl-prev,
+.mos-product-categories-block-wrapper.owl-carousel .owl-nav .owl-next,
 .slick-prev,
 .slick-next {
   background-size: cover;
@@ -1296,12 +1305,13 @@ li.product .yith-wcwl-add-to-wishlist .feedback + a {
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
+.mos-product-categories-block-wrapper.owl-carousel .owl-nav .owl-prev,
 .slick-prev,
 .woocommerce-product-gallery__wrapper .owl-carousel .owl-nav .owl-prev {
   left: -48px;
   background-image: url("data:image/svg+xml,%3Csvg version='1.2' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' width='512' height='512'%3E%3Ctitle%3Earrow-right-2-svg%3C/title%3E%3Cstyle%3E.s0 %7B fill: %23000000 %7D %3C/style%3E%3Cg id='Layer'%3E%3Cpath id='Layer' class='s0' d='m21.3 29.6l16.5-16.5 2.4-2.4c1.8-1.8 4.7 1 2.8 2.8l-16.5 16.5-0.9 0.9 15 15 2.3 2.3c1.8 1.8-1 4.7-2.8 2.8l-16.4-16.4-2.3-2.3c-0.9-0.6-0.9-1.9-0.1-2.7z'/%3E%3C/g%3E%3C/svg%3E");
 }
-
+.mos-product-categories-block-wrapper.owl-carousel .owl-nav .owl-next,
 .slick-next,
 .woocommerce-product-gallery__wrapper .owl-carousel .owl-nav .owl-next {
   right: -48px;
@@ -1314,6 +1324,13 @@ li.product .yith-wcwl-add-to-wishlist .feedback + a {
 .flex-control-thumbs:hover .slick-next,
 .woocommerce-product-gallery__wrapper:hover .owl-carousel .owl-nav .owl-next {
   right: 0;
+}
+
+.mos-product-categories-block-wrapper.owl-carousel .owl-nav .owl-prev,
+.mos-product-categories-block-wrapper.owl-carousel .owl-nav .owl-next {
+  border-radius: 50%;
+  border: 1px solid #eaeaea;
+  background-color: #ffffff;
 }
 .woocommerce .term-description.collapsed {
   height: 24px;
@@ -1568,9 +1585,11 @@ body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
   border: 1px solid #eaeaea;
   background-color: #ffffff;
 }
+.mos-product-categories-block-wrapper.owl-carousel .owl-nav .owl-prev,
 .woocommerce .category-child-slider .slick-prev {
   left: -12px;
 }
+.mos-product-categories-block-wrapper.owl-carousel .owl-nav .owl-next,
 .woocommerce .category-child-slider .slick-next {
   right: -12px;
 }
@@ -2312,33 +2331,34 @@ body.more-then-one-product-available .usp-group {
   max-height: 180px;
   overflow-y: auto;
 }
-/* width */
+/* 
 .widget .widget-content > ul::-webkit-scrollbar,
 .widget .product-category-filter-wrapper > ul::-webkit-scrollbar,
 .widget > ul::-webkit-scrollbar {
   width: 2px;
 }
 
-/* Track */
+
 .widget .widget-content > ul::-webkit-scrollbar-track,
 .widget .product-category-filter-wrapper > ul::-webkit-scrollbar-track,
 .widget > ul::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
 
-/* Handle */
+
 .widget .widget-content > ul::-webkit-scrollbar-thumb,
 .widget .product-category-filter-wrapper > ul::-webkit-scrollbar-thumb,
 .widget > ul::-webkit-scrollbar-thumb {
   background: #888;
 }
 
-/* Handle on hover */
+
 .widget .widget-content > ul::-webkit-scrollbar-thumb:hover,
 .widget .product-category-filter-wrapper > ul::-webkit-scrollbar-thumb:hover,
 .widget > ul::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+*/
 .widget .product-category-filter-wrapper .current-cat a {
   font-weight: 700;
 }

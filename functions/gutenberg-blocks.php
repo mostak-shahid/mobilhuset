@@ -382,7 +382,61 @@ function mos_gutenberg_blocks() {
     ))
     ->add_tab(__('Style'), array(
         Field::make('text', 'mos_product_categories_block_wrapper_class', __('Wrapper Class')),
-        Field::make('text', 'mos_product_categories_block_unit_class', __('Unit Class')),
+        Field::make('text', 'mos_product_categories_block_unit_class', __('Unit Class')),        
+        Field::make( 'select', 'mos_product_categories_block_type', __('Display Type'))
+        ->set_options( array(
+            'block'=>'Block',
+            'slider'=>'Slider',
+        )),
+        Field::make( 'checkbox', 'mos_product_categories_block_show_nav', __('Show Nav'))        
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos_product_categories_block_type',
+                'value' => 'slider', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        )),        
+        Field::make( 'checkbox', 'mos_product_categories_block_show_dots', __('Show Dots'))       
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos_product_categories_block_type',
+                'value' => 'slider', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        )),
+        Field::make( 'checkbox', 'mos_product_categories_block_autoplay', __('Autoplay'))       
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos_product_categories_block_type',
+                'value' => 'slider', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        )),
+        Field::make( 'checkbox', 'mos_product_categories_block_hover_pause', __('Hover Pause'))       
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos_product_categories_block_type',
+                'value' => 'slider', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        )),
+        Field::make('text', 'mos_product_categories_block_autoplay_timeout', __('Autoplay Time'))       
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos_product_categories_block_type',
+                'value' => 'slider', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_attribute( 'type', 'number' )
+        ->set_default_value(3000),
+
+
         Field::make('text', 'mos_product_categories_block_desktop_grid', __('Desktop Grid'))
         ->set_attribute('type', 'number')
         ->set_default_value(5),
@@ -405,7 +459,25 @@ function mos_gutenberg_blocks() {
     if(@$fields['mos_product_categories_items'] && sizeof($fields['mos_product_categories_items'])) {
         $id = 'element-'.time().rand(1000, 9999);
         ?>
-        <div id="<?php echo $id ?>" class="mos-product-categories-block-wrapper <?php echo @$fields['mos_product_categories_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+        <div id="<?php echo $id ?>" class="mos-product-categories-block-wrapper <?php echo @$fields['mos_product_categories_block_wrapper_class']; ?> <?php echo @$attributes['className']; ?> <?php if (@$fields['mos_product_categories_block_type'] =='slider') : ?> mos-slider mos-owl-carousel owl-carousel owl-theme <?php endif ?>" <?php if (@$fields['mos_product_categories_block_type'] =='slider') : ?> data-carousel-options='{
+                    "nav":<?php echo (@$fields['mos_product_categories_block_show_nav'])?"true":"false" ?>,
+                    "dots":<?php echo (@$fields['mos_product_categories_block_show_dots'])?"true":"false" ?>,
+                    "autoplay":<?php echo (@$fields['mos_product_categories_block_autoplay'])?"true":"false" ?>,
+                    "autoplayTimeout":"<?php echo (@$fields['mos_product_categories_block_autoplay_timeout'])?$fields['mos_product_categories_block_autoplay_timeout']:3000 ?>",
+                    "autoplayHoverPause":<?php echo (@$fields['mos_product_categories_block_hover_pause'])?"true":"false" ?>,
+                    
+                    "responsive":{
+                        "0":{
+                            "items":"<?php echo (@$fields['mos_product_categories_block_mobile_grid'])?$fields['mos_product_categories_block_mobile_grid']:2 ?>"
+                        },
+                        "600":{
+                            "items":"<?php echo (@$fields['mos_product_categories_block_tab_grid'])?$fields['mos_product_categories_block_tab_grid']:3 ?>"
+                        },
+                        "1000":{
+                            "items":"<?php echo (@$fields['mos_product_categories_block_desktop_grid'])?$fields['mos_product_categories_block_desktop_grid']:5 ?>"
+                        }
+                    }
+                }'<?php endif ?>> 
         <?php foreach($fields['mos_product_categories_items'] as $index=>$item) :
             $term = get_term( (int)$item['id'] , 'product_cat' );
             $link = get_term_link( (int)$item['id'], 'product_cat' );
@@ -427,6 +499,7 @@ function mos_gutenberg_blocks() {
             <?php endif?>
         <?php endforeach;?>
         </div>
+        <?php if (@$fields['mos_product_categories_block_type'] !='slider') : ?>
         <style>
             <?php echo '#'.$id ?> {
                 display: grid;
@@ -444,6 +517,15 @@ function mos_gutenberg_blocks() {
                 }
             }
         </style>
+        <?php else : ?>
+        <style>
+            <?php echo '#'.$id ?> .owl-item {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        </style>
+
+        <?php endif?>
         <?php if(@$fields['mos_product_categories_block_style']) : ?>
             <style><?php echo str_replace("selector",'#'.$id,$fields['mos_product_categories_block_style']); ?></style>
         <?php endif?>
