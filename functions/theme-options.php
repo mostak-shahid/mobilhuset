@@ -540,7 +540,7 @@ function mos_theme_options() {
         ->set_attribute( 'min', 1 )
         ->set_default_value(9)
         ->set_required( true ),
-        Field::make( 'checkbox', 'mos-woocommerce-vmb', 'Enable Marginal Vat' ),
+        // Field::make( 'checkbox', 'mos-woocommerce-vmb', 'Enable Marginal Vat' ),
         Field::make('text', 'mos-woocommerce-add-to-cart-text', __('Add to cart button text for simple product'))
         ->set_default_value("Add to cart")
         ->set_required( true ),

@@ -374,6 +374,34 @@ function mos_mobile_menu_func( $atts = array(), $content = null ) {
 	return $html;
 }
 add_shortcode( 'mobile-menu', 'mos_mobile_menu_func' );
+function trustpilot_widget_func( $atts = array(), $content = null ) {
+	$html = '';
+	$atts = shortcode_atts( array(
+		'class' => '',
+		'locale' => '',
+		'template-id' => '',
+		'businessunit-id' => '',
+		'style-height' => '24px',
+		'style-width' => '100%',
+		'theme' => 'light',
+		'min-review-count' => 0,
+        'without-reviews-preferred-string-id' => 2,
+        'style-alignment' => 'center',
+        'href' => ''
+	), $atts, 'trustpilot-widget' ); 
+    
+    ob_start(); ?>
+    <div class="mos-trustpilot-widget-wrapper">
+    <!-- TrustBox widget - Micro Review Count -->
+    <div class="trustpilot-widget <?php echo @$atts['class']?>" data-locale="<?php echo @$atts['locale']?>" data-template-id="<?php echo @$atts['template-id']?>" data-businessunit-id="<?php echo @$atts['businessunit-id']?>" data-style-height="<?php echo @$atts['style-height']?>" data-style-width="<?php echo @$atts['style-width']?>" data-theme="<?php echo @$atts['theme']?>" data-min-review-count="<?php echo (@$atts['min-review-count'])?$atts['min-review-count']:0?>" data-without-reviews-preferred-string-id="<?php echo @$atts['without-reviews-preferred-string-id']?>" data-style-alignment="<?php echo @$atts['style-alignment']?>">
+    <a href="https://se.trustpilot.com/review/nordicwinner.se" target="_blank" rel="noopener">Trustpilot</a>
+    </div>
+    <!-- End TrustBox widget -->
+    </div>
+<?php $html = ob_get_clean();	
+	return $html;
+}
+add_shortcode( 'trustpilot-widget', 'trustpilot_widget_func' );
 
 
 function _mos_translate($input='', $ucf=false){

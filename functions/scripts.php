@@ -96,6 +96,8 @@ function mosgutenberg_enqueue_scripts() {
             $n++;
         }
     }
+    wp_register_script( 'tp.widget.bootstrap.min', '//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js' );
+    wp_enqueue_script( 'tp.widget.bootstrap.min' );	
 
 
     wp_register_style( 'hc-offcanvas-nav', get_template_directory_uri() . '/plugins/hc-mobilenav/dist/hc-offcanvas-nav.css' );		
