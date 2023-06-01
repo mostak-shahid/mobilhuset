@@ -133,6 +133,12 @@ function mosgutenberg_plugins_management() {
 			'force_activation'	=> false, 
 		),*/
 		array(
+			'name'				=> 'One Click Demo Import', 
+			'slug'				=> 'one-click-demo-import', 
+			'required'			=> true,
+			'force_activation'	=> true, 
+		),
+		array(
 			'name'				=> 'Bootstrap Blocks', 
 			'slug'				=> 'wp-bootstrap-blocks', 
 			'required'			=> true,

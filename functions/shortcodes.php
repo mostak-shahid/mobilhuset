@@ -122,7 +122,7 @@ function email_func($atts = array(), $content = '') {
         <?php echo do_shortcode($content) ?>
     </span>
     <?php else : ?>
-        <span class="contact-unit email-unit">Please contact web admin</span>
+        <span class="contact-unit email-unit d-none">Please contact web admin</span>
     <?php endif?>
     <?php $html = ob_get_clean();
     return $html;
@@ -156,7 +156,7 @@ function phone_func($atts = array(), $content = '') {
         <?php echo do_shortcode($content) ?>
     </span>
     <?php else : ?>
-        <span class="contact-unit phone-unit">Please contact web admin</span>
+        <span class="contact-unit phone-unit d-none">Please contact web admin</span>
     <?php endif?>
     <?php $html = ob_get_clean();
     return $html;
@@ -190,7 +190,7 @@ function business_hours_func($atts = array(), $content = '') {
         <?php echo do_shortcode($content) ?>
     </span>
     <?php else : ?>
-        <span class="contact-unit business-hour-unit">Please contact web admin</span>
+        <span class="contact-unit business-hour-unit d-none">Please contact web admin</span>
     <?php endif?>
     <?php $html = ob_get_clean();
     return $html;
@@ -224,7 +224,7 @@ function contact_address_func($atts = array(), $content = '') {
         <?php echo do_shortcode($content) ?>
     </span>
     <?php else : ?>
-        <span class="contact-unit contact-address-unit">Please contact web admin</span>
+        <span class="contact-unit contact-address-unit d-none">Please contact web admin</span>
     <?php endif?>
     <?php $html = ob_get_clean();
     return $html;
@@ -280,7 +280,9 @@ function mos_product_status( ) {
     global $product;
     $stock_status = $product->get_stock_status();
     $availability = $product->get_availability();
-    if($product->is_in_stock()) {
+    //var_dump($stock_status);//onbackorder
+    //return '<div class="mos-product-stock">'.$availability.'</div>';
+    if($stock_status == 'instock') {
         $stock = [
             'class' => 'in-stock',
             //'name'  => $availability['availability'] ? $availability['availability'] : __('In Stock', 'woocommerce'),
@@ -288,7 +290,7 @@ function mos_product_status( ) {
             //'name'  => esc_html__('I lager', 'woocommerce'),
             'name'  => carbon_get_theme_option( 'mos-woocommerce-instock-text' ),
         ];
-    } elseif($product->is_on_backorder()) {
+    } elseif($stock_status == 'onbackorder') {
         $stock = [
             'class' => 'on-backorder',
             //'name'  => esc_html__('Backorder', 'woocommerce'),
@@ -393,7 +395,7 @@ function trustpilot_widget_func( $atts = array(), $content = null ) {
     ob_start(); ?>
     <div class="mos-trustpilot-widget-wrapper">
     <!-- TrustBox widget - Micro Review Count -->
-    <div class="trustpilot-widget <?php echo @$atts['class']?>" data-locale="<?php echo @$atts['locale']?>" data-template-id="<?php echo @$atts['template-id']?>" data-businessunit-id="<?php echo @$atts['businessunit-id']?>" data-style-height="<?php echo @$atts['style-height']?>" data-style-width="<?php echo @$atts['style-width']?>" data-theme="<?php echo @$atts['theme']?>" data-min-review-count="<?php echo (@$atts['min-review-count'])?$atts['min-review-count']:0?>" data-without-reviews-preferred-string-id="<?php echo @$atts['without-reviews-preferred-string-id']?>" data-style-alignment="<?php echo @$atts['style-alignment']?>">
+    <div class="trustpilot-widget <?php echo @$atts['class']?>" data-locale="<?php echo @$atts['locale']?>" data-template-id="<?php echo @$atts['template-id']?>" data-businessunit-id="<?php echo @$atts['businessunit-id']?>" data-style-height="<?php echo @$atts['style-height']?>" data-style-width="<?php echo @$atts['style-width']?>" data-theme="<?php echo @$atts['theme']?>" data-min-review-count="<?php echo (@$atts['min-review-count'])?$atts['min-review-count']:0?>" data-without-reviews-preferred-string-id="<?php echo @$atts['without-reviews-preferred-string-id']?>" data-style-alignment="left">
     <a href="https://se.trustpilot.com/review/nordicwinner.se" target="_blank" rel="noopener">Trustpilot</a>
     </div>
     <!-- End TrustBox widget -->
