@@ -884,9 +884,13 @@ function mos_gutenberg_blocks() {
         ->set_required( true ),
         Field::make( 'association', 'mos_menu_block_menu_obj', __( 'Association' ) )
         ->set_types( array(
+            // array(
+            //     'type'      => 'post',
+            //     'post_type' => 'wp_navigation',
+            // )
             array(
-                'type'      => 'post',
-                'post_type' => 'wp_navigation',
+                'type'      => 'term',
+                'taxonomy' => 'nav_menu',
             )
         ))
         ->set_max( 1 )
@@ -922,7 +926,7 @@ function mos_gutenberg_blocks() {
                 if (@$fields['mos_menu_block_menu_obj']) {
                     wp_nav_menu(array(
                         //'theme_location' => 'mainmenu',
-                        'menu'=> get_the_title($fields['mos_menu_block_menu_obj'][0]['id']),
+                        'menu'=> $fields['mos_menu_block_menu_obj'][0]['id'],
                         'container' => 'div',                          
                         'container_class' => 'mos-menu',                          
                     )); 

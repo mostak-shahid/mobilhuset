@@ -347,6 +347,7 @@ function mos_theme_options() {
             )
         ))
         ->set_options( array(
+            'header-0' => get_template_directory_uri() . '/images/header-0.png',
             'header-1' => get_template_directory_uri() . '/images/header-1.png',
             'header-2' => get_template_directory_uri() . '/images/header-2.png',
             'header-3' => get_template_directory_uri() . '/images/header-3.png',
@@ -356,6 +357,27 @@ function mos_theme_options() {
             'header-7' => get_template_directory_uri() . '/images/header-7.png',
         ))
         ->set_default_value('header-1'),
+        Field::make( 'association', 'mos-header-sticky-custom-layout', __( 'Select Header Custom Layout' ) )
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-sticky-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            ),
+            array(
+                'field' => 'mos-header-sticky-layout',
+                'value' => 'header-0', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1),
         Field::make('image', 'mos-header-sticky-menu-icon', __('Sticky Header Menu Icon'))
         ->set_conditional_logic( array(
             'relation' => 'AND', // Optional, defaults to "AND"
@@ -363,6 +385,11 @@ function mos_theme_options() {
                 'field' => 'mos-header-sticky-enable',
                 'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
                 'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            ),
+            array(
+                'field' => 'mos-header-sticky-layout',
+                'value' => 'header-0', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '!=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
             )
         )),
         Field::make('complex', 'mos-header-sticky-icons', __('Sticky Header Icons'))
@@ -372,6 +399,11 @@ function mos_theme_options() {
                 'field' => 'mos-header-sticky-enable',
                 'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
                 'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            ),
+            array(
+                'field' => 'mos-header-sticky-layout',
+                'value' => 'header-0', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '!=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
             )
         ))
         ->set_collapsed(true)        
@@ -407,6 +439,7 @@ function mos_theme_options() {
             )
         ))
         ->set_options( array(
+            'header-0' => get_template_directory_uri() . '/images/header-0.png',
             'header-1' => get_template_directory_uri() . '/images/header-1.png',
             'header-2' => get_template_directory_uri() . '/images/header-2.png',
             'header-3' => get_template_directory_uri() . '/images/header-3.png',
@@ -416,6 +449,27 @@ function mos_theme_options() {
             'header-7' => get_template_directory_uri() . '/images/header-7.png',
         ))
         ->set_default_value('header-1'),
+        Field::make( 'association', 'mos-header-mobile-custom-layout', __( 'Select Header Custom Layout' ) )
+        ->set_conditional_logic( array(
+            'relation' => 'AND', // Optional, defaults to "AND"
+            array(
+                'field' => 'mos-header-mobile-enable',
+                'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            ),
+            array(
+                'field' => 'mos-header-mobile-layout',
+                'value' => 'header-0', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            )
+        ))
+        ->set_types( array(
+            array(
+                'type'      => 'post',
+                'post_type' => 'layout',
+            )
+        ))
+        ->set_max(1),
         Field::make('image', 'mos-header-mobile-menu-icon', __('Mobile Header Menu Icon'))
         ->set_conditional_logic( array(
             'relation' => 'AND', // Optional, defaults to "AND"
@@ -423,6 +477,11 @@ function mos_theme_options() {
                 'field' => 'mos-header-mobile-enable',
                 'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
                 'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            ),
+            array(
+                'field' => 'mos-header-mobile-layout',
+                'value' => 'header-0', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '!=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
             )
         )),
         Field::make('complex', 'mos-header-mobile-icons', __('Mobile Header Icons'))
@@ -432,6 +491,11 @@ function mos_theme_options() {
                 'field' => 'mos-header-mobile-enable',
                 'value' => true, // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
                 'compare' => '=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
+            ),
+            array(
+                'field' => 'mos-header-mobile-layout',
+                'value' => 'header-0', // Optional, defaults to "". Should be an array if "IN" or "NOT IN" operators are used.
+                'compare' => '!=', // Optional, defaults to "=". Available operators: =, <, >, <=, >=, IN, NOT IN
             )
         ))
         ->set_collapsed(true)        
