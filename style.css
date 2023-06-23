@@ -2461,7 +2461,8 @@ section.contact-form
   right: 0px !important;
   background-color: red;
   color: #ffffff;
-  width: 28px;
+  width: 25px;
+  height: 25px;
 }
 .footer {
   clear: both;
