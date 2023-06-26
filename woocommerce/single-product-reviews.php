@@ -50,8 +50,7 @@ if ( ! comments_open() ) {
 				</h5>
 				<div class="mos-comment-wrapper-btn">
 					<button class="button wp-element-button rounded-1">
-						<!-- <span class="mos-review"><?php echo esc_html__( 'Write review', 'woocommerce' )?></span> -->
-						<span class="mos-review"><?php echo esc_html__( 'Skriv recension', 'woocommerce' )?></span>
+						<span class="mos-review"><?php echo _mos_translate( 'Write review', true )?></span>
 						<span class="mos-review" style="display: none"><?php echo esc_html__( 'Cancel', 'woocommerce' )?></span>
 					</button>
 				</div>
