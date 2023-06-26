@@ -741,4 +741,20 @@ function mos_theme_options() {
             ->set_default_value('scroll'),
         )),
     ));
+    Container::make('theme_options', __('Translate'))
+    ->set_page_parent($basic_options_container) // reference to a top level container
+    ->add_fields(array(
+        Field::make('complex', 'mos-translate', __('Translate'))
+        ->set_collapsed(true)
+        
+        ->add_fields(array(
+            Field::make('text', 'input', __('Input')),
+            Field::make('text', 'output', __('Output')),
+        ))
+        ->set_header_template('
+            <% if (input) { %>
+                <%- input %> <%- output ? "(" + output + ")" : "" %>
+            <% } %>
+        ')
+    ));
 }

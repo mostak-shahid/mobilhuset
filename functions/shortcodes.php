@@ -416,7 +416,9 @@ function _mos_translate($input='', $ucf=false){
         } 
     }
     $t_input = __($input, 'mosgutenberg');
-    return ($ucf)?(ucfirst(($found)?$word['output']:$t_input)):strtolower(($found)?$word['output']:$t_input);
+    return ($ucf)?
+        (ucfirst(($found)?$word['output']:esc_html__($t_input))):
+        strtolower(($found)?$word['output']:esc_html__($t_input));
 }
 function _e_mos_translate($input='', $ucf=false){
     echo _mos_translate($input, $ucf);
