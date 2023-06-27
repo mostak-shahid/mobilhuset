@@ -1577,6 +1577,7 @@ body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
   background-color: #ffffff;
   padding: 3px;
   box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 10%);
+  min-height: 56px;
 }
 .woocommerce .category-child-slider .slick-arrow {
   width: 24px;
@@ -2895,6 +2896,7 @@ section.contact-form
   }
   .mos-slider-wrapper .mos-owl-carousel .item .wrapper > * {
     width: 100%;
+    flex: 0 0 100%;
   }
 
   .woocommerce ul.products {

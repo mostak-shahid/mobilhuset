@@ -17,10 +17,10 @@ $term = get_queried_object();
         <div class="container-lg">
             <div class="row">
                 <div class="col-xl-6">
-                    <div class="filter-left d-flex gap-3">
+                    <div class="filter-left d-flex gap-3 mb-3 mb-xl-0">
                         <div class="single-filter custom-mos-select">
                             <?php $categories = mos_get_terms('category'); ?>
-                            <select class="bg-transparent rounded-pill px-4 form-select postFilter"onchange="window.location.replace(this.value)">
+                            <select class="bg-transparent px-4 form-select postFilter"onchange="window.location.replace(this.value)">
                                 <option value="0" selected="">All Categories</option>
                                 <?php foreach($categories as $category) : ?>
                                 <option value="<?php echo home_url().'/?s=&category='.$category['term_id'] ?>" <?php if (@$term && $term->term_id == $category['term_id']) echo 'selected'?>  ><?php echo $category['name'] ?></option>
@@ -28,7 +28,7 @@ $term = get_queried_object();
                             </select>
                         </div>
                         <div class="single-filter custom-mos-select">
-                            <select class="bg-transparent rounded-pill px-4 form-select postFilter"onchange="window.location.replace(this.value)">
+                            <select class="bg-transparent px-4 form-select postFilter"onchange="window.location.replace(this.value)">
                                 <option value="<?php echo home_url().'/?s=&time=' ?>0" selected="">Select One</option>
                                 <option value="<?php echo home_url().'/?s=&time=' ?>week">Last 7 day's</option>
                                 <option value="<?php echo home_url().'/?s=&time=' ?>month">Last Month</option>
