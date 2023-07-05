@@ -40,7 +40,13 @@
 .d-admin-none {
   display: none !important;
 }
-
+.theme_option_photo_container {
+  max-width: 100px;
+}
+.theme_option_photo_container img {
+  max-width: 100%;
+  height: auto;
+}
 @media (min-width: 576px) {
   .d-admin-sm-inline {
     display: inline !important;

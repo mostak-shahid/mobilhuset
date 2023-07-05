@@ -12,6 +12,34 @@ jQuery(document).ready(function($) {
         show_meta_boxes(page_template);
     });
 
+    $("span.theme_option_photo_upload_button").on("click", function(add){
+        add.preventDefault();
+        var imageUploader = wp.media({
+            // 'title'     : 'Upload Image',
+            // 'button'    : {
+            //     'text'  : 'Set the image'
+            // },
+            'multiple'  : false
+        });
+        imageUploader.open();
+        var button = $(this);
+        imageUploader.on("select", function(){
+            var image = imageUploader.state().get("selection").first().toJSON();
+            var image_link = image.url;
+            var thum_link = image.url;
+            if (image.height > 150 || image.width > 150) { thum_link = image.sizes.thumbnail.url; }
+            button.closest('.photo-container').find('.photo').val(image_link);
+            button.siblings('div.theme_option_photo_container').find('img').attr('src', thum_link);
+        })
+    });
+    $("span.theme_option_photo_remove_button").on("click", function(del){
+        del.preventDefault();
+        var button = $(this);
+        var newSrc = button.siblings('div.theme_option_photo_container').find('img').data('src');
+        $(this).closest('.photo-container').find('.photo').val('');
+        button.siblings('div.theme_option_photo_container').find('img').attr('src', newSrc);
+    });
+
     $("span.photo_upload_button").on("click", function(add){
         add.preventDefault();
         var imageUploader = wp.media({
