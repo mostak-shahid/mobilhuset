@@ -38,7 +38,7 @@ require_once('functions/gutenberg-blocks.php');
 require_once('functions/post-metas.php');
 require_once('functions/term-metas.php');
 require_once('functions/woo-functions.php');
-require_once('functions/WPEX_Options_Panel.php');
+// require_once('functions/WPEX_Options_Panel.php');
 // Register new Options panel.
 $panel_args = [
     'title'           => 'My Options',
@@ -53,14 +53,14 @@ $panel_args = [
 
 $panel_settings = [
     // Tab 1
-    'option_1' => [
+    'checkbox' => [
         'label'       => esc_html__( 'Checkbox Option', 'text_domain' ),
         'type'        => 'checkbox',
         'text'       => 'Yes I like to add lavel too',
         'description' => 'My checkbox field description.',
         'tab'         => 'tab-1',
     ],
-    'option_2' => [
+    'select' => [
         'label'       => esc_html__( 'Select Option', 'text_domain' ),
         'type'        => 'select',
         'description' => 'My select field description.',
@@ -72,28 +72,98 @@ $panel_settings = [
         ],
         'tab'         => 'tab-1',
     ],
+    'radio' => [
+        'label'       => esc_html__( 'Radio Option', 'text_domain' ),
+        'type'        => 'radio',
+        'description' => 'My select field description.',
+        'choices'     => [
+            'choice_1' => esc_html__( 'Choice 1', 'text_domain' ),
+            'choice_2' => esc_html__( 'Choice 2', 'text_domain' ),
+            'choice_3' => esc_html__( 'Choice 3', 'text_domain' ),
+        ],
+        'tab'         => 'tab-1',
+    ],
+    'color' => [
+        'label'       => esc_html__( 'Color Option', 'text_domain' ),
+        'type'        => 'color',
+        'description' => 'My field 1 description.',
+        'tab'         => 'tab-1',
+    ],
+    'date' => [
+        'label'       => esc_html__( 'Date Option', 'text_domain' ),
+        'type'        => 'date',
+        'description' => 'My field 1 description.',
+        'tab'         => 'tab-1',
+    ],
+    'time' => [
+        'label'       => esc_html__( 'Time Option', 'text_domain' ),
+        'type'        => 'time',
+        'description' => 'My field 1 description.',
+        'tab'         => 'tab-1',
+    ],
+    'datetime' => [
+        'label'       => esc_html__( 'Datetime Option', 'text_domain' ),
+        'type'        => 'datetime',
+        'description' => 'My field 1 description.',
+        'tab'         => 'tab-1',
+    ],
+    'url' => [
+        'label'       => esc_html__( 'URL Option', 'text_domain' ),
+        'type'        => 'url',
+        'description' => 'My field 1 description.',
+        'tab'         => 'tab-1',
+    ],
+    'number' => [
+        'label'       => esc_html__( 'Number Option', 'text_domain' ),
+        'type'        => 'number',
+        'description' => 'My field 1 description.',
+        'min'         => 10,
+        'max'         => 50,
+        'step'        => 10,
+        'tab'         => 'tab-1',
+    ],
+    'range' => [
+        'label'       => esc_html__( 'Range Option', 'text_domain' ),
+        'type'        => 'range',
+        'description' => 'My field 1 description.',
+        'min'         => 10,
+        'max'         => 100,
+        'step'        => 5,
+        'tab'         => 'tab-1',
+    ],
+    'tel' => [
+        'label'       => esc_html__( 'Tel Option', 'text_domain' ),
+        'type'        => 'tel',
+        'description' => 'My field 1 description.',
+        'tab'         => 'tab-1',
+    ],
+    'repeater' => [
+        'label'       => esc_html__( 'Repeater Option', 'text_domain' ),
+        'type'        => 'repeater',
+        'description' => 'My field 1 description.',
+        'tab'         => 'tab-1',
+    ],
     // Tab 2
-    'option_3' => [
+    'text' => [
         'label'       => esc_html__( 'Text Option', 'text_domain' ),
         'type'        => 'text',
         'description' => 'My field 1 description.',
         'tab'         => 'tab-2',
     ],
-    'option_4' => [
+    'textarea' => [
         'label'       => esc_html__( 'Textarea Option', 'text_domain' ),
         'type'        => 'textarea',
         'description' => 'My textarea field description.',
         'tab'         => 'tab-2',
     ],
-    'option_5' => [
+    'image' => [
         'label'       => esc_html__( 'Image Option', 'text_domain' ),
         'type'        => 'image',
         'description' => 'My field 1 description.',
         'tab'         => 'tab-2',
     ],
 ];
-
-new WPEX_Options_Panel( $panel_args, $panel_settings );
+// new WPEX_Options_Panel( $panel_args, $panel_settings );
 
 //require_once('functions/MobileDetect.php');
 // $detect = new Mobile_Detect;

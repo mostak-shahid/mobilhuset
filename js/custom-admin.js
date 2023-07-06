@@ -40,6 +40,18 @@ jQuery(document).ready(function($) {
         button.siblings('div.theme_option_photo_container').find('img').attr('src', newSrc);
     });
 
+    $(".theme_option_range").on('change', function(){
+        $(this).closest('.range-wrapper').find('.theme_option_range_value').val($(this).val());
+        //console.log($(this).val());
+    });
+    $(".theme_option_repeater_add_button").on('click', function(){
+        var clonedData = $(this).closest('.repeater-wrapper').find('.repeater-data-wrapper > .repeater-unit').clone();
+        $(this).siblings('.repeater-data').append(clonedData);
+    });
+    $('body').on('click', '.theme_option_repeater_remove_button', function (){
+        $(this).parent().remove();
+    });
+
     $("span.photo_upload_button").on("click", function(add){
         add.preventDefault();
         var imageUploader = wp.media({
