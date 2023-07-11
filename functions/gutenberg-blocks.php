@@ -368,6 +368,101 @@ function mos_gutenberg_blocks() {
         endif;
     }); 
     //Slider Block end
+    //Image Slider Block start
+    Block::make(__('Image Slider Block'))
+    ->set_icon('images-alt2')
+    ->add_tab(__('Content'), array(
+        Field::make('complex', 'mos_image_slider_items', __('Items'))
+        ->add_fields(array(
+            Field::make('image', 'image', __('Image'))
+                ->set_required( true ),
+            Field::make('text', 'url', __('Link'))
+                ->set_attribute( 'type', 'url' ),
+        ))
+        ->set_header_template('
+            <% if (title) { %>
+                <%- title %>
+            <% } %>
+        ')
+        ->set_collapsed(true),
+    ))
+    ->add_tab(__('Slider Settings'), array(
+        Field::make('text', 'mos_image_slider_desktop_count', __('Desktop Items'))
+        ->set_attribute( 'type', 'number' )
+        ->set_attribute( 'min', 1 )
+        ->set_default_value(3),
+        Field::make('text', 'mos_image_slider_tab_count', __('Tab Items'))
+        ->set_attribute( 'type', 'number' )
+        ->set_attribute( 'min', 1 )
+        ->set_default_value(2),
+        Field::make('text', 'mos_image_slider_mobile_count', __('Mobile Items'))
+        ->set_attribute( 'type', 'number' )
+        ->set_attribute( 'min', 1 )
+        ->set_default_value(1),
+        Field::make( 'checkbox', 'mos_image_slider_show_nav', __('Show Nav')),
+        Field::make( 'checkbox', 'mos_image_slider_show_dots', __('Show Dots')),
+        Field::make( 'checkbox', 'mos_image_slider_autoplay', __('Autoplay')),
+        Field::make( 'checkbox', 'mos_image_slider_hover_pause', __('Hover Pause')),
+        Field::make('text', 'mos_image_slider_autoplay_timeout', __('Autoplay Time'))
+        ->set_attribute( 'type', 'number' )
+        ->set_default_value(3000),
+    ))  
+    ->add_tab(__('Style'), array(
+        Field::make('text', 'mos_image_slider_wrapper_class', __('Wrapper Class')),   
+    )) 
+    ->add_tab(__('Advanced'), array(
+        Field::make('textarea', 'mos_image_slider_style', __('Style'))
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
+        Field::make('textarea', 'mos_image_slider_script', __('Script'))
+        ->set_help_text('Please write your custom script without script tag'),
+    ))  
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {
+        if (@$fields['mos_image_slider_items'] && sizeof($fields['mos_image_slider_items'])) :
+            $id = 'element-'.time().rand(1000, 9999);
+        ?>
+            <div id="<?php echo $id ?>" class="mos-image-slider-wrapper <?php echo @$fields['mos_image_slider_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+                <div class="mos-image-slider mos-owl-carousel owl-carousel owl-theme" data-carousel-options='{
+                    "nav":<?php echo (@$fields['mos_image_slider_show_nav'])?"true":"false" ?>,
+                    "dots":<?php echo (@$fields['mos_image_slider_show_dots'])?"true":"false" ?>,
+                    "autoplay":<?php echo (@$fields['mos_image_slider_autoplay'])?"true":"false" ?>,
+                    "autoplayTimeout":"<?php echo (@$fields['mos_image_slider_autoplay_timeout'])?$fields['mos_image_slider_autoplay_timeout']:3000 ?>",
+                    "autoplayHoverPause":<?php echo (@$fields['mos_image_slider_hover_pause'])?"true":"false" ?>,
+                    "responsive":{
+                        "0":{
+                            "items":"<?php echo (@$fields['mos_image_slider_mobile_count'])?$fields['mos_image_slider_mobile_count']:1 ?>"
+                        },
+                        "600":{
+                            "items":"<?php echo (@$fields['mos_image_slider_tab_count'])?$fields['mos_image_slider_tab_count']:2 ?>"
+                        },
+                        "1000":{
+                            "items":"<?php echo (@$fields['mos_image_slider_desktop_count'])?$fields['mos_image_slider_desktop_count']:3 ?>"
+                        }
+                    }
+                }'>
+                    <?php foreach($fields['mos_image_slider_items'] as $index => $slider) : ?>
+                        <div class="item item-<?php echo $index ?>">
+                            <?php if (@$slider['image']) : ?>
+                                <div class="position-relative">
+                                    <?php echo wp_get_attachment_image( $slider['image'], "full", "", array( "class" => "img-responsive img-fluid" ) );?>
+                                    <?php if (@$slider['url']) : ?>
+                                        <a href="<?php echo $slider['url'] ?>" class="hidden-link">Read more</a>
+                                    <?php endif?> 
+                                </div>
+                            <?php endif?>                         
+                        </div>
+                    <?php endforeach?>
+                </div>
+            </div>
+            <?php if(@$fields['mos_image_slider_style']) : ?>
+            <style><?php echo str_replace("selector",'#'.$id,$fields['mos_image_slider_style']); ?></style>
+            <?php endif?>
+            <?php if(@$fields['mos_image_slider_script']) : ?>
+            <script><?php echo $fields['mos_image_slider_script']; ?></script>
+            <?php endif?>
+        <?php
+        endif;
+    }); 
+    //Image Slider Block end
     //Product Categories Block start
     Block::make(__('Product Categories Block'))
     ->set_icon('open-folder')

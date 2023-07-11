@@ -2721,7 +2721,7 @@ section.contact-form
     width: 100%;
     max-width: 280px;
     background-color: #ffffff;
-    z-index: 9;
+    z-index: 999;
     left: -100%;
     padding: 20px;
     bottom: 0;
@@ -2774,6 +2774,9 @@ section.contact-form
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     z-index: 9;
+  }
+  .logged-in .sidebar-activator {
+    top: 250px;
   }
 }
 
