@@ -2571,11 +2571,11 @@ section.contact-form
 }
 #crossProductModal .product-details .part-title .part-price {
   display: flex;
-  flex-direction: column;
   gap: 5px;
   color: #bdbdbd;
   font-weight: 400;
   font-size: 14px;
+  align-items: center;
 }
 #crossProductModal .product-details .part-title .part-price ins {
   color: var(--mos-primary-color);
@@ -2619,13 +2619,7 @@ section.contact-form
   .product-title {
   font-size: 14px;
 }
-#crossProductModal
-  .group-product-details
-  .product-details
-  .part-title
-  .part-price {
-  gap: 0;
-}
+
 #crossProductModal .group-product-details .product-details .part-media,
 #crossProductModal .group-product-details .product-details .part-link {
   flex: 0 0 150px;
