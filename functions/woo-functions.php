@@ -74,6 +74,64 @@ add_action('woocommerce_before_shop_loop_item_title','woocommerce_template_loop_
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_open', 9);
 add_action('woocommerce_shop_loop_item_title','woocommerce_template_loop_product_link_close', 11);
 add_action( 'woocommerce_shop_loop_item_title', 'mos_woocommerce_loop_text_wrapper', 1 );
+add_action( 'woocommerce_single_product_summary', 'mos_upsell_products_show', 31 );
+function mos_upsell_products_show () {
+	global $product;
+	$upsell_ids = $product->get_upsell_ids();
+	if ($upsell_ids && is_array($upsell_ids)) : ?>
+		<div class="woobt-wrap woobt-layout-separate woobt-wrap-<?php echo get_the_ID() ?> woobt-wrap-responsive" data-id="<?php echo get_the_ID() ?>" data-selection="multiple" data-total="0">
+        	<div class="woobt-products woobt-products-<?php echo get_the_ID() ?>" >
+		<?php foreach($upsell_ids as $upsell_id) : 
+			$product = wc_get_product( $upsell_id );
+			?>
+				<form class="cart" method="post" enctype="multipart/form-data">
+					<div class="mos-woobt-product mos-woobt-product-together d-flex flex-wrap">
+						<div class="woobt-choose">
+							<div class="woobt-thumb-ori" style="width:80px">
+							<?php echo wp_get_attachment_image( $product->get_image_id(), 'thumbnail' );  ?>
+							</div>
+						</div>
+						<div class="woobt-title">
+							<div class="brand-name"><?php echo do_shortcode('[product-brand]')?></div>
+							<span class="woobt-title-inner"><a href="<?php echo get_permalink( $upsell_id ) ?>"><span><?php echo $product->get_title() ?></span></a> </span>
+							<div class="d-flex mos-woobt-price-rating">
+							<div class="woobt-availability">
+								<?php if ($product->get_stock_status() == 'outofstock') : ?>
+								<p class="stock out-of-stock"><?php _e_mos_translate('Out of Stock')?></p>
+								<?php elseif ($product->get_stock_status() == 'onbackorder') : ?>
+								<p class="stock onbackorder"><?php _e_mos_translate('On backorder')?></p>
+								<?php else : ?>
+								<p class="stock in-stock"><?php _e_mos_translate('In Stock')?></p>
+								<?php endif?>
+							</div>
+							</div>
+						</div>
+						<div class="woobt-button d-flex flex-md-column justify-content-between align-items-end">
+							<div class="woobt-price d-flex flex-md-column align-items-md-end gap-2 gap-md-0">
+								<?php echo $product->get_price_html(); ?>
+							</div>
+							<?php
+								if ($product->get_stock_status() == 'outofstock')
+								$add_to_cart_text = carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-outofstock' );
+								else if ($product->get_type() == 'variable')
+								$add_to_cart_text = carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-variable' );
+								else if ($product->get_type() == 'grouped')
+								$add_to_cart_text = carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text-grouped' );
+								else if ($product->get_type() == 'external') 
+								$add_to_cart_text = get_post_meta($product->get_id(), '_button_text', true);   
+								else
+								$add_to_cart_text = carbon_get_theme_option( 'mos-woocommerce-add-to-cart-text' );
+							?>
+							<button type="submit" name="add-to-cart" value="<?php echo $upsell_id ?>" class="single_add_to_cart_button button alt <?php echo $product->get_stock_status() ?>-button"><?php echo $add_to_cart_text ?></button>
+						</div>
+					</div>
+				</form>
+		<?php endforeach; ?>
+		
+			</div>
+		</div>
+	<?php endif;
+}
 
 add_action( 'woocommerce_after_shop_loop_item', 'mos_div_wrapper_end', 20 );
 function mos_woocommerce_loop_text_wrapper () {
@@ -1033,3 +1091,17 @@ function uw_display_cart_totals_after() {
 		}
 	}
 }
+function mos_cross_sale_product_popup () {
+	?>
+	<!-- Modal -->
+<div class="modal fade" id="crossProductModal" tabindex="-1" aria-labelledby="crossProductModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content rounded-0">
+        <button type="button" class="btn-close position-absolute top-0 end-0" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body p-4">loading...</div>
+    </div>
+  </div>
+</div>
+	<?php
+}
+add_action('wp_footer', 'mos_cross_sale_product_popup');

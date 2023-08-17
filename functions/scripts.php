@@ -96,8 +96,8 @@ function mosgutenberg_enqueue_scripts() {
             $n++;
         }
     }
-    wp_register_script( 'tp.widget.bootstrap.min', '//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js' );
-    wp_enqueue_script( 'tp.widget.bootstrap.min' );	
+    // wp_register_script( 'tp.widget.bootstrap.min', '//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js' );
+    // wp_enqueue_script( 'tp.widget.bootstrap.min' );	
 
 
     wp_register_style( 'hc-offcanvas-nav', get_template_directory_uri() . '/plugins/hc-mobilenav/dist/hc-offcanvas-nav.css' );		
@@ -145,3 +145,11 @@ function mosgutenberg_common_enqueue_scripts(){
 }
 add_action( 'admin_enqueue_scripts', 'mosgutenberg_common_enqueue_scripts' );
 add_action( 'wp_enqueue_scripts', 'mosgutenberg_common_enqueue_scripts' );
+
+
+function ql_woocommerce_ajax_add_to_cart_js() {
+    //if (function_exists('is_product') && is_product()) {  
+       wp_enqueue_script('custom_script', get_template_directory_uri() . '/js/ajax_add_to_cart.js', array('jquery', 'bootstrap.min'),'1.0' );
+    //}
+}
+add_action('wp_enqueue_scripts', 'ql_woocommerce_ajax_add_to_cart_js');
