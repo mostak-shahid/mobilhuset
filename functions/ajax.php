@@ -135,11 +135,11 @@ function ql_woocommerce_ajax_add_to_cart() {
                             <div class="part-price"><?php echo $cross_product->get_price_html(); ?></div>
                             <div class="product-availability">
 								<?php if ($cross_product->get_stock_status() == 'outofstock') : ?>
-								<span class="stock out-of-stock"><?php _e_mos_translate('Out of Stock')?></span>
+								<span class="stock out-of-stock"><?php _e_mos_translate('Out of Stock', true)?></span>
 								<?php elseif ($cross_product->get_stock_status() == 'onbackorder') : ?>
-								<span class="stock onbackorder"><?php _e_mos_translate('On backorder')?></span>
+								<span class="stock onbackorder"><?php _e_mos_translate('On backorder', true)?></span>
 								<?php else : ?>
-								<span class="stock in-stock"><?php _e_mos_translate('In Stock')?></span>
+								<span class="stock in-stock"><?php _e_mos_translate('In Stock', true)?></span>
 								<?php endif?>
 							</div>
                             <div class="part-link d-block d-lg-none">                           
