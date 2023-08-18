@@ -95,7 +95,7 @@ function ql_woocommerce_ajax_add_to_cart() {
         $cross_sell_ids = $product->get_cross_sell_ids();;
         ob_start();
         ?>
-            <div class="alert alert-success rounded-0" role="alert"><img class="me-2" src="<?php echo get_template_directory_uri() ?>/images/green-tick-icon.svg" alt="" width="25px" height="25px"><?php _e_mos_translate('The product has been added to your shopping cart')?></div>
+            <div class="alert alert-success rounded-0" role="alert"><img class="me-2" src="<?php echo get_template_directory_uri() ?>/images/green-tick-icon.svg" alt="" width="25px" height="25px"><?php _e_mos_translate('The product has been added to your shopping cart', true)?></div>
             <div class="product-details d-flex gap-2 align-items-center">
                 <div class="part-media"><?php echo wp_get_attachment_image( $image_id );  ?></div>
                 <div class="part-title">
@@ -105,12 +105,12 @@ function ql_woocommerce_ajax_add_to_cart() {
                 </div>
             </div>
             <div class="d-flex justify-content-center align-items-center gap-3 mb-3">
-                <a href="<?php echo wc_get_cart_url() ?>" class="btn btn-cross-sale-cart"><?php _e_mos_translate('Cart')?></a>
-                <a href="<?php echo wc_get_checkout_url() ?>" class="btn btn-cross-sale-checkout"><?php _e_mos_translate('Checkout')?></a>
+                <a href="<?php echo wc_get_cart_url() ?>" class="btn btn-cross-sale-cart"><?php _e_mos_translate('Cart', true)?></a>
+                <a href="<?php echo wc_get_checkout_url() ?>" class="btn btn-cross-sale-checkout"><?php _e_mos_translate('Checkout', true)?></a>
             </div>
             <?php if ($cross_sell_ids) : ?>
             <div class="group-product-details">
-                <h2 class="cross-sale-title"><?php _e_mos_translate('Suggested Products')?></h2>
+                <h2 class="cross-sale-title"><?php _e_mos_translate('Suggested Products', true)?></h2>
                 <?php foreach($cross_sell_ids as $cross_sell_id) : 
                     $cross_product = wc_get_product( $cross_sell_id );                    
                     $cross_image_id = $cross_product->get_image_id();
@@ -133,13 +133,13 @@ function ql_woocommerce_ajax_add_to_cart() {
                             <div class="product-brand"><?php echo $cross_product->get_attribute( 'brand' ); ?></div>
                             <h3 class="product-title"><a href="<?php echo esc_url( get_permalink( $cross_sell_id ) ); ?>"><?php echo $cross_product->get_title() ?></a></h3>
                             <div class="part-price"><?php echo $cross_product->get_price_html(); ?></div>
-                            <div class="product-availability">
-								<?php if ($cross_product->get_stock_status() == 'outofstock') : ?>
-								<span class="stock out-of-stock"><?php _e_mos_translate('Out of Stock', true)?></span>
+                            <div class="product-availability">								
+                                <?php if ($cross_product->get_stock_status() == 'outofstock') : ?>
+								<span class="stock out-of-stock"><?php echo carbon_get_theme_option( 'mos-woocommerce-outofstock-text' )?></span>
 								<?php elseif ($cross_product->get_stock_status() == 'onbackorder') : ?>
-								<span class="stock onbackorder"><?php _e_mos_translate('On backorder', true)?></span>
+								<span class="stock onbackorder"><?php echo carbon_get_theme_option( 'mos-woocommerce-backorder-text' )?></span>
 								<?php else : ?>
-								<span class="stock in-stock"><?php _e_mos_translate('In Stock', true)?></span>
+								<span class="stock in-stock"><?php echo carbon_get_theme_option( 'mos-woocommerce-instock-text' );?></span>
 								<?php endif?>
 							</div>
                             <div class="part-link d-block d-lg-none">                           

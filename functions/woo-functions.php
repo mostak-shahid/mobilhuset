@@ -97,11 +97,11 @@ function mos_upsell_products_show () {
 							<div class="d-flex mos-woobt-price-rating">
 							<div class="woobt-availability">
 								<?php if ($product->get_stock_status() == 'outofstock') : ?>
-								<p class="stock out-of-stock"><?php _e_mos_translate('Out of Stock')?></p>
+								<p class="stock out-of-stock"><?php echo carbon_get_theme_option( 'mos-woocommerce-outofstock-text' )?></p>
 								<?php elseif ($product->get_stock_status() == 'onbackorder') : ?>
-								<p class="stock onbackorder"><?php _e_mos_translate('On backorder')?></p>
+								<p class="stock onbackorder"><?php echo carbon_get_theme_option( 'mos-woocommerce-backorder-text' )?></p>
 								<?php else : ?>
-								<p class="stock in-stock"><?php _e_mos_translate('In Stock')?></p>
+								<p class="stock in-stock"><?php echo carbon_get_theme_option( 'mos-woocommerce-instock-text' );?></p>
 								<?php endif?>
 							</div>
 							</div>
