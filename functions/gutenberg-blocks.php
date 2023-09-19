@@ -46,7 +46,66 @@ function mos_gutenberg_blocks() {
     }); 
     //Base Block end
     */
-    
+    //Card Block start
+    Block::make(__('Card Block'))
+    ->add_tab(__('Content'), array(
+        Field::make('text', 'mos_card_title', __('Title')),
+        Field::make('rich_text', 'mos_card_desc', __('Intro')),
+        Field::make('text', 'mos_card_button_title', __('Button Title')),
+        Field::make('text', 'mos_card_button_url', __('Button URL')),
+        Field::make( 'image', 'mos_card_image', __( 'Image' ) ),
+        Field::make('text', 'mos_card_icon', __('Icon Class')),
+        Field::make('textarea', 'mos_card_svg', __('SVG')),
+    ))
+    ->add_tab(__('Style'), array(
+        Field::make('text', 'mos_card_wrapper_class', __('Wrapper Class')),
+        Field::make('text', 'mos_card_title_class', __('Title Class')),
+        Field::make('text', 'mos_card_intro_class', __('Intro Class')),
+        Field::make('text', 'mos_card_button_class', __('Button Class')),
+    )) 
+    ->add_tab(__('Advanced'), array(
+        Field::make('textarea', 'mos_card_style', __('Style'))
+        ->set_help_text('Please write your custom css without style tag, you can use selector tag to target the parent element'),
+        Field::make('textarea', 'mos_card_script', __('Script'))
+        ->set_help_text('Please write your custom script without script tag'),
+    ))  
+    ->set_render_callback(function ($fields, $attributes, $inner_blocks) {        
+        $id = 'element-'.time().rand(1000, 9999);
+    ?>
+        <div id="<?php echo $id ?>" class="mos-card-wrapper <?php echo @$fields['mos_card_wrapper_class']; ?> <?php echo @$attributes['className']; ?>"> 
+            <div class="text-part">
+                <?php if(@$fields['mos_card_title']) : ?><div class="title <?php echo @$fields['mos_card_title_class']; ?>"><?php echo $fields['mos_card_title'] ?></div><?php endif?>
+                <?php if(@$fields['mos_card_desc']) : ?><div class="intro <?php echo @$fields['mos_card_intro_class']; ?>"><?php echo do_shortcode($fields['mos_card_desc']); ?></div><?php endif?>
+        
+                <?php if(@$fields['mos_card_button_title'] && @$fields['mos_card_button_url']) : ?>
+                    <div class="is-layout-flex wp-block-buttons">
+                        <div class="wp-block-button"><a href="<?php echo $fields['mos_card_button_url'] ?>" class="wp-block-button__link wp-element-button <?php echo @$fields['mos_card_button_class']; ?>"><?php echo $fields['mos_card_button_title'] ?></a></div>
+                    </div>
+                <?php endif?>
+            </div>
+            <div class="media-part">
+                <?php if(@$fields['mos_card_image']) : ?>
+                    <div class="img-part">
+                        <?php echo wp_get_attachment_image( $fields['mos_card_image'], "full", "", array( "class" => "img-fluid" ) );  ?>
+                    </div>
+                <?php endif?>                 
+                <?php if (@$fields['mos_card_svg']) : ?>
+                    <span class="svg"><?php echo @$fields['mos_card_svg']; ?></span>
+                <?php endif?>
+                <?php if (@$fields['mos_card_icon']) : ?>
+                    <i class="icon <?php echo @$fields['mos_card_icon']; ?>"></i>
+                <?php endif?>
+            </div> 
+        </div>        
+        <?php if(@$fields['mos_card_style']) : ?>
+            <style><?php echo str_replace("selector",'#'.$id,$fields['mos_card_style']); ?></style>
+        <?php endif?>
+        <?php if(@$fields['mos_card_script']) : ?>
+            <script><?php echo $fields['mos_card_script']; ?></script>
+        <?php endif?>
+    <?php
+    }); 
+    //Card Block end
     //Section Title Block start
     Block::make(__('Section Title Block'))
     ->add_tab( __( 'Content' ), array(
@@ -317,10 +376,10 @@ function mos_gutenberg_blocks() {
                         "0":{
                             "items":"<?php echo (@$fields['mos_slider_mobile_count'])?$fields['mos_slider_mobile_count']:1 ?>"
                         },
-                        "600":{
+                        "1024":{
                             "items":"<?php echo (@$fields['mos_slider_tab_count'])?$fields['mos_slider_tab_count']:2 ?>"
                         },
-                        "1000":{
+                        "1366":{
                             "items":"<?php echo (@$fields['mos_slider_desktop_count'])?$fields['mos_slider_desktop_count']:3 ?>"
                         }
                     }
@@ -431,10 +490,10 @@ function mos_gutenberg_blocks() {
                         "0":{
                             "items":"<?php echo (@$fields['mos_image_slider_mobile_count'])?$fields['mos_image_slider_mobile_count']:1 ?>"
                         },
-                        "600":{
+                        "1024":{
                             "items":"<?php echo (@$fields['mos_image_slider_tab_count'])?$fields['mos_image_slider_tab_count']:2 ?>"
                         },
-                        "1000":{
+                        "1366":{
                             "items":"<?php echo (@$fields['mos_image_slider_desktop_count'])?$fields['mos_image_slider_desktop_count']:3 ?>"
                         }
                     }
@@ -565,10 +624,10 @@ function mos_gutenberg_blocks() {
                         "0":{
                             "items":"<?php echo (@$fields['mos_product_categories_block_mobile_grid'])?$fields['mos_product_categories_block_mobile_grid']:2 ?>"
                         },
-                        "600":{
+                        "1024":{
                             "items":"<?php echo (@$fields['mos_product_categories_block_tab_grid'])?$fields['mos_product_categories_block_tab_grid']:3 ?>"
                         },
-                        "1000":{
+                        "1366":{
                             "items":"<?php echo (@$fields['mos_product_categories_block_desktop_grid'])?$fields['mos_product_categories_block_desktop_grid']:5 ?>"
                         }
                     }
@@ -582,12 +641,14 @@ function mos_gutenberg_blocks() {
 
             <div class="unit position-relative unit-<?php echo $index ?> <?php echo @$fields['mos_product_categories_block_unit_class'] ?>">
                 
+                <?php if ($thumbnail_id) : ?>
                 <div class="part-img">
                     <?php 
                     if (@$fields['mos_product_categories_block_image_size']) echo '<img class="img-responsive img-fluid" src="' .aq_resize(wp_get_attachment_url($thumbnail_id),$fields['mos_product_categories_block_image_size'],$fields['mos_product_categories_block_image_size'], true).'" width="'.$fields['mos_product_categories_block_image_size'].'" height="'.$fields['mos_product_categories_block_image_size'].'" alt="'.$term->name.'">';                    
                     else echo wp_get_attachment_image( $thumbnail_id, "full", "", array( "class" => "img-responsive img-fluid", "alt"=>$term->name ) ); 
                     ?>
                 </div>
+                <?php endif?>
                 <div class="part-text"><?php echo $term->name; ?></div>
                 <a href="<?php echo $link ?>" class="hidden-link">Read more about <?php echo $term->name; ?></a>
             </div>
@@ -811,10 +872,10 @@ function mos_gutenberg_blocks() {
                         "0":{
                             "items":"<?php echo (@$fields['mos_product_slider_block_mobile_count'])?$fields['mos_product_slider_block_mobile_count']:1 ?>"
                         },
-                        "600":{
+                        "1024":{
                             "items":"<?php echo (@$fields['mos_product_slider_block_tab_count'])?$fields['mos_product_slider_block_tab_count']:2 ?>"
                         },
-                        "1000":{
+                        "1366":{
                             "items":"<?php echo (@$fields['mos_product_slider_block_desktop_count'])?$fields['mos_product_slider_block_desktop_count']:3 ?>"
                         }
                     }

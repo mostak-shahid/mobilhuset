@@ -983,6 +983,43 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
 .mos-slider-wrapper .mos-owl-carousel .item {
   width: 100%;
 }
+/*
+.mos-slider-wrapper .mos-owl-carousel .item {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 576px) {
+  .mos-slider-wrapper .mos-owl-carousel .item {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .mos-slider-wrapper .mos-owl-carousel .item {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .mos-slider-wrapper .mos-owl-carousel .item {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .mos-slider-wrapper .mos-owl-carousel .item {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .mos-slider-wrapper .mos-owl-carousel .item {
+    max-width: 1320px;
+  }
+}
+*/
 .mos-slider-wrapper .mos-owl-carousel .item .wrapper {
   display: flex;
   align-items: center;
@@ -997,15 +1034,6 @@ section.page-title.woocommerce-page-title .woocommerce-breadcrumb {
   -webkit-animation-iteration-count: 1;
   animation-name: fadeInLeftBig;
   animation-duration: 1s;
-  animation-iteration-count: 1;
-  text-shadow: 0px 0px 5px #ffffff;
-}
-.mos-slider-wrapper .mos-owl-carousel .active .item .text-part .intro {
-  -webkit-animation-name: fadeInLeftBig;
-  -webkit-animation-duration: 1.2s;
-  -webkit-animation-iteration-count: 1;
-  animation-name: fadeInLeftBig;
-  animation-duration: 1.2s;
   animation-iteration-count: 1;
 }
 .mos-slider-wrapper
@@ -1746,7 +1774,7 @@ body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
   justify-content: end;
 }
 .woocommerce li.product.product-type-variable .price {
-  flex-direction: row;
+  flex-direction: row !important;
   gap: 3px;
   align-items: end;
 }
@@ -1916,6 +1944,7 @@ body.woocommerce.single-product div.product div.summary .woocommerce-tabs {
 }
 .mos-woobt-product-together .woobt-title {
   flex: 1;
+  padding-left: 10px;
 }
 .mos-woobt-product-together .woobt-title .woobt-title-inner {
   font-weight: 600;
