@@ -63,7 +63,9 @@ function get_searched_products_ajax_callback () {
                 $html .= '<span class="product-name d-block">';
                 $html .= preg_replace($pattern, '<b><u>'.$search_value.'</u></b>', get_the_title());
                 $html .= '</span>';
-                $html .= '<span class="product-price d-block">'.$product->get_price_html().'</span>';
+                if (carbon_get_theme_option( 'mos-woocommerce-show-price') == 'loggedin' && is_user_logged_in()) {
+                    $html .= '<span class="product-price d-block">'.$product->get_price_html().'</span>';
+                }
                 $html .= '</span>';
                 $html .= '</a></li>';
                 //$html .= '<li>' . preg_replace($search_value, '<b>'.$search_value.'</b>', get_the_title()) . '</li>';
