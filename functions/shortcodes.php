@@ -324,7 +324,7 @@ function mos_product_cat_filter_func( $atts = array(), $content = null ) {
         <?php 
         $taxonomy_name = 'product_cat';
         $term = get_queried_object();
-        
+        //var_dump($term);
 		$args = [];
 		if(@$term && $term->name !='product' && $term->parent) {
             //var_dump($term->name);
@@ -342,7 +342,7 @@ function mos_product_cat_filter_func( $atts = array(), $content = null ) {
 		} else {
             $args = array(
 				'taxonomy' => $taxonomy_name,
-				'depth'    => 1,
+				'depth'    => 2,
 				'show_count' => 0,
 				'orderby'           =>  'menu_order',
 				'title_li'            => '',

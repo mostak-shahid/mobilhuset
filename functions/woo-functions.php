@@ -212,11 +212,12 @@ function mos_woocommerce_shop_loop_item_title_meta_set_2_start() {
 };
 function mos_customize_add_tocart(){
 	if (carbon_get_theme_option( 'mos-woocommerce-show-price') == 'loggedin' && !is_user_logged_in()) {
-		add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_title_meta_set_2_content', 12, 0);		
+		//loop
+		add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_title_meta_set_2_content', 12, 0);	
+		//single
 		remove_action( 'woocommerce_single_product_summary' , 'woocommerce_template_single_price', 10 );
 		remove_action( 'woocommerce_single_product_summary' , 'woocommerce_template_single_add_to_cart', 30 );
-		add_action( 'woocommerce_single_product_summary' , 'mos_woocommerce_shop_loop_item_title_meta_set_2_content', 25 );
-		
+		add_action( 'woocommerce_single_product_summary' , 'mos_woocommerce_shop_loop_item_title_meta_set_2_content', 25 );		
 
 	} else {
 		add_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_price', 12, 0);
@@ -252,9 +253,11 @@ add_action('woocommerce_shop_loop_item_title', 'mos_woocommerce_shop_loop_item_t
 
 function mos_woocommerce_shop_loop_item_title_meta_set_2_content( ) {
 	?>
+	<div class="login-wrapper">
 	<span class="text"><?php _e(carbon_get_theme_option( 'mos-woocommerce-login-advice-text'),'woocommerce'); ?></span>
 	<!--  -->
 	<a class="button" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e(carbon_get_theme_option( 'mos-woocommerce-login-button-text'),'woocommerce'); ?>"><?php _e(carbon_get_theme_option( 'mos-woocommerce-login-button-text'),'woocommerce'); ?></a>
+</div>
 	<?php
 }
 function mos_woocommerce_shop_loop_item_title_meta_set_2_end( ) {

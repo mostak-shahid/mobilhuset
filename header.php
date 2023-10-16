@@ -98,7 +98,7 @@ else $page_id = get_the_ID();
                 <div class="d-lg-none mobile-header">
                     <div class="wp-block-nk-awb nk-awb alignfull p-0"> 
                         <?php if ($search=='top') : ?> 
-                            <div class="pb-3"><?php echo do_shortcode("[woo-searchform]")?></div>
+                            <div class="mobile-search pb-3"><?php echo do_shortcode("[woo-searchform]")?></div>
                         <?php endif?>
                         <?php if ($mobile_layout== 'header-0' && $mobile_custom_layout) :
                             $layout_id = $mobile_custom_layout[0]['id'];//This is page id or post id
@@ -112,7 +112,7 @@ else $page_id = get_the_ID();
                         <?php mos_header_builder($mobile_layout, $mobile_icons)?>
                         <?php endif?>
                         <?php if ($search=='bottom') : ?> 
-                            <div class="pt-3"><?php echo do_shortcode("[woo-searchform]")?></div>
+                            <div class="mobile-search pt-3"><?php echo do_shortcode("[woo-searchform]")?></div>
                         <?php endif?>
                     </div>
                 </div>
