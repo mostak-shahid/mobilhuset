@@ -57,6 +57,25 @@ function mos_customize_woo_action() {
 
 	add_action( 'woocommerce_after_single_product' , 'woocommerce_output_related_products', 20 );
 
+	/**/
+	add_action('woocommerce_single_product_summary', function() {mos_div_wrapper_start('single-meta-sku-stock before-product-single-cart d-flex flex-row justify-content-between align-items-sm-center w-100 mb-3');}, 20);    
+    add_action('woocommerce_single_product_summary', function() {
+        global $product;
+        
+        if ( $product->get_stock_status() == 'instock' ) $availability = carbon_get_theme_option( 'mos-woocommerce-instock-text' );
+        elseif ( $product->get_stock_status() == 'onbackorder' ) $availability = carbon_get_theme_option( 'mos-woocommerce-backorder-text' );
+        else $availability = carbon_get_theme_option( 'mos-woocommerce-outofstock-text' );
+		
+        echo '<div class="mos-ststus"><div class="mos-product-stock '.$product->get_stock_status().'">'.$availability."</div></div>";
+        if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
+            <span class="sku_wrapper"><?php esc_html_e( 'SKU:', 'woocommerce' ); ?> <span class="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : esc_html__( 'N/A', 'woocommerce' ); ?></span></span>
+        <?php endif;
+    }, 21);    
+    add_action('woocommerce_single_product_summary', 'mos_woocommerce_shop_loop_item_title_meta_set_2_end', 22);
+	add_filter( 'woocommerce_get_stock_html', '__return_empty_string', 10, 2 );
+	/**/
+	
+
 
 	if (is_single()) {
 		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
